@@ -1,24 +1,27 @@
 # FresherNote
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Heroku link][heroku] **NB:** (Set up on 12/14)
 
 [heroku]: http://www.herokuapp.com
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote built using Ruby on Rails
-and React.js. FresherNote allows users to:
+WanderSF is a web application inspired by Yelp built using Ruby on Rails
+and React.js. The app will be a platform for users to find and share about
+public parks and recreational facilities, as well as unique hangout spots.
+WanderSF allows users to:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
 - [ ] Create an account
 - [ ] Log in / Log out
-- [ ] Create, read, edit, and delete notes
-- [ ] Organize notes within Notebooks
-- [ ] Tag notes with multiple tags and search notes by tag
-- [ ] Search through notes for blocks of text
-- [ ] Apply complex styling to notes while editing
-- [ ] Set reminders on notes
+- [ ] Search through spots with text and location
+- [ ] Add photos for spots
+- [ ] Suggest (submit request) for new spots or editing existing spot details
+- [ ] Create, read, edit, and delete (your own) reviews
+- [ ] Star-rating for spots
+- [ ] Tag spots with multiple tags and search spots by tag categories
+- [ ] Personal profile to edit (profile picture and basic details)
 
 ## Design Docs
 * [View Wireframes][view]
