@@ -15,7 +15,8 @@ WanderSF allows users to:
 
 - [ ] Create an account
 - [ ] Log in / Log out
-- [ ] Search through spots with text and location
+- [ ] Search through spots with text or location
+- [ ] Google Map API (Maybe with ability to look up directions? Or other nearby suggestions?)
 - [ ] Add photos for spots
 - [ ] Suggest (submit request) for new spots or editing existing spot details
 - [ ] Create, read, edit, and delete (your own) reviews
