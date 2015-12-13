@@ -17,10 +17,11 @@ WanderSF allows users to:
 - [ ] Log in / Log out
 - [ ] Search through spots with text or location
 - [ ] Google Map API (Maybe with ability to look up directions? Or other nearby suggestions?)
-- [ ] Add photos for spots
 - [ ] Suggest (submit request) for new spots or editing existing spot details
 - [ ] Create, read, edit, and delete (your own) reviews
 - [ ] Star-rating for spots
+- [ ] Add photos for spots
+- [ ] 'Like' reviews and parks
 - [ ] Tag spots with multiple tags and search spots by tag categories
 - [ ] Personal profile to edit (profile picture and basic details)
 
