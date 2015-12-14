@@ -6,21 +6,29 @@
 ## New Session
 ![new-session]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## Root
+![root]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## SpotsIndex / SpotIndexItem
+![spots-search]
 
-## NoteBookForm
-![notebook-form]
+## SpotForm
+![spot-form]
+
+## ReviewsIndex / ReviewForm
+![spot-reviews]
 
 ## Component Heirarchy
 ![component-heirarchy]
 
+## Profile View
+![profile-view]
+
 [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+[root]: ./wireframes/root.png
+[spots-search]: ./wireframes/spots_search.png
+[spot-form]: ./wireframes/spot_form.png
+[spot-reviews]: ./wireframes/spot_reviews.png
+[profile-view]: ./wireframes/profile_view.png
 [component-heirarchy]: ./wireframes/component_heirarchy.png

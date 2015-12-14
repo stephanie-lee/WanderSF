@@ -36,10 +36,10 @@ WanderSF allows users to:
 
 ### Phase 1: User Authentication, Note Model and JSON API (1.5 days)
 
-In Phase 1, I will begin by implementing user signup and authentication (using
-BCrypt). There will be a basic landing page after signup that will contain the
+In Phase 1, I will implement user signup and authentication (using
+BCrypt). There will be a basic landing page after signup that will hold the
 container for the application's root React component. Before building out the
-front end, I will begin by setting up a full JSON API for Notes.
+front end, I will begin by setting up a full JSON API for spots and reviews.
 
 [Details][phase-one]
 
