@@ -1,20 +1,22 @@
-# Phase 1: User Authentication, Note Model and JSON API
+# Phase 1: User Authentication, Spots and Review Model and JSON API
 
 ## Rails
 ### Models
 * User
-* Note
+* Spots
+* Reviews
 
 ### Controllers
 * UsersController (create, new)
 * SessionsController (create, new, destroy)
-* Api::NotesController (create, destroy, index, show, update)
+* Api::SpotsController (create, index, show)
+* Api::ReviewsController (create, destroy, index, update)
 
 ### Views
 * users/new.html.erb
 * session/new.html.erb
-* notes/index.json.jbuilder
-* notes/show.json.jbuilder
+* spots/index.json.jbuilder
+* spots/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)

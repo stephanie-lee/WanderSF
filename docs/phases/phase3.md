@@ -1,13 +1,11 @@
-# Phase 3: Notebooks and Tags (2 days)
+# Phase 3: Tags and Search (2 days)
 
 ## Rails
 ### Models
-* Notebook
 * Tag
-* Tagging
+
 
 ### Controllers
-* Api::NotebooksController (create, destroy, index, show, update)
 
 ### Views
 * notebooks/index.json.jbuilder
@@ -16,29 +14,21 @@
 
 ## Flux
 ### Views (React Components)
-* NotebooksIndex
-  - NotebookIndexItem
-* NotebookForm
+
 * SearchIndex
 
 ### Stores
-* Notebook
 
 ### Actions
-* ApiActions.receiveAllNotebooks -> triggered by ApiUtil
-* ApiActions.receiveSingleNotebook
-* ApiActions.deleteNotebook
-* NotebookActions.fetchAllNotebooks -> triggers ApiUtil
-* NotebookActions.fetchSingleNotebook
-* NotebookActions.createNotebook
-* NotebookActions.editNotebook
-* NotebookActions.destroyNotebook
+* ApiActions.receiveAllSpot -> triggered by ApiUtil
+* ApiActions.receiveSingleSpot
+* NotebookActions.fetchAllSpots -> triggers ApiUtil
+* NotebookActions.fetchSingleSpot
+* NotebookActions.createSpot
 
 ### ApiUtil
-* ApiUtil.fetchAllNotebooks
-* ApiUtil.fetchSingleNotebook
-* ApiUtil.createNotebook
-* ApiUtil.editNotebook
-* ApiUtil.destroyNotebook
+* ApiUtil.fetchAllSpots
+* ApiUtil.fetchSingleSpot
+* ApiUtil.createSpot
 
 ## Gems/Libraries
