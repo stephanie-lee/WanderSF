@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: Steph_Project_Proposal_development
+  database: WanderSF_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: Steph_Project_Proposal_test
+  database: WanderSF_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -65,7 +65,7 @@ test:
 #
 # Instead, provide the password as a unix environment variable when you boot
 # the app. Read http://guides.rubyonrails.org/configuring.html#configuring-a-database
-# for a full rundown on how to provide these environment variables in a
+# for a full rundown on how to provWanderSFide these environment variables in a
 # production deployment.
 #
 # On Heroku and other platform providers, you may have a full connection URL
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: Steph_Project_Proposal_production
-  username: Steph_Project_Proposal
+  database: WanderSF_production
+  username: WanderSF
   password: <%= ENV['STEPH_PROJECT_PROPOSAL_DATABASE_PASSWORD'] %>

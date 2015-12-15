@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>StephProjectProposal</title>
+  <title>WanderSF</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<% if logged_in? %>
+  <p>Logged in as: <%= current_user.first_name %></p>
+  <%= button_to "Sign Out", session_url, method: :delete %>
+<% end %>
+
+<% if flash[:errors]%>
+<div class="errors">
+  <% messages = flash[:errors]%>
+  <% messages.each do |message| %>
+    <%= message %>
+  <% end %>
+</div>
+<% end %>
 
 <%= yield %>
 
