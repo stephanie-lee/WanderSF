@@ -40,7 +40,7 @@ In Phase 1, I will implement user signup and authentication (using
 BCrypt). There will be a basic landing page after signup that will hold
 the container for the application's root React component. Before
 building out the front end, I will begin by setting up a full JSON API
-for spots.
+for reviews and spots.
 
 [Details][phase-one]
 
