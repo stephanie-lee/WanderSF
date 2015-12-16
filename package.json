@@ -1,0 +1,31 @@
+{
+  "name": "WanderSF",
+  "version": "1.0.0",
+  "description": "[Heroku link][heroku] **NB:** (Set up on 12/14)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephanie-lee/WanderSF.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephanie-lee/WanderSF/issues"
+  },
+  "homepage": "https://github.com/stephanie-lee/WanderSF#readme",
+  "dependencies": {
+    "babel-core": "^6.3.17",
+    "babel-loader": "^6.2.0",
+    "babel-preset-react": "^6.3.13",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "webpack": "^1.12.9"
+  }
+}

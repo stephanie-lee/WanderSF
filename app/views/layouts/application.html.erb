@@ -7,22 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render partial: "shared/navbar" %>
+  <%= render partial: "shared/errors" %>
 
-<% if logged_in? %>
-  <p>Logged in as: <%= current_user.first_name %></p>
-  <%= button_to "Sign Out", session_url, method: :delete %>
-<% end %>
-
-<% if flash[:errors]%>
-<div class="errors">
-  <% messages = flash[:errors]%>
-  <% messages.each do |message| %>
-    <%= message %>
-  <% end %>
-</div>
-<% end %>
-
-<%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

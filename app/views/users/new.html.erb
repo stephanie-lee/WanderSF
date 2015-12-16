@@ -1,36 +1,29 @@
 <div class="main-page">
   <div class="sign-in-box">
-    <h3>Sign Up</h3>
+    <div class="row col-xs-3 col-xs-offset-4">
+      <h3 class="col-xs-offset-3">Sign Up</h3>
 
-    <form class="" action="<%= users_url %>" method="post">
-      <%= auth_token %>
+      <form class="" action="<%= users_url %>" method="post">
+        <%= auth_token %>
 
-      <div class="field">
-        <input type="text" name="user[email]" value="" placeholder="email">
-      </div>
+        <div class="form-group">
+          <input type="email" class="form-control" name="user[email]" value="" placeholder="email">
+        </div>
 
-      <br><br>
+        <div class="form-group">
+          <input type="password" class="form-control" name="user[password]" value="" placeholder="password">
+        </div>
 
-      <div class="password-field">
-        <input type="password" name="user[password]" value="" placeholder="password">
-      </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="user[first_name]" value="" placeholder="first name">
+        </div>
 
-      <br><br>
+        <div class="form-group">
+          <input type="text" class="form-control" name="user[last_name]" value="" placeholder="last name">
+        </div>
 
-      <div class="first-name-field">
-        <input type="text" name="user[first_name]" value="" placeholder="first name">
-      </div>
-
-      <br><br>
-
-      <div class="last-name-field">
-        <input type="text" name="user[last_name]" value="" placeholder="last name">
-      </div>
-
-      <br><br>
-
-      <input type="submit" class="submit-button">
-    </form>
-
+        <button type="submit" class="btn btn-primary col-xs-offset-4">Submit</button>
+      </form>
+    </div>
   </div>
 </div>
