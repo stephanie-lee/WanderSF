@@ -10,12 +10,14 @@ var SpotIndexItem = React.createClass({
 
   render: function() {
     return(
-      <li className="spot-list-item" onClick={this.showDetail} key={this.props.spot.id}>
-        {this.props.spot.name}
-        <br/>
-        Info: {this.props.spot.description}
-        <br/><br/>
-      </li>
+      <div>
+        <li className="spot-list-item" onClick={this.showDetail} key={this.props.spot.id}>
+          {this.props.spot.name}
+          <br/>
+          Info: {this.props.spot.description}
+          <br/><br/>
+        </li>
+      </div>
     );
   },
 });

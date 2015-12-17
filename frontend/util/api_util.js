@@ -5,15 +5,37 @@ var ApiUtil = {
     $.ajax({
       url: 'api/spots',
       success: function(spots){
-        ApiActions.receiveAll(spots);
+        ApiActions.receiveAllSpots(spots);
       }
     });
   },
+
   fetchSingleSpot: function(id){
     $.ajax({
       url: 'api/spots/' + id,
       success: function (spot) {
-        ApiActions.receiveSingleSpot(spot);
+        ApiActions.receiveSingleSpot([spot]); //check this
+      }
+    });
+  },
+
+  createReview: function(review){
+    $.ajax({
+      url: '/api/reviews',
+      dataType: 'json',
+      type: 'POST',
+      data: {review: review},
+      success: function(reviews) {
+        ApiActions.receiveAllReviews(review);
+      }
+    });
+  },
+
+  fetchReviews: function(){
+    $.ajax({
+      url: 'api/reviews',
+      success: function(reviews){
+        ApiActions.receiveAllReviews(reviews);
       }
     });
   }

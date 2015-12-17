@@ -27,7 +27,6 @@ var SpotIndex = React.createClass({
     });
     return(
       <div>
-          index
         <ul>
           {spot}
         </ul>

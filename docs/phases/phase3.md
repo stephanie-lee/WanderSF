@@ -20,7 +20,7 @@
 ### Stores
 
 ### Actions
-* ApiActions.receiveAllSpot -> triggered by ApiUtil
+* ApiActions.receiveAllSpots -> triggered by ApiUtil
 * ApiActions.receiveSingleSpot
 * NotebookActions.fetchAllSpots -> triggers ApiUtil
 * NotebookActions.fetchSingleSpot

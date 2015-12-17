@@ -21,6 +21,7 @@ SpotStore.__onDispatch = function (payload) {
     case SpotConstants.SPOT_RECEIVED:
       resetSpot(payload.spot);
       SpotStore.__emitChange();
+      break;
   }
 };
 
