@@ -7,7 +7,14 @@ var ApiActions = {
       actionType: SpotConstants.SPOTS_RECEIVED,
       spots: spots
     });
-  }
+  },
+
+  receiveSingleSpot: function(spot){
+    AppDispatcher.dispatch({
+      actionType: SpotConstants.SPOT_RECEIVED,
+      spot: [spot]
+    });
+  },
 };
 
 module.exports = ApiActions;

@@ -9,13 +9,24 @@ var resetSpots = function(newSpots) {
 };
 
 SpotStore.__onDispatch = function (payload) {
-switch(payload.actionType) {
-  case SpotConstants.SPOTS_RECEIVED:
-    resetSpots(payload.spots);
-    SpotStore.__emitChange();
-    break;
+  switch(payload.actionType) {
+    case SpotConstants.SPOTS_RECEIVED:
+      resetSpots(payload.spots);
+      SpotStore.__emitChange();
+      break;
+    case SpotConstants.SPOT_RECEIVED:
+      resetSpots(payload.spot);
+      SpotStore.__emitChange();
   }
-}
+};
+
+SpotStore.find = function(id) {
+  for (i = 0; i < _spots.length; i++) {
+    if (_spots[i].id === id) {
+      return _spots[i];
+    }
+  }
+};
 
 SpotStore.all = function() {
   return _spots.slice(0);

@@ -8,6 +8,14 @@ var ApiUtil = {
         ApiActions.receiveAll(spots);
       }
     });
+  },
+  fetchSingleSpot: function(id){
+    $.ajax({
+      url: 'api/spots/' + id,
+      success: function (spot) {
+        ApiActions.receiveSingleSpot(spot);
+      }
+    });
   }
 };
 

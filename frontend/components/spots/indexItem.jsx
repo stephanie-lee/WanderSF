@@ -11,8 +11,8 @@ var IndexItem = React.createClass({
   render: function() {
     return(
       <li className="spot-list-item">
-        <p>Spot: {this.props.spot.name}:</p>
-        <p>Info: {this.props.spot.description}</p>
+        <p onClick={this.showDetail} key="name">{this.props.spot.name}:</p>
+        <p key="desc">Info: {this.props.spot.description}</p>
         <br/>
       </li>
     );

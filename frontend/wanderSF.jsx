@@ -8,25 +8,16 @@ var IndexRoute = ReactRouter.IndexRoute;
 
 // components required here
 var SpotStore = require('./stores/spot');
-var ApiUtil = require('./util/api_util.js');
-var Index = require('./components/spots/index.jsx');
-var Search = require('./components/search.jsx');
-
-var App = React.createClass({
-  render: function(){
-    return (
-      <div id="index">
-        <div className="spots-index">
-          <Index />
-        </div>
-        {this.props.children}
-      </div>
-    );
-  }
-});
+var ApiUtil = require('./util/api_util');
+var Index = require('./components/spots/index');
+var Search = require('./components/search');
+var SpotDetail = require('./components/spots/detail');
+var App = require('./components/app');
 
 var routes = (
   <Route path='/' component={App}>
+    <Route path='spot/:spotId' component={SpotDetail}>
+    </Route>
   </Route>
 );
 
