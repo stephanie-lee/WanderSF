@@ -31,20 +31,20 @@ var SpotDetail = React.createClass({
 
   render: function() {
     if(this.state.spot === undefined) { return <div></div>; }
-    return(
-      <div>
-        <div className="spot-detail-pane">
-          <div className="detail">
-            {['name', 'description'].map(function (attr) {
-              return <p key={attr}> {attr}: {this.state.spot[attr]}</p>;
-            }.bind(this))}
+      return(
+        <div>
+          <div className="spot-detail-pane">
+            <div className="detail">
+              {['name', 'description'].map(function (attr) {
+                return <p key={attr}> {attr}: {this.state.spot[attr]}</p>;
+              }.bind(this))}
+            </div>
           </div>
+
+          {this.props.children}
+
         </div>
-
-        {this.props.children}
-
-      </div>
-    );
+      );
   }
 });
 

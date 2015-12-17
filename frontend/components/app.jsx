@@ -8,6 +8,7 @@ var App = React.createClass({
         <div className="spots-index">
           <SpotIndex />
         </div>
+        
         {this.props.children}
       </div>
     );

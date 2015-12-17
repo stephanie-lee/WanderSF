@@ -1,10 +1,9 @@
 var React = require('react');
 var SpotStore = require('../../stores/spot');
 var ApiUtil = require('../../util/api_util');
+var SpotIndexItem = require('./IndexItem');
 
-var IndexItem = require('./IndexItem');
-
-var Index = React.createClass({
+var SpotIndex = React.createClass({
   getInitialState: function() {
     return { spots: SpotStore.all() };
   },
@@ -23,14 +22,18 @@ var Index = React.createClass({
   },
 
   render: function() {
+    var spot = this.state.spots.map(function(spot, idx) {
+      return(<SpotIndexItem key={idx} spot={spot}/>);
+    });
     return(
-      <ul>
-        {this.state.spots.map(function(spot) {
-          return <IndexItem key={spot.id} spot={spot}/>;
-        })}
-      </ul>
+      <div>
+          index
+        <ul>
+          {spot}
+        </ul>
+      </div>
     );
   }
 });
 
-module.exports = Index;
+module.exports = SpotIndex;

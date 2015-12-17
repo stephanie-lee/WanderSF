@@ -8,6 +8,10 @@ var resetSpots = function(newSpots) {
   _spots = newSpots;
 };
 
+var resetSpot = function(newSpot) {
+  _spots[newSpot.id] = newSpot;
+}
+
 SpotStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case SpotConstants.SPOTS_RECEIVED:
@@ -15,7 +19,7 @@ SpotStore.__onDispatch = function (payload) {
       SpotStore.__emitChange();
       break;
     case SpotConstants.SPOT_RECEIVED:
-      resetSpots(payload.spot);
+      resetSpot(payload.spot);
       SpotStore.__emitChange();
   }
 };
