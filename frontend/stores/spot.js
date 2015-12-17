@@ -10,7 +10,7 @@ var resetSpots = function(newSpots) {
 
 var resetSpot = function(newSpot) {
   _spots[newSpot.id] = newSpot;
-}
+};
 
 SpotStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
