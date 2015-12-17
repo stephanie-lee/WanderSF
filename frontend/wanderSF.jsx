@@ -9,7 +9,7 @@ var IndexRoute = ReactRouter.IndexRoute;
 // components required here
 var SpotStore = require('./stores/spot');
 var ApiUtil = require('./util/api_util.js');
-var Index = require('./components/index.jsx');
+var Index = require('./components/spots/index.jsx');
 var Search = require('./components/search.jsx');
 
 var App = React.createClass({
