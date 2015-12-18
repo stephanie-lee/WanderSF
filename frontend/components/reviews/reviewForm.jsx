@@ -14,11 +14,6 @@ var ReviewForm = React.createClass({
     };
   },
 
-  // handleCancel: function(event) {
-  //   event.preventDefault();
-  //   //SOMETHING TO CANCEL
-  // },
-
   handleSubmit: function(event) {
     event.preventDefault();
     var review = $.extend(

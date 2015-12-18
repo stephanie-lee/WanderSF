@@ -13,7 +13,8 @@ var SpotDetail = React.createClass({
 
   getStateFromStore: function() {
     return { spot: SpotStore.find(parseInt(this.props.params.spotId)),
-             reviews: ReviewStore.find(parseInt(this.props.params.spotId))
+             reviews: ReviewStore.find(parseInt(this.props.params.spotId)),
+             hasReviewed: false,
            };
   },
 
@@ -23,6 +24,7 @@ var SpotDetail = React.createClass({
 
   _onChange: function() {
     this.setState(this.getStateFromStore());
+    this.spotRating();
   },
 
   componentWillReceiveProps: function (newProps) {
@@ -41,6 +43,22 @@ var SpotDetail = React.createClass({
     this.reviewListener.remove();
   },
 
+  spotRating: function() {
+    var rating = 0;
+    if (!this.state.spot){
+      return <div></div>;
+    }
+    var reviews = this.state.reviews;
+    for (var i = 0; i < reviews.length; i++ ) {
+      rating += reviews[i].rating;
+    }
+    rating = Math.round((rating/reviews.length) * 2 / 2);
+    if (rating.isNaN) {
+      rating = 0;
+    }
+    this.setState({ rating: rating });
+  },
+
   render: function() {
     if (!this.state.spot){
       return <div></div>;
@@ -51,10 +69,9 @@ var SpotDetail = React.createClass({
           <Link to="/" >Back to All Spots</Link>
           <div className="spot-detail-pane">
             <ul className="detail">
-              {['name', 'description', 'rating'].map(function (attr) {
-                return <li key={attr}> {attr}: {this.state.spot[attr]}</li>;
-              }.bind(this))}
-
+              <li key='name'>Name: {this.state.spot.name}</li>
+              <li key='info'>Info: {this.state.spot.description}</li>
+              <li key='rating'>Rating: {this.state.rating}</li>
             <br/>
             <div className="reviews">
               <ReviewForm spotId={this.props.params.spotId} />
