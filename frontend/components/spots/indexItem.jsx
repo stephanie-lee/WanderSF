@@ -15,6 +15,8 @@ var SpotIndexItem = React.createClass({
           {this.props.spot.name}
           <br/>
           Info: {this.props.spot.description}
+          <br/>
+          Rating: {this.props.spot.rating}
           <br/><br/>
         </li>
       </div>

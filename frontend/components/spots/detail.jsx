@@ -5,6 +5,7 @@ var Review = require('../reviews/Review');
 var ReactRouter = require('react-router');
 var ReviewForm = require('../reviews/reviewForm');
 var ReviewStore = require('../../stores/review');//*****
+var ReviewIndex = require('../reviews/reviewIndex');
 
 var Link = ReactRouter.Link;
 
@@ -50,17 +51,14 @@ var SpotDetail = React.createClass({
           <Link to="/" >Back to All Spots</Link>
           <div className="spot-detail-pane">
             <ul className="detail">
-              {['name', 'description'].map(function (attr) {
+              {['name', 'description', 'rating'].map(function (attr) {
                 return <li key={attr}> {attr}: {this.state.spot[attr]}</li>;
               }.bind(this))}
 
             <br/>
             <div className="reviews">
               <ReviewForm spotId={this.props.params.spotId} />
-              <h4>Reviews</h4>
-                {reviews.map(function(review) {
-                  return <Review key={review.id} {...review} />;
-                })}
+              <ReviewIndex reviews={this.state.reviews}/>
             </div>
             </ul>
           </div>

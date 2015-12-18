@@ -10,9 +10,7 @@ var ReviewForm = React.createClass({
 
   getInitialState: function () {
     return {
-      rating: 3,
-      comment: "",
-      spot_id: this.props.spotId
+      rating: 3, comment: "", spot_id: this.props.spotId
     };
   },
 

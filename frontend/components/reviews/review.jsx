@@ -1,7 +1,10 @@
 var React = require('react');
+var ReactRouter = require('react-router');
+var Link = ReactRouter.Link;
 
 var Review = React.createClass({
   render:function()  {
+    // var link =
     return (
       <div>
         <ul>
