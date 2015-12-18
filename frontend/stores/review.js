@@ -9,7 +9,7 @@ var resetReviews = function(newReviews) {
 };
 
 var addReview = function(newReview) {
-  _reviews.push(newReviews);
+  _reviews.push(newReview);
 };
 
 ReviewStore.__onDispatch = function (payload) {
@@ -27,11 +27,13 @@ ReviewStore.__onDispatch = function (payload) {
 
 ReviewStore.find = function(spotId) {
   spotReviews = [];
-  if (!_reviews) { return []; }
+  if (_reviews.length === 0) {
+    return [];
+  }
 
   _reviews.forEach(function(review){
-    if (review.spot.id === spotId) {
-      spotReviews.push(review);
+    if (review.spot_id === spotId) {
+      spotReviews.push(review); //////
     }
   });
   return spotReviews;

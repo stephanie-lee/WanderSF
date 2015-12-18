@@ -9,6 +9,7 @@ var Review = React.createClass({
           <li>{this.props.user.wanderer_title}</li>
           <li>Rating: {this.props.rating}</li>
           <li>Review: {this.props.comment}</li>
+          <br/>
         </ul>
       </div>
     );

@@ -25,8 +25,8 @@ var ApiUtil = {
       dataType: 'json',
       type: 'POST',
       data: {review: review},
-      success: function(reviews) {
-        ApiActions.receiveAllReviews(review);
+      success: function(review) {
+        ApiActions.receiveSingleReview(review);
       }
     });
   },

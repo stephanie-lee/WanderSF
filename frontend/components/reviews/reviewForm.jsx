@@ -11,7 +11,8 @@ var ReviewForm = React.createClass({
   getInitialState: function () {
     return {
       rating: 3,
-      comment: ""
+      comment: "",
+      spot_id: this.props.spotId
     };
   },
 
@@ -24,8 +25,7 @@ var ReviewForm = React.createClass({
     event.preventDefault();
     var review = $.extend(
       {},
-      this.state,
-      { spot_id: this.props.spotId}
+      this.state
     );
     ApiUtil.createReview(review);
 
