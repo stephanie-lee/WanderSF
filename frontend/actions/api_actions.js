@@ -30,6 +30,13 @@ var ApiActions = {
       review: review
     });
   },
+
+  updateSingleReview: function(review){
+    AppDispatcher.dispatch({
+      actionType: ReviewConstants.UPDATE_REVIEW,
+      review: review
+    });
+  },
 };
 
 module.exports = ApiActions;

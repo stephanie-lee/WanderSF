@@ -10,18 +10,11 @@ var ReviewIndex = require('../reviews/reviewIndex');
 var Link = ReactRouter.Link;
 
 var SpotDetail = React.createClass({
-
-  // getStateFromStore: function() {
-  //   return { spot: SpotStore.find(parseInt(this.props.params.spotId)),
-  //            reviews: ReviewStore.find(parseInt(this.props.params.spotId)),
-  //            hasReviewed: false,
-  //          };
-  // },
-
   getInitialState: function() {
     return { spot: SpotStore.find(parseInt(this.props.params.spotId)),
              reviews: ReviewStore.find(parseInt(this.props.params.spotId)),
              hasReviewed: false,
+             yourReview : []
            };
   },
 
@@ -32,22 +25,24 @@ var SpotDetail = React.createClass({
                 });
     this.spotRating();
     this.updateReview();
-    console.log(this.state.hasReviewed);
   },
 
   updateReview: function() {
-    debugger
     var id = this.props.params.spotId;
     var hasReviewed;
     var currentSpotReviews = this.state.reviews;
     for (var review in currentSpotReviews) {
       if (currentSpotReviews[review].belongsToCurrentUser) {
-        hasReviewed = true;
-        this.yourReview = currentSpotReviews[review];
+        // hasReviewed = true;
+        // this.state.;
+        this.setState({
+           hasReviewed: true,
+           yourReview: currentSpotReviews[review]
+         });
+        break;
       }
     }
-    debugger
-    this.setState({ hasReviewed: hasReviewed });
+    // this.setState({ hasReviewed: hasReviewed });
   },
 
   componentWillReceiveProps: function (newProps) {
@@ -92,9 +87,8 @@ var SpotDetail = React.createClass({
     if (this.state.hasReviewed) {
       reviewForm = <ReviewForm
         spotId={this.props.params.spotId}
-        hasReviewed={this.state.hasReviewed}/>;
-    } else {
-      reviewForm = <ReviewForm spotId={this.props.params.spotId}/>;
+        hasReviewed={this.state.hasReviewed}
+        yourReview={this.state.yourReview} />;
     }
 
     var reviews = this.state.reviews || [];
@@ -108,10 +102,9 @@ var SpotDetail = React.createClass({
               <li key='rating'>Rating: {this.state.rating}</li>
             <br/>
             <div className="reviews">
-              <ReviewForm
-                spotId={this.props.params.spotId}
-                hasReviewed={this.state.hasReviewed}/>
-              <ReviewIndex reviews={this.state.reviews}/>
+              {"You Reviewed: " + this.state.hasReviewed}
+              {reviewForm}
+              <ReviewIndex reviews={this.state.reviews}/>}
             </div>
             </ul>
           </div>

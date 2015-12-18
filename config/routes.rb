@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :spots, only: [:index, :new, :create, :show]
-    resources :reviews, only: [:index, :show, :create, :destroy]
+    resources :reviews, only: [:index, :create, :update, :destroy]
   end
 end

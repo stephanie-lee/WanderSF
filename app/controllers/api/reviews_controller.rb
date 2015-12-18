@@ -10,7 +10,7 @@ class Api::ReviewsController < ApplicationController
     if @review.save
       render :create
     else
-      render json: @review.errors.full_messages
+      flash[:errors] = @review.errors.full_messages
     end
   end
 

@@ -9,7 +9,3 @@ json.user do
   json.last_name @review.user.last_name
   json.wanderer_title @review.user.wanderer_title
 end
-
-if current_user
-  json.belongsToCurrentUser @review.user.id == current_user.id
-end

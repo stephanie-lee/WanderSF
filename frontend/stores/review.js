@@ -12,6 +12,17 @@ var addReview = function(newReview) {
   _reviews.push(newReview);
 };
 
+var updateReview = function(edittedReview) {
+  targetId = edittedReview.id;
+
+  _reviews.forEach(function(review, idx){
+    if (review.id === targetId) {
+      _reviews.splice(idx, 1);
+      _reviews.push(edittedReview);
+    }
+  });
+};
+
 ReviewStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case ReviewConstants.REVIEWS_RECEIVED:
@@ -20,6 +31,10 @@ ReviewStore.__onDispatch = function (payload) {
       break;
     case ReviewConstants.REVIEW_RECEIVED:
       addReview(payload.review);
+      ReviewStore.__emitChange();
+      break;
+    case ReviewConstants.UPDATE_REVIEW:
+      updateReview(payload.review);
       ReviewStore.__emitChange();
       break;
   }

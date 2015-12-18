@@ -9,9 +9,22 @@ var ReviewForm = React.createClass({
   mixins:[LinkedStateMixin, History],
 
   getInitialState: function () {
-    return {
-      rating: 3, comment: "", spot_id: this.props.spotId
-    };
+    console.log(yourReview);
+    if(this.props.hasReviewed) {
+      var yourReview = this.props.yourReview;
+      return ({ id:yourReview.rating, rating: yourReview.rating, comment: yourReview.comment });
+    } else {
+      debugger
+      return ({rating: 3, comment: "", spot_id: this.props.spotId });
+    }
+  },
+
+  componentWillReceiveProps: function(newProps) {
+    var yourReview = this.props.yourReview;
+    this.setState({ id:yourReview.rating,
+                    rating: yourReview.rating,
+                    comment: yourReview.comment
+    });
   },
 
   handleSubmit: function(event) {
@@ -20,8 +33,13 @@ var ReviewForm = React.createClass({
       {},
       this.state
     );
-    ApiUtil.createReview(review);
-
+    if(this.props.hasReviewed) {
+      var reviewId = this.props.yourReview.id;
+      review.id = reviewId;
+      ApiUtil.updateSingleReview(review);
+    } else {
+      ApiUtil.createReview(review);
+    }
   },
 
   render: function() {

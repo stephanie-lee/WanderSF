@@ -31,6 +31,18 @@ var ApiUtil = {
     });
   },
 
+  updateSingleReview: function(review){
+    $.ajax({
+      url: 'api/review/' + review.spot_id,
+      type: "PATCH",
+      dataType: "json",
+      data: {review: review},
+      success: function(reviewData) {
+        ApiActions.updateSingleReview(reviewData);
+      }
+    });
+  },
+
   fetchReviews: function(){
     $.ajax({
       url: 'api/reviews',
