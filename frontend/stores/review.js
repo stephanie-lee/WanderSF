@@ -1,16 +1,19 @@
 var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 var _reviews = [];
+var _myReviews = [];
 var currentReview = null;
 var ReviewStore = new Store(AppDispatcher);
 var ReviewConstants = require('../constants/review_constants');
 
 var resetReviews = function(newReviews) {
   _reviews = newReviews;
+  findMyReviews();
 };
 
 var addReview = function(newReview) {
   _reviews.push(newReview);
+  findMyReviews();
 };
 
 var updateReview = function(edittedReview) {
@@ -22,7 +25,28 @@ var updateReview = function(edittedReview) {
       return;
     }
   });
+  findMyReviews();
 };
+
+var findMyReviews = function() {
+  var myReviews = [];
+  _reviews.forEach(function(review) {
+    if(review.belongsToCurrentUser) {
+      myReviews.push(review);
+    }
+  });
+  _myReviews = myReviews;
+};
+
+// var findMySpotReview = function() {
+//   for( var i = 0; i < _myReviews.length; i++ ) {
+//     if (_myReviews[i].spot_id === spotId) {
+//       currentReview = _myReviews[i];
+//       break;
+//     }
+//   }
+//   return currentReview;
+// };
 
 ReviewStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
@@ -55,8 +79,22 @@ ReviewStore.findBySpot = function(spotId) {
   return spotReviews;
 };
 
+ReviewStore.findMySpotReview = function(spotId) {
+  for( var i = 0; i < _myReviews.length; i++ ) {
+    if (_myReviews[i].spot_id === spotId) {
+      currentReview = _myReviews[i];
+      break;
+    }
+  }
+  return currentReview;
+};
+
 ReviewStore.all = function() {
   return _reviews.slice(0);
+};
+
+ReviewStore.allMyReviews = function() {
+  return _myReviews.slice(0);
 };
 
 window.ReviewStore = ReviewStore;

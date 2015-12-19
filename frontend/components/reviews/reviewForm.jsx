@@ -22,11 +22,13 @@ var ReviewForm = React.createClass({
   },
 
   componentWillReceiveProps: function(newProps) {
-    var yourReview = newProps.yourReview;
-    this.setState({ id: yourReview.id,
-                    rating: yourReview.rating,
-                    comment: yourReview.comment
-    });
+    if (newProps.yourReview) {
+      var yourReview = newProps.yourReview;
+      this.setState({ id: yourReview.id,
+                      rating: yourReview.rating,
+                      comment: yourReview.comment
+      });
+    }
   },
 
   handleSubmit: function(event) {
