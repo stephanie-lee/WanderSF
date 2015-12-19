@@ -1,5 +1,6 @@
 var React = require('react');
 var History = require('react-router').History;
+var ReviewStore = require('../../stores/review');
 
 var SpotIndexItem = React.createClass({
   mixins: [History],
@@ -9,6 +10,8 @@ var SpotIndexItem = React.createClass({
   },
 
   render: function() {
+    // var avg = ReviewStore.averageRating(this.props.spot.id);
+
     return(
       <div>
         <li className="spot-list-item" onClick={this.showDetail} key={this.props.spot.id}>

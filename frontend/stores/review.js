@@ -1,6 +1,7 @@
 var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 var _reviews = [];
+var currentReview = null;
 var ReviewStore = new Store(AppDispatcher);
 var ReviewConstants = require('../constants/review_constants');
 
@@ -13,12 +14,12 @@ var addReview = function(newReview) {
 };
 
 var updateReview = function(edittedReview) {
-  targetId = edittedReview.id;
+  var targetId = edittedReview.id;
 
   _reviews.forEach(function(review, idx){
     if (review.id === targetId) {
-      _reviews.splice(idx, 1);
-      _reviews.push(edittedReview);
+      _reviews[idx] = edittedReview;
+      return;
     }
   });
 };
@@ -40,7 +41,7 @@ ReviewStore.__onDispatch = function (payload) {
   }
 };
 
-ReviewStore.find = function(spotId) {
+ReviewStore.findBySpot = function(spotId) {
   spotReviews = [];
   if (_reviews.length === 0) {
     return [];

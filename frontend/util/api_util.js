@@ -33,7 +33,7 @@ var ApiUtil = {
 
   updateSingleReview: function(review){
     $.ajax({
-      url: 'api/review/' + review.spot_id,
+      url: 'api/reviews/' + review.id,
       type: "PATCH",
       dataType: "json",
       data: {review: review},

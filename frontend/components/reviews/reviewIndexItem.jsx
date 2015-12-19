@@ -2,13 +2,14 @@ var React = require('react');
 var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 
-var Review = React.createClass({
+var ReviewIndexItem = React.createClass({
   render:function()  {
     // var link =
     return (
       <div>
         <ul>
-          <li>User: {this.props.user.first_name} {this.props.user.last_name}</li>
+          <li>User: {this.props.user.first_name}
+                    {this.props.user.last_name}</li>
           <li>{this.props.user.wanderer_title}</li>
           <li>Rating: {this.props.rating}</li>
           <li>Review: {this.props.comment}</li>
@@ -19,4 +20,4 @@ var Review = React.createClass({
   }
 });
 
-module.exports = Review;
+module.exports = ReviewIndexItem;

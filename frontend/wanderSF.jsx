@@ -8,7 +8,7 @@ var IndexRoute = ReactRouter.IndexRoute;
 // components required here
 var SpotStore = require('./stores/spot');
 var ReviewStore = require('./stores/review');
-var SpotDetail = require('./components/spots/detail');
+var SpotDetail = require('./components/spots/spotDetail');
 var App = require('./components/app');
 
 var routes = (

@@ -1,7 +1,6 @@
 var React = require('react');
 var SpotStore = require('../../stores/spot');
 var ApiUtil = require('../../util/api_util');
-var Review = require('../reviews/Review');
 var ReactRouter = require('react-router');
 var ReviewForm = require('../reviews/reviewForm');
 var ReviewStore = require('../../stores/review');//*****
@@ -12,16 +11,16 @@ var Link = ReactRouter.Link;
 var SpotDetail = React.createClass({
   getInitialState: function() {
     return { spot: SpotStore.find(parseInt(this.props.params.spotId)),
-             reviews: ReviewStore.find(parseInt(this.props.params.spotId)),
+             reviews: ReviewStore.findBySpot(parseInt(this.props.params.spotId)),
              hasReviewed: false,
-             yourReview : []
+             yourReview : [],
+             formView : true
            };
   },
 
   _onChange: function() {
     this.setState({spot: SpotStore.find(parseInt(this.props.params.spotId)),
-                  reviews: ReviewStore.find(parseInt(this.props.params.spotId)),
-                  hasReviewed: this.updateReview(),
+                  reviews: ReviewStore.findBySpot(parseInt(this.props.params.spotId))
                 });
     this.spotRating();
     this.updateReview();
@@ -31,18 +30,17 @@ var SpotDetail = React.createClass({
     var id = this.props.params.spotId;
     var hasReviewed;
     var currentSpotReviews = this.state.reviews;
+    var yourReview = { rating: "3", comment: ""};
     for (var review in currentSpotReviews) {
       if (currentSpotReviews[review].belongsToCurrentUser) {
-        // hasReviewed = true;
-        // this.state.;
+        yourReview = currentSpotReviews[review];
         this.setState({
            hasReviewed: true,
-           yourReview: currentSpotReviews[review]
+           yourReview: yourReview
          });
         break;
       }
     }
-    // this.setState({ hasReviewed: hasReviewed });
   },
 
   componentWillReceiveProps: function (newProps) {
@@ -84,13 +82,6 @@ var SpotDetail = React.createClass({
       return <div></div>;
     }
 
-    if (this.state.hasReviewed) {
-      reviewForm = <ReviewForm
-        spotId={this.props.params.spotId}
-        hasReviewed={this.state.hasReviewed}
-        yourReview={this.state.yourReview} />;
-    }
-
     var reviews = this.state.reviews || [];
       return(
         <div>
@@ -103,8 +94,11 @@ var SpotDetail = React.createClass({
             <br/>
             <div className="reviews">
               {"You Reviewed: " + this.state.hasReviewed}
-              {reviewForm}
-              <ReviewIndex reviews={this.state.reviews}/>}
+              <ReviewForm
+                spotId={this.props.params.spotId}
+                hasReviewed={this.state.hasReviewed}
+                yourReview={this.state.yourReview} />;
+              <ReviewIndex reviews={this.state.reviews}/>
             </div>
             </ul>
           </div>
@@ -117,6 +111,3 @@ var SpotDetail = React.createClass({
 });
 
 module.exports = SpotDetail;
-              // {['name', 'description', 'rating'].map(function (attr) {
-              //   return <li key={attr}> {attr}: {this.state.spot[attr]}</li>;
-              // }.bind(this))}

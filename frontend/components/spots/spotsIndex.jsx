@@ -1,7 +1,7 @@
 var React = require('react');
 var SpotStore = require('../../stores/spot');
 var ApiUtil = require('../../util/api_util');
-var SpotIndexItem = require('./IndexItem');
+var SpotIndexItem = require('./spotIndexItem');
 
 var SpotIndex = React.createClass({
   getInitialState: function() {
