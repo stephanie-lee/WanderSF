@@ -19,11 +19,19 @@ var SpotDetail = React.createClass({
   },
 
   _onChange: function() {
-    this.setState({spot: SpotStore.find(parseInt(this.props.params.spotId)),
-                  reviews: ReviewStore.findBySpot(parseInt(this.props.params.spotId))
-                });
-    // this.spotRating();
-    // this.updateReview();
+    var spotId = parseInt(this.props.params.spotId);
+    // this.setState({spot: SpotStore.find(spotId),
+    //               reviews: ReviewStore.findBySpot(spotId)
+    //             });
+
+    this.yourReview = ReviewStore.findMySpotReview(spotId);
+    var hasReviewed = false;
+    if (this.yourReview) {
+      hasReviewed = true;
+    }
+    this.setState({ spot: SpotStore.find(spotId),
+                    reviews: ReviewStore.findBySpot(spotId),
+                    hasReviewed: hasReviewed });
   },
 
   updateSpotlightReview: function() {
@@ -32,39 +40,23 @@ var SpotDetail = React.createClass({
 
   _updateReviews: function() {
     var id = parseInt(this.props.params.spotId);
-    var hasReviewed;
-    var allYourReviews = ReviewStore.allMyReviews();
-    this.yourReview = "fake";
+    var hasReviewed = false;
+    var newSpotReviews = ReviewStore.findBySpot(id);
+    this.yourReview = ReviewStore.findMySpotReview(id);
 
-    allYourReviews.forEach(function(review) {
-      if (review.spot_id === id) {
-        console.log('true')
-        this.yourReview = review;
-        // console.log(this)
-      }
-      // console.log(this)
-    }.bind(this));
-
-    console.log(this.yourReview);
-    if (this.yourReview) {
-      hasReviewed = true;
-    } else {
-      hasReviewed = false;
-    }
-    this.setState({ reviews: this.state.reviews, hasReviewed: hasReviewed});
-    // var hasReviewed;
-    // var currentSpotReviews = this.state.reviews;
-    // var yourReview = { rating: "3", comment: ""};
-    // for (var review in currentSpotReviews) {
-    //   if (currentSpotReviews[review].belongsToCurrentUser) {
-    //     yourReview = currentSpotReviews[review];
-    //     this.setState({
-    //        hasReviewed: true,
-    //        yourReview: yourReview
-    //      });
-    //     break;
+    // newSpotReviews.forEach(function(review) {
+    //   if (review.belongsToCurrentUser) {
+    //     hasReviewed = true;
     //   }
-    // }
+    //   if (review !== undefined) {
+    //     this.state.reviews[review] = newSpotReviews[review];
+    //   }
+    // }.bind(this));
+    if(this.yourReview) {
+      hasReviewed = true;
+    }
+    this.setState({ reviews: ReviewStore.findBySpot(id),
+                    hasReviewed: hasReviewed });
   },
 
   componentWillReceiveProps: function (newProps) {
@@ -122,7 +114,7 @@ var SpotDetail = React.createClass({
                 spotId={this.props.params.spotId}
                 hasReviewed={this.state.hasReviewed}
                 yourReview={this.yourReview}
-                />;
+                />
               <ReviewIndex reviews={this.state.reviews}/>
             </div>
             </ul>

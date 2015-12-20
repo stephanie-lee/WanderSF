@@ -18,11 +18,9 @@ var addReview = function(newReview) {
 
 var updateReview = function(edittedReview) {
   var targetId = edittedReview.id;
-
   _reviews.forEach(function(review, idx){
     if (review.id === targetId) {
       _reviews[idx] = edittedReview;
-      return;
     }
   });
   findMyReviews();
@@ -38,15 +36,15 @@ var findMyReviews = function() {
   _myReviews = myReviews;
 };
 
-// var findMySpotReview = function() {
-//   for( var i = 0; i < _myReviews.length; i++ ) {
-//     if (_myReviews[i].spot_id === spotId) {
-//       currentReview = _myReviews[i];
-//       break;
-//     }
-//   }
-//   return currentReview;
-// };
+var findMySpotReview = function(spotId) {
+  for( var i = 0; i < _myReviews.length; i++ ) {
+    if (_myReviews[i].spot_id === spotId) {
+      currentReview = _myReviews[i];
+      break;
+    }
+  }
+
+};
 
 ReviewStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
@@ -80,6 +78,7 @@ ReviewStore.findBySpot = function(spotId) {
 };
 
 ReviewStore.findMySpotReview = function(spotId) {
+  currentReview = undefined;
   for( var i = 0; i < _myReviews.length; i++ ) {
     if (_myReviews[i].spot_id === spotId) {
       currentReview = _myReviews[i];

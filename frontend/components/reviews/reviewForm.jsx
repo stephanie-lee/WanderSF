@@ -11,7 +11,7 @@ var ReviewForm = React.createClass({
   getInitialState: function () {
     if(this.props.hasReviewed) {
       var yourReview = this.props.yourReview;
-      return ({ id:yourReview.rating,
+      return ({ id: yourReview.rating,
                 rating: yourReview.rating,
                 comment: yourReview.comment });
     } else {
