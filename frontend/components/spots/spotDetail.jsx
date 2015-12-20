@@ -58,6 +58,10 @@ var SpotDetail = React.createClass({
     this.reviewListener.remove();
   },
 
+  toggleReviewForm: function() {
+    this.setState({formView: true});
+  },
+
   render: function() {
     var reviewForm;
 
@@ -69,7 +73,7 @@ var SpotDetail = React.createClass({
       yourReviewItem = <div>
         <h4>Your Review</h4>
         <ReviewUserItem
-        yourReview={this.yourReview} /></div>
+        yourReview={this.yourReview} /></div>;
     } else {
       yourReviewItem = <div></div>;
     }
@@ -80,7 +84,10 @@ var SpotDetail = React.createClass({
         hasReviewed={this.state.hasReviewed}
         yourReview={this.yourReview} />;
     } else {
-      <div></div>;
+      reviewForm = <div>
+                      <button className="edit-review"
+                              onClick={this.toggleReviewForm}>Edit</button>
+                    </div>;
     }
 
     return(
@@ -94,9 +101,11 @@ var SpotDetail = React.createClass({
           <br/>
           <div className="reviews">
             {yourReviewItem}
-            {"You Reviewed: " + this.state.hasReviewed}
             {reviewForm}
-            <ReviewIndex reviews={this.state.reviews} />
+            <br/>
+            {"You Reviewed: " + this.state.hasReviewed}
+            <br/><br/>
+            <ReviewIndex reviews={this.state.reviews} yourReview={this.yourReview} />
           </div>
           </ul>
         </div>
