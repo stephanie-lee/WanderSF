@@ -43,7 +43,7 @@ var findMySpotReview = function(spotId) {
       break;
     }
   }
-
+  return currentReview;
 };
 
 ReviewStore.__onDispatch = function (payload) {

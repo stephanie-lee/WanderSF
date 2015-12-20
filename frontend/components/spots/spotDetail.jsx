@@ -12,20 +12,18 @@ var SpotDetail = React.createClass({
   getInitialState: function() {
     return { spot: SpotStore.find(parseInt(this.props.params.spotId)),
              reviews: ReviewStore.findBySpot(parseInt(this.props.params.spotId)),
+             rating: 0,
              hasReviewed: false,
-            //  yourReview : [],
              formView : true
            };
   },
 
-  _onChange: function() {
+  onChange: function() {
     var spotId = parseInt(this.props.params.spotId);
-    // this.setState({spot: SpotStore.find(spotId),
-    //               reviews: ReviewStore.findBySpot(spotId)
-    //             });
+    var hasReviewed = false;
 
     this.yourReview = ReviewStore.findMySpotReview(spotId);
-    var hasReviewed = false;
+
     if (this.yourReview) {
       hasReviewed = true;
     }
@@ -34,29 +32,10 @@ var SpotDetail = React.createClass({
                     hasReviewed: hasReviewed });
   },
 
+
+
   updateSpotlightReview: function() {
 
-  },
-
-  _updateReviews: function() {
-    var id = parseInt(this.props.params.spotId);
-    var hasReviewed = false;
-    var newSpotReviews = ReviewStore.findBySpot(id);
-    this.yourReview = ReviewStore.findMySpotReview(id);
-
-    // newSpotReviews.forEach(function(review) {
-    //   if (review.belongsToCurrentUser) {
-    //     hasReviewed = true;
-    //   }
-    //   if (review !== undefined) {
-    //     this.state.reviews[review] = newSpotReviews[review];
-    //   }
-    // }.bind(this));
-    if(this.yourReview) {
-      hasReviewed = true;
-    }
-    this.setState({ reviews: ReviewStore.findBySpot(id),
-                    hasReviewed: hasReviewed });
   },
 
   componentWillReceiveProps: function (newProps) {
@@ -64,8 +43,8 @@ var SpotDetail = React.createClass({
   },
 
   componentDidMount: function() {
-    this.spotListener = SpotStore.addListener(this._onChange);
-    this.reviewListener = ReviewStore.addListener(this._updateReviews);
+    this.spotListener = SpotStore.addListener(this.onChange);
+    this.reviewListener = ReviewStore.addListener(this.onChange);
     ApiUtil.fetchSingleSpot(parseInt(this.props.params.spotId)); //need this?
     ApiUtil.fetchReviews();
   },

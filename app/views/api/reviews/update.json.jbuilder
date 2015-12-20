@@ -9,3 +9,5 @@ json.user do
   json.last_name @review.user.last_name
   json.wanderer_title @review.user.wanderer_title
 end
+
+json.belongsToCurrentUser true

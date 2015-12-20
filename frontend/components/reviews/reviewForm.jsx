@@ -15,7 +15,8 @@ var ReviewForm = React.createClass({
                 rating: yourReview.rating,
                 comment: yourReview.comment });
     } else {
-      return ({ rating: "3",
+      return ({ id: null,
+                rating: "3",
                 comment: "",
                 spot_id: this.props.spotId });
     }
@@ -28,6 +29,11 @@ var ReviewForm = React.createClass({
                       rating: yourReview.rating,
                       comment: yourReview.comment
       });
+    } else {
+      this.setState({ id: null,
+                      rating: "3",
+                      comment: "",
+                      spot_id: this.props.spotId});
     }
   },
 
