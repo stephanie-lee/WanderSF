@@ -37,6 +37,13 @@ var ApiActions = {
       review: review
     });
   },
+
+  deleteSingleReview: function(review){
+    AppDispatcher.dispatch({
+      actionType: ReviewConstants.DELETE_REVIEW,
+      review: review
+    });
+  }
 };
 
 module.exports = ApiActions;

@@ -13,3 +13,8 @@ current_problem
 
 
 Refactor:: STORE CURRENT_REVIEW IN REVIEWSTORE
+
+
+
+1. floats for ratings YUP
+2. ratings on on index YUP

@@ -26,6 +26,18 @@ var updateReview = function(edittedReview) {
   findMyReviews();
 };
 
+var deleteReview = function(deletedReview) {
+  var targetId = deletedReview.id;
+  var index;
+  _reviews.forEach(function(review, idx){
+    if (review.id === targetId) {
+      var index = idx;
+    }
+  });
+  _reviews = _reviews.splice(index, 1);
+  findMyReviews();
+};
+
 var findMyReviews = function() {
   var myReviews = [];
   _reviews.forEach(function(review) {
@@ -60,6 +72,9 @@ ReviewStore.__onDispatch = function (payload) {
       updateReview(payload.review);
       ReviewStore.__emitChange();
       break;
+    case ReviewConstants.DELETE_REVIEW:
+      deleteReview(payload.review);
+      ReviewStore.__emitChange();
   }
 };
 
@@ -102,7 +117,7 @@ ReviewStore.averageRating = function(spotId) {
   spotReviews.forEach(function(review) {
     totalRatings += review.rating;
   });
-  return (totalRatings / spotReviews.length );
+  return (Math.round((totalRatings / spotReviews.length) * 2 ) / 2);
 };
 
 window.ReviewStore = ReviewStore;

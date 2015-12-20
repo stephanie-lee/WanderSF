@@ -50,6 +50,18 @@ var ApiUtil = {
         ApiActions.receiveAllReviews(reviews);
       }
     });
+  },
+
+  deleteSingleReview: function(review){
+    $.ajax({
+      url: 'api/reviews/' + review.id,
+      data: {review: review},
+      type: "DELETE",
+      dataType: "json",
+      success: function(review){
+        ApiActions.deleteSingleReview(review);
+      }
+    });
   }
 };
 

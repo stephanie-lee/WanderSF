@@ -1,6 +1,7 @@
 var React = require('react');
 var History = require('react-router').History;
 var ReviewStore = require('../../stores/review');
+var ApiUtil = require('../../util/api_util');
 
 var SpotIndexItem = React.createClass({
   mixins: [History],
@@ -24,6 +25,7 @@ var SpotIndexItem = React.createClass({
 
   componentDidMount: function() {
     this.reviewListener = ReviewStore.addListener(this.onChange);
+    ApiUtil.fetchReviews();
   },
 
   render: function() {

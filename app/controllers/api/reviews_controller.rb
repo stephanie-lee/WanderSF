@@ -30,7 +30,13 @@ class Api::ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find(params[:review][:id])
 
+    if @review.delete
+      render :show
+    else
+      render json: @review.errors.full_messages
+    end
   end
 
   private

@@ -4,16 +4,16 @@
   <title>WanderSF</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application' %>
 </head>
 <body>
   <%= render partial: "shared/header" %>
   <%= render partial: "shared/errors" %>
 
-  <!-- <div class="container"> -->
+  <div class="container">
     <%= yield %>
-  <%= javascript_include_tag 'application' %>
   </div>
-
+  
   <%= render partial: "shared/footer" %>
 </body>
 </html>

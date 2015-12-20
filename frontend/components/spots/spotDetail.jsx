@@ -62,6 +62,10 @@ var SpotDetail = React.createClass({
     this.setState({formView: true});
   },
 
+  deleteYourReview: function() {
+    ApiUtil.deleteSingleReview(this.yourReview);
+  },
+
   render: function() {
     var reviewForm;
 
@@ -87,24 +91,33 @@ var SpotDetail = React.createClass({
       reviewForm = <div>
                       <button className="edit-review"
                               onClick={this.toggleReviewForm}>Edit</button>
+                            <button className="delete-review"
+                                    onClick={this.deleteYourReview}>Delete</button>
                     </div>;
     }
+    var spot = this.state.spot;
+
+    var rating;
+    if(isNaN(ReviewStore.averageRating(spot.id))) {
+        rating = "Be the first to review!";
+      } else {
+        rating = ReviewStore.averageRating(spot.id);
+      }
 
     return(
       <div>
         <Link to="/" >Back to All Spots</Link>
         <div className="spot-detail-pane">
           <ul className="detail">
-            <li key='name'>Name: {this.state.spot.name}</li>
-            <li key='info'>Info: {this.state.spot.description}</li>
-            <li key='rating'>Rating: </li>
+            <li key='name'>Name: {spot.name}</li>
+            <li key='info'>Info: {spot.description}</li>
+            <li key='rating'>Rating: {rating}</li>
           <br/>
           <div className="reviews">
             {yourReviewItem}
             {reviewForm}
-            <br/>
-            {"You Reviewed: " + this.state.hasReviewed}
             <br/><br/>
+            <h4>Reviews</h4>
             <ReviewIndex reviews={this.state.reviews} yourReview={this.yourReview} />
           </div>
           </ul>
