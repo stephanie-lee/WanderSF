@@ -77,7 +77,6 @@ var SpotDetail = React.createClass({
       return <div></div>;
     }
 
-    var reviews = this.state.reviews || [];
       return(
         <div>
           <Link to="/" >Back to All Spots</Link>
@@ -85,7 +84,7 @@ var SpotDetail = React.createClass({
             <ul className="detail">
               <li key='name'>Name: {this.state.spot.name}</li>
               <li key='info'>Info: {this.state.spot.description}</li>
-              <li key='rating'>Rating: {this.state.rating}</li>
+              <li key='rating'>Rating: </li>
             <br/>
             <div className="reviews">
               {"You Reviewed: " + this.state.hasReviewed}

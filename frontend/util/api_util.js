@@ -26,6 +26,7 @@ var ApiUtil = {
       type: 'POST',
       data: {review: review},
       success: function(review) {
+        console.log(review);
         ApiActions.receiveSingleReview(review);
       }
     });

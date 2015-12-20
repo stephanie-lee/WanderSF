@@ -43,12 +43,18 @@ var ReviewForm = React.createClass({
       {},
       this.state
     );
+
     if(this.props.hasReviewed) {
       var reviewId = this.props.yourReview.id;
       review.id = reviewId;
       ApiUtil.updateSingleReview(review);
     } else {
-      ApiUtil.createReview(review);
+      var stateKeys = Object.keys(this.state);
+      var newReview = {};
+      for ( var i = 1; i < stateKeys.length; i++ ) {
+        newReview[ stateKeys[i] ] = this.state[ stateKeys[i] ];
+      }
+      ApiUtil.createReview(newReview);
     }
   },
 

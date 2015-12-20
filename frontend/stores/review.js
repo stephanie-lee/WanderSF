@@ -96,5 +96,14 @@ ReviewStore.allMyReviews = function() {
   return _myReviews.slice(0);
 };
 
+ReviewStore.averageRating = function(spotId) {
+  spotReviews = this.findBySpot(spotId);
+  totalRatings = 0;
+  spotReviews.forEach(function(review) {
+    totalRatings += review.rating;
+  });
+  return (totalRatings / spotReviews.length );
+};
+
 window.ReviewStore = ReviewStore;
 module.exports = ReviewStore;

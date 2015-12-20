@@ -8,7 +8,7 @@ class Api::ReviewsController < ApplicationController
     @review = current_user.reviews.new(review_params)
 
     if @review.save
-      render :create
+      render :show
     else
       flash[:errors] = @review.errors.full_messages
     end

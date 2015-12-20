@@ -9,7 +9,6 @@ var ReviewStore = require('../../stores/review');
 ReviewIndex = React.createClass({
   render: function() {
     var reviews = this.props.reviews;
-
     return <div className="review-index">
             {reviews.map(function(review) {
             return <ReviewIndexItem key={review.id} {...review} />;

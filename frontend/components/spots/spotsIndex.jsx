@@ -2,6 +2,7 @@ var React = require('react');
 var SpotStore = require('../../stores/spot');
 var ApiUtil = require('../../util/api_util');
 var SpotIndexItem = require('./spotIndexItem');
+var ReviewStore = require('../../stores/review');
 
 var SpotIndex = React.createClass({
   getInitialState: function() {
@@ -23,7 +24,7 @@ var SpotIndex = React.createClass({
 
   render: function() {
     var spot = this.state.spots.map(function(spot, idx) {
-      return(<SpotIndexItem key={idx} spot={spot}/>);
+      return(<SpotIndexItem key={idx} spot={spot} />);
     });
     return(
       <div>
