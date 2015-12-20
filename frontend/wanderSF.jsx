@@ -14,7 +14,7 @@ var App = require('./components/app');
 var routes = (
   <Route path='/' component={App}>
     <Route path='spot/:spotId' component={SpotDetail}>
-</Route>
+    </Route>
   </Route>
 );
 

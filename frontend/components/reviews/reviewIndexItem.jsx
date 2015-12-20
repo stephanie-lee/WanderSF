@@ -4,7 +4,6 @@ var Link = ReactRouter.Link;
 
 var ReviewIndexItem = React.createClass({
   render:function()  {
-    // var link =
     return (
       <div>
         <ul>

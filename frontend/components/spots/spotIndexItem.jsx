@@ -27,15 +27,6 @@ var SpotIndexItem = React.createClass({
   },
 
   render: function() {
-    // var avg = ReviewStore.averageRating(this.props.spot.id);
-    // var reviews = this.state.reviews || [];
-    //   totalRating = 0;
-    //   reviews.forEach(function(review) {
-    //       totalRating += review.rating;
-    //     });
-    //   var rating =  (totalRating / reviews.length);
-    //   console.log(rating)
-
     return(
       <div>
         <li className="spot-list-item" onClick={this.showDetail} key={this.props.spot.id}>
