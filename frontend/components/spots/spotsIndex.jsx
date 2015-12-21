@@ -1,6 +1,6 @@
 var React = require('react');
 var SpotStore = require('../../stores/spot');
-var ApiUtil = require('../../util/api_util');
+var SpotUtil = require('../../util/spot_util');
 var SpotIndexItem = require('./spotIndexItem');
 var ReviewStore = require('../../stores/review');
 
@@ -15,7 +15,7 @@ var SpotIndex = React.createClass({
 
   componentDidMount: function() {
     this.spotListener = SpotStore.addListener(this._onChange);
-    ApiUtil.fetchSpots();
+    SpotUtil.fetchSpots();
   },
 
   componentWillUnmount: function() {
@@ -23,12 +23,12 @@ var SpotIndex = React.createClass({
   },
 
   render: function() {
-    var spot = this.state.spots.map(function(spot, idx) {
-      return(<SpotIndexItem key={idx} spot={spot} />);
+    var spot = this.state.spots.map(function(spotItem, idx) {
+      return(<SpotIndexItem key={idx} spot={spotItem} />);
     });
     return(
       <div>
-        <ul>
+        <ul className="list-group">
           {spot}
         </ul>
         {this.props.children}

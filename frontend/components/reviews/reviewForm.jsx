@@ -1,7 +1,7 @@
 var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var ReactRouter = require('react-router');
-var ApiUtil = require('../../util/api_util');
+var ReviewUtil = require('../../util/review_util');
 var History = require('react-router').History;
 
 
@@ -47,14 +47,14 @@ var ReviewForm = React.createClass({
     if(this.props.hasReviewed) {
       var reviewId = this.props.yourReview.id;
       review.id = reviewId;
-      ApiUtil.updateSingleReview(review);
+      ReviewUtil.updateSingleReview(review);
     } else {
       var stateKeys = Object.keys(this.state);
       var newReview = {};
       for ( var i = 1; i < stateKeys.length; i++ ) {
         newReview[ stateKeys[i] ] = this.state[ stateKeys[i] ];
       }
-      ApiUtil.createReview(newReview);
+      ReviewUtil.createReview(newReview);
     }
   },
 

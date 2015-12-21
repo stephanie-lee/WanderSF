@@ -4,4 +4,5 @@ class Spot < ActiveRecord::Base
     message: "Can only be set to true or false"}
 
   has_many :reviews
+  has_many :tags
 end

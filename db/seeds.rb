@@ -81,3 +81,52 @@ Spot.create([{
               name: "Mission Recreational Center",
               description: "Free gym and recreational facilities."
              }])
+
+Tagging.create([{
+                 spot_id: 1,
+                 tag: "park"
+                },
+                {
+                 spot_id: 1,
+                 tag: "park"
+                },
+                {
+                 spot_id: 1,
+                 tag: "park"
+                },
+                {
+                 spot_id: 2,
+                 tag: "park"
+                },
+                {
+                 spot_id: 2,
+                 tag: "park"
+                },
+                {
+                 spot_id: 2,
+                 tag: "park"
+                },
+                {
+                 spot_id: 3,
+                 tag: "park"
+                },
+                {
+                 spot_id: 3,
+                 tag: "park"
+                },
+                {
+                 spot_id: 3,
+                 tag: "park"
+                },
+                {
+                 spot_id: 3,
+                 tag: "park"
+                },
+                {
+                 spot_id: 4,
+                 tag: "park"
+                },
+                {
+                 spot_id: 4,
+                 tag: "park"
+              }])

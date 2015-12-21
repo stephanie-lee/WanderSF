@@ -1,24 +1,26 @@
 var React = require('react');
 var SpotStore = require('../../stores/spot');
-var ApiUtil = require('../../util/api_util');
+var ReviewUtil = require('../../util/review_util');
+var SpotUtil = require('../../util/spot_util');
 var ReactRouter = require('react-router');
 var ReviewForm = require('../reviews/reviewForm');
 var ReviewStore = require('../../stores/review');
 var ReviewIndex = require('../reviews/reviewIndex');
 var ReviewUserItem = require('../reviews/reviewUserItem.jsx');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
+var TagStore = require('../../stores/tagging');
+TagUtil = require('../../util/tag_util');
 
 var Link = ReactRouter.Link;
 
 var SpotDetail = React.createClass({
-  // mixins: [ReactPersistentState],
-
   getInitialState: function() {
     return { spot: SpotStore.find(parseInt(this.props.params.spotId)),
              reviews: ReviewStore.findBySpot(parseInt(this.props.params.spotId)),
              rating: 0,
              hasReviewed: false,
-             formView: true
+             formView: true,
+             tags: TagStore.findBySpot(this.props.params.spotId)
            };
   },
 
@@ -28,6 +30,7 @@ var SpotDetail = React.createClass({
     var formView = true;
 
     this.yourReview = ReviewStore.findMySpotReview(spotId);
+    this.tags = TagStore.findBySpot(spotId);
 
     if (this.yourReview) {
       hasReviewed = true;
@@ -36,29 +39,27 @@ var SpotDetail = React.createClass({
     this.setState({ spot: SpotStore.find(spotId),
                     reviews: ReviewStore.findBySpot(spotId),
                     hasReviewed: hasReviewed,
-                    formView: formView});
-  },
-
-
-
-  updateSpotlightReview: function() {
-
+                    formView: formView,
+                    tags: this.tags});
   },
 
   componentWillReceiveProps: function (newProps) {
-    ApiUtil.fetchSingleSpot(parseInt(newProps.params.spotId));
+    SpotUtil.fetchSingleSpot(parseInt(newProps.params.spotId));
   },
 
   componentDidMount: function() {
     this.spotListener = SpotStore.addListener(this.onChange);
     this.reviewListener = ReviewStore.addListener(this.onChange);
-    ApiUtil.fetchSingleSpot(parseInt(this.props.params.spotId)); //need this?
-    ApiUtil.fetchReviews();
+    this.tagListener = TagStore.addListener(this.onChange);
+    SpotUtil.fetchSingleSpot(parseInt(this.props.params.spotId));
+    ReviewUtil.fetchReviews();
+    TagUtil.fetchTags();
   },
 
   componentWillUnmount: function() {
     this.spotListener.remove();
     this.reviewListener.remove();
+    this.tagListener.remove();
   },
 
   toggleReviewForm: function() {
@@ -66,7 +67,7 @@ var SpotDetail = React.createClass({
   },
 
   deleteYourReview: function() {
-    ApiUtil.deleteSingleReview(this.yourReview);
+    ReviewUtil.deleteSingleReview(this.yourReview);
   },
 
   render: function() {
@@ -75,7 +76,6 @@ var SpotDetail = React.createClass({
     if (!this.state.spot){
       return <div></div>;
     }
-
     if (this.state.hasReviewed) {
       yourReviewItem = <div>
         <h4>Your Review</h4>
@@ -94,9 +94,9 @@ var SpotDetail = React.createClass({
       reviewForm = <div>
                       <button className="edit-review"
                               onClick={this.toggleReviewForm}>Edit</button>
-                            <button className="delete-review"
-                                    onClick={this.deleteYourReview}>Delete</button>
-                    </div>;
+                      <button className="delete-review"
+                              onClick={this.deleteYourReview}>Delete</button>
+                   </div>;
     }
     var spot = this.state.spot;
 
@@ -107,14 +107,24 @@ var SpotDetail = React.createClass({
         rating = ReviewStore.averageRating(spot.id);
       }
 
+    var tags = this.state.tags;
+    if(tags.length === 0) {
+      tagList = <li></li>;
+    } else {
+      tagList = tags.map(function(tag, idx) {
+        return(<li key={tag.id}><Link to="#">{tag.tag}</Link></li>);
+      });
+    }
+
     return(
       <div>
         <Link to="/" >Back to All Spots</Link>
         <div className="spot-detail-pane">
           <ul className="detail">
             <li key='name'>Name: {spot.name}</li>
-            <li key='info'>Info: {spot.description}</li>
             <li key='rating'>Rating: {rating}</li>
+            <li key='info'>Info: {spot.description}</li>
+            <li>Tags: <ul className="list-unstyled list-inline">{tagList}</ul></li>
           <br/>
           <div className="reviews">
             {yourReviewItem}

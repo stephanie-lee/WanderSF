@@ -1,1 +1,1 @@
-Routes, how are params passed, auto passed as props?
+lining tags in links and joined, CSS?

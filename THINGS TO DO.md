@@ -1,16 +1,26 @@
 Tags:
 
-tag Model
+tag Model -- associations, validations
 
-tag Store
--all tags
--singleSpotTags
+tag Store -- interacts with spots index
+
+tag controller
+-index(params based on tag id OR search??)
+
+Display on spots index and individual spot pages
+
+
+
+
+
+
+
+
+
 
 -add tag button on spot detail page
 -when click button, text box pops up to add tag,
   button to submit AND 'enter' event handle
 
-
-
-
+CREATE TAGS
 -set existing, can only use prefill choices

@@ -1,6 +1,5 @@
 var React = require('react');
 var SpotStore = require('../../stores/spot');
-var ApiUtil = require('../../util/api_util');
 var ReviewIndexItem = require('../reviews/reviewIndexItem');
 var ReactRouter = require('react-router');
 var ReviewForm = require('../reviews/reviewForm');
