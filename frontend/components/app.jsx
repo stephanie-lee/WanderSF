@@ -5,14 +5,13 @@ var App = React.createClass({
   render: function(){
     return (
       <div id="index">
-        <div className="spots-index">
-          <SpotIndex />
-        </div>
-
         {this.props.children}
       </div>
     );
   }
 });
 
+        // <div className="spots-index">
+        //   <SpotIndex />
+        // </div>
 module.exports = App;

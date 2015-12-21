@@ -6,6 +6,7 @@ var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 
 // components required here
+var SpotsIndex = require('./components/spots/spotsIndex');
 var SpotStore = require('./stores/spot');
 var ReviewStore = require('./stores/review');
 var SpotDetail = require('./components/spots/spotDetail');
@@ -13,8 +14,8 @@ var App = require('./components/app');
 
 var routes = (
   <Route path='/' component={App}>
-    <Route path='spot/:spotId' component={SpotDetail}>
-    </Route>
+    <IndexRoute component={SpotsIndex} />
+    <Route path='spot/:spotId' component={SpotDetail} />
   </Route>
 );
 

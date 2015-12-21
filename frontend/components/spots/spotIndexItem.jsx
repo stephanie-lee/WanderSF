@@ -28,6 +28,10 @@ var SpotIndexItem = React.createClass({
     ApiUtil.fetchReviews();
   },
 
+  componentWillUnmount: function() {
+    this.reviewListener.remove();
+  },
+
   render: function() {
     return(
       <div>

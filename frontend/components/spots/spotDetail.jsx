@@ -6,10 +6,13 @@ var ReviewForm = require('../reviews/reviewForm');
 var ReviewStore = require('../../stores/review');
 var ReviewIndex = require('../reviews/reviewIndex');
 var ReviewUserItem = require('../reviews/reviewUserItem.jsx');
+var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
 var Link = ReactRouter.Link;
 
 var SpotDetail = React.createClass({
+  // mixins: [ReactPersistentState],
+
   getInitialState: function() {
     return { spot: SpotStore.find(parseInt(this.props.params.spotId)),
              reviews: ReviewStore.findBySpot(parseInt(this.props.params.spotId)),

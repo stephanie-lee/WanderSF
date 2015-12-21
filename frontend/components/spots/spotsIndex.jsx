@@ -31,6 +31,7 @@ var SpotIndex = React.createClass({
         <ul>
           {spot}
         </ul>
+        {this.props.children}
       </div>
     );
   }

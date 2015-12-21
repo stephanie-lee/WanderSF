@@ -14,7 +14,7 @@ var ApiUtil = {
     $.ajax({
       url: 'api/spots/' + id,
       success: function (spot) {
-        ApiActions.receiveSingleSpot([spot]); //check this
+        ApiActions.receiveSingleSpot(spot); //check this
       }
     });
   },

@@ -1,4 +1,4 @@
-json.name @spot.name
+json.extract! @spot, :id, :name, :description
 # json.reviews do
 #   json.array! @spot.reviews do |review|
 #     json.extract! review, :comment, :rating
