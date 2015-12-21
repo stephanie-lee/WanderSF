@@ -19,7 +19,7 @@
 /* universal */
 
 body {
-  padding-top: 120px;
+  padding-top: 100px;
   margin: 30px;
 }
 
@@ -41,15 +41,23 @@ textarea {
 
 .list-inline { //list tags side by side
   display: inline-block;
+  margin-left: -5px
 }
 
 .list-inline li {
   padding-right: 1px;
-  margin-left: 0px;
+}
+
+.list-inline li:last-child {
+  margin-right: 10px;
 }
 
 .list-inline li:last-child:after {
   content: "";
+}
+
+.list-inline button {
+  margin-left: 5px;
 }
 
 .list-inline li:after {
@@ -64,6 +72,16 @@ textarea {
 
   &:hover{
     background: #ccff99;
+  }
+}
+
+.btn-secondary {
+  background: #dddddd;
+  color: #808080;
+  margin-right: 10px;
+
+  &:hover{
+    background: #bbbbbb;
   }
 }
 
@@ -106,7 +124,10 @@ height: 80px;
 
 .navbar-header { // position logo
   margin-top: 10px;
-  margin-right: 2px;
+}
+
+#WanderSFlogo img{
+  margin-left: 8px;
 }
 
 /* footer */

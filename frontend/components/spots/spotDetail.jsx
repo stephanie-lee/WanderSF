@@ -20,7 +20,9 @@ var SpotDetail = React.createClass({
              rating: 0,
              hasReviewed: false,
              formView: true,
-             tags: TagStore.findBySpot(this.props.params.spotId)
+             tags: TagStore.findBySpot(this.props.params.spotId),
+             tagFormView: false,
+             tagFormString: "",
            };
   },
 
@@ -70,12 +72,26 @@ var SpotDetail = React.createClass({
     ReviewUtil.deleteSingleReview(this.yourReview);
   },
 
+  toggleTagForm: function() {
+    this.setState({tagFormView: true});
+  },
+
+  createTag: function(e) {
+    if (e.which == 13) {
+      if(e.target.value) {
+        TagUtil.createTag(e.target.value);
+      }
+      this.setState({tagFormView: false});
+    }
+  },
+
   render: function() {
     var reviewForm;
 
     if (!this.state.spot){
       return <div></div>;
     }
+
     if (this.state.hasReviewed) {
       yourReviewItem = <div>
         <h4>Your Review</h4>
@@ -98,8 +114,8 @@ var SpotDetail = React.createClass({
                               onClick={this.deleteYourReview}>Delete</button>
                    </div>;
     }
-    var spot = this.state.spot;
 
+    var spot = this.state.spot;
     var rating;
     if(isNaN(ReviewStore.averageRating(spot.id))) {
         rating = "Be the first to review!";
@@ -116,6 +132,18 @@ var SpotDetail = React.createClass({
       });
     }
 
+    if(this.state.tagFormView) {
+      tagForm = <input autoFocus
+                       type="text"
+                       id="tag-form"
+                       placeholder="tag name"
+                       value={this.tagFormString}
+                       onKeyDown={this.createTag}>
+                </input>;
+    } else {
+      tagForm = <div></div>;
+    }
+
     return(
       <div>
         <Link to="/" >Back to All Spots</Link>
@@ -124,7 +152,17 @@ var SpotDetail = React.createClass({
             <li key='name'>Name: {spot.name}</li>
             <li key='rating'>Rating: {rating}</li>
             <li key='info'>Info: {spot.description}</li>
-            <li>Tags: <ul className="list-unstyled list-inline">{tagList}</ul></li>
+            <li>Tags:
+              <ul className="list-unstyled list-inline">
+                {tagList}
+              </ul>
+              <button type="submit"
+                      className="btn btn-xs btn-secondary"
+                      onClick={this.toggleTagForm}>
+                      Add Tag <span className="glyphicon glyphicon-tag" aria-hidden="true"></span>
+              </button>
+              {tagForm}
+            </li>
           <br/>
           <div className="reviews">
             {yourReviewItem}

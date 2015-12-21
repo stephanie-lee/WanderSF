@@ -9,10 +9,18 @@ var resetTags = function(newTags) {
   _tags = newTags;
 };
 
+var addTag = function(newTag) {
+  console.log(newTag);
+};
+
 TagStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case TagConstants.TAGS_RECEIVED:
       resetTags(payload.tags);
+      TagStore.__emitChange();
+      break;
+    case TagConstants.TAG_RECEIVED:
+      addTag(payload.tag);
       TagStore.__emitChange();
       break;
   }

@@ -7,7 +7,14 @@ var TagActions = {
       actionType: TagConstants.TAGS_RECEIVED,
       tags: tags
     });
-  }
+  },
+
+  receiveSingleTag: function(tag){
+    AppDispatcher.dispatch({
+      actionType: TagConstants.TAG_RECEIVED,
+      tag: tag
+    });
+  },
 };
 
 module.exports = TagActions;

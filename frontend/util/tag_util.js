@@ -8,7 +8,19 @@ var TagUtil = {
         TagActions.receiveAllTags(tags);
       }
     });
-  }
+  },
+
+  createTag: function(tag){
+    $.ajax({
+      url: 'api/taggings',
+      dataType: 'json',
+      type: 'POST',
+      data: {tag: tag},
+      success: function(tag){
+        TagActions.receiveSingleTag(tag);
+      }
+    });
+  },
 };
 
 window.TagUtil = TagUtil;
