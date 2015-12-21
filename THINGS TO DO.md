@@ -1,20 +1,16 @@
-form data
+Tags:
 
-spot_review_store???
+tag Model
 
-my_reviews_store
--when you submit a review, it updates that store + all_reviews_store
+tag Store
+-all tags
+-singleSpotTags
 
-
-current_problem
--taking props of current review from details;
--when submitting form, it receives props again rather than
- filling form with updated info
-
-
-Refactor:: STORE CURRENT_REVIEW IN REVIEWSTORE
+-add tag button on spot detail page
+-when click button, text box pops up to add tag,
+  button to submit AND 'enter' event handle
 
 
 
-1. floats for ratings YUP
-2. ratings on on index YUP
+
+-set existing, can only use prefill choices

@@ -14,10 +14,10 @@ class Api::ReviewsController < ApplicationController
     end
   end
 
-  def show
-    @review = Review.find(params[:id])
-    render :show
-  end
+  # def show
+  #   @review = Review.find(params[:id])
+  #   render :show
+  # end
 
   def update
     @review = Review.find(params[:review][:id])
