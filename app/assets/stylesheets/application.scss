@@ -41,11 +41,11 @@ textarea {
 
 .list-inline { //list tags side by side
   display: inline-block;
-  margin-left: -5px
+  margin-left: 0px
 }
 
 .list-inline li {
-  padding-right: 1px;
+  padding-right: 0px;
 }
 
 .list-inline li:last-child {
@@ -56,12 +56,8 @@ textarea {
   content: "";
 }
 
-.list-inline button {
-  margin-left: 5px;
-}
-
 .list-inline li:after {
-  content: ", ";
+  content: ",";
 }
 
 .hover-box {

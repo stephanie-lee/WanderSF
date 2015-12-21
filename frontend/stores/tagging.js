@@ -1,48 +1,48 @@
 var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
-var _tags = [];
-var _spotTags = [];
-var TagStore = new Store(AppDispatcher);
-var TagConstants = require('../constants/tag_constants');
+var _taggings = [];
+var _spotTaggings = [];
+var TaggingStore = new Store(AppDispatcher);
+var TaggingConstants = require('../constants/tagging_constants');
 
-var resetTags = function(newTags) {
-  _tags = newTags;
+var resetTaggings = function(newTaggings) {
+  _taggings = newTaggings;
 };
 
-var addTag = function(newTag) {
-  console.log(newTag);
+var addTagging = function(newTagging) {
+  console.log(newTagging);
 };
 
-TagStore.__onDispatch = function (payload) {
+TaggingStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
-    case TagConstants.TAGS_RECEIVED:
-      resetTags(payload.tags);
-      TagStore.__emitChange();
+    case TaggingConstants.TAGGINGS_RECEIVED:
+      resetTaggings(payload.taggings);
+      TaggingStore.__emitChange();
       break;
-    case TagConstants.TAG_RECEIVED:
-      addTag(payload.tag);
-      TagStore.__emitChange();
+    case TaggingConstants.TAGGING_RECEIVED:
+      addTagging(payload.tagging);
+      TaggingStore.__emitChange();
       break;
   }
 };
 
-TagStore.findBySpot = function(spotId) {
-  _spotTags = [];
-  if (_tags.length === 0) {
+TaggingStore.findBySpot = function(spotId) {
+  _spotTaggings = [];
+  if (_taggings.length === 0) {
     return [];
   }
 
-  _tags.forEach(function(tag){
-    if (tag.spot_id === spotId) {
-      _spotTags.push(tag);
+  _taggings.forEach(function(tagging){
+    if (tagging.spot_id === spotId) {
+      _spotTaggings.push(tagging);
     }
   });
-  return _spotTags;
+  return _spotTaggings;
 };
 
-TagStore.all = function() {
-  return _tags.slice(0);
+TaggingStore.all = function() {
+  return _taggings.slice(0);
 };
 
-window.TagStore = TagStore;
-module.exports = TagStore;
+window.TaggingStore = TaggingStore;
+module.exports = TaggingStore;

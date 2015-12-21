@@ -1,10 +1,10 @@
-var TagActions = require require('../actions/tag_actions');
+var TaggingActions = require('../actions/tagging_actions');
 
-var TagUtil = {
-  fetchTags: function(){
+var TaggingUtil = {
+  fetchTaggings: function(){
     $.ajax({
       url: 'api/taggings',
-      success: function(tags){
+      success: function(taggings){
         TaggingActions.receiveAllTaggings(taggings);
       }
     });

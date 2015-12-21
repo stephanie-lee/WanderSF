@@ -8,8 +8,8 @@ var ReviewStore = require('../../stores/review');
 var ReviewIndex = require('../reviews/reviewIndex');
 var ReviewUserItem = require('../reviews/reviewUserItem.jsx');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
-var TagStore = require('../../stores/tagging');
-TagUtil = require('../../util/tag_util');
+var TaggingStore = require('../../stores/tagging');
+var TaggingUtil = require('../../util/tagging_util');
 
 var Link = ReactRouter.Link;
 
@@ -20,9 +20,9 @@ var SpotDetail = React.createClass({
              rating: 0,
              hasReviewed: false,
              formView: true,
-             tags: TagStore.findBySpot(this.props.params.spotId),
-             tagFormView: false,
-             tagFormString: "",
+             taggings: TaggingStore.findBySpot(this.props.params.spotId),
+             taggingFormView: false,
+             taggingFormString: "",
            };
   },
 
@@ -32,7 +32,7 @@ var SpotDetail = React.createClass({
     var formView = true;
 
     this.yourReview = ReviewStore.findMySpotReview(spotId);
-    this.tags = TagStore.findBySpot(spotId);
+    this.taggings = TaggingStore.findBySpot(spotId);
 
     if (this.yourReview) {
       hasReviewed = true;
@@ -42,7 +42,7 @@ var SpotDetail = React.createClass({
                     reviews: ReviewStore.findBySpot(spotId),
                     hasReviewed: hasReviewed,
                     formView: formView,
-                    tags: this.tags});
+                    taggings: this.taggings});
   },
 
   componentWillReceiveProps: function (newProps) {
@@ -52,16 +52,16 @@ var SpotDetail = React.createClass({
   componentDidMount: function() {
     this.spotListener = SpotStore.addListener(this.onChange);
     this.reviewListener = ReviewStore.addListener(this.onChange);
-    this.tagListener = TagStore.addListener(this.onChange);
+    this.taggingListener = TaggingStore.addListener(this.onChange);
     SpotUtil.fetchSingleSpot(parseInt(this.props.params.spotId));
     ReviewUtil.fetchReviews();
-    TagUtil.fetchTags();
+    TaggingUtil.fetchTaggings();
   },
 
   componentWillUnmount: function() {
     this.spotListener.remove();
     this.reviewListener.remove();
-    this.tagListener.remove();
+    this.taggingListener.remove();
   },
 
   toggleReviewForm: function() {
@@ -72,16 +72,16 @@ var SpotDetail = React.createClass({
     ReviewUtil.deleteSingleReview(this.yourReview);
   },
 
-  toggleTagForm: function() {
-    this.setState({tagFormView: true});
+  toggleTaggingForm: function() {
+    this.setState({taggingFormView: true});
   },
 
-  createTag: function(e) {
+  createTagging: function(e) {
     if (e.which == 13) {
       if(e.target.value) {
-        TagUtil.createTag(e.target.value);
+        // TagUtil.createTag({spot_id:, });
       }
-      this.setState({tagFormView: false});
+      this.setState({taggingFormView: false});
     }
   },
 
@@ -123,25 +123,25 @@ var SpotDetail = React.createClass({
         rating = ReviewStore.averageRating(spot.id);
       }
 
-    var tags = this.state.tags;
-    if(tags.length === 0) {
-      tagList = <li></li>;
+    var taggings = this.state.taggings;
+    if(taggings.length === 0) {
+      taggingList = <li></li>;
     } else {
-      tagList = tags.map(function(tag, idx) {
-        return(<li key={tag.id}><Link to="#">{tag.tag}</Link></li>);
+      taggingList = taggings.map(function(tagging, idx) {
+        return(<li key={tagging.id}><Link to="#">{tagging.tag}</Link></li>);
       });
     }
 
-    if(this.state.tagFormView) {
-      tagForm = <input autoFocus
+    if(this.state.taggingFormView) {
+      taggingForm = <input autoFocus
                        type="text"
                        id="tag-form"
                        placeholder="tag name"
-                       value={this.tagFormString}
-                       onKeyDown={this.createTag}>
+                       value={this.taggingFormString}
+                       onKeyDown={this.createTagging}>
                 </input>;
     } else {
-      tagForm = <div></div>;
+      taggingForm = <div></div>;
     }
 
     return(
@@ -154,14 +154,14 @@ var SpotDetail = React.createClass({
             <li key='info'>Info: {spot.description}</li>
             <li>Tags:
               <ul className="list-unstyled list-inline">
-                {tagList}
+                {taggingList}
               </ul>
               <button type="submit"
                       className="btn btn-xs btn-secondary"
-                      onClick={this.toggleTagForm}>
+                      onClick={this.toggleTaggingForm}>
                       Add Tag <span className="glyphicon glyphicon-tag" aria-hidden="true"></span>
               </button>
-              {tagForm}
+              {taggingForm}
             </li>
           <br/>
           <div className="reviews">

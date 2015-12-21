@@ -2,8 +2,8 @@ var React = require('react');
 var ReactRouter = require('react-router');
 var ReviewStore = require('../../stores/review');
 var ReviewUtil = require('../../util/review_util');
-var TagStore = require('../../stores/tagging');
-var TagUtil = require('../../util/tag_util');
+var TaggingStore = require('../../stores/tagging');
+var TaggingUtil = require('../../util/tagging_util');
 var Link = ReactRouter.Link;
 var History = ReactRouter.History;
 
@@ -13,7 +13,7 @@ var SpotIndexItem = React.createClass({
 
   getInitialState: function() {
     return { avg: "No rating yet!",
-             tags: []};
+             taggings: []};
   },
 
   showDetail: function() {
@@ -22,33 +22,33 @@ var SpotIndexItem = React.createClass({
 
   onChange: function() {
     this.avg = ReviewStore.averageRating(this.props.spot.id);
-    this.tags = TagStore.findBySpot(this.props.spot.id);
+    this.taggings = TaggingStore.findBySpot(this.props.spot.id);
 
     if(isNaN(this.avg)){
       this.avg = "No rating yet!";
     }
-    this.setState({ avg: this.avg, tags: this.tags });
+    this.setState({ avg: this.avg, taggings: this.taggings });
   },
 
   componentDidMount: function() {
     this.reviewListener = ReviewStore.addListener(this.onChange);
-    this.tagListener = TagStore.addListener(this.onChange);
+    this.taggingListener = TaggingStore.addListener(this.onChange);
     ReviewUtil.fetchReviews();
-    TagUtil.fetchTags();
+    TaggingUtil.fetchTaggings();
   },
 
   componentWillUnmount: function() {
     this.reviewListener.remove();
-    this.tagListener.remove();
+    this.taggingListener.remove();
   },
 
   render: function() {
-    var tags = this.state.tags;
-    if(tags.length === 0) {
-      tagList = <li></li>;
+    var taggings = this.state.taggings;
+    if(taggings.length === 0) {
+      taggingList = <li></li>;
     } else {
-      tagList = tags.map(function(tag, idx) {
-        return(<li key={tag.id}><Link to="#">{tag.tag}</Link></li>);
+      taggingList = taggings.map(function(tagging, idx) {
+        return(<li key={tagging.id}><Link to="#">{tagging.tag}</Link></li>);
       });
     }
 
@@ -62,7 +62,7 @@ var SpotIndexItem = React.createClass({
             <br/>
             <li>Info: {this.props.spot.description}</li>
             <br/>
-            <li><ul className="list-unstyled list-inline">{tagList}</ul></li>
+            <li><ul className="list-unstyled list-inline">{taggingList}</ul></li>
             <br/><br/>
           </ul>
         </li>

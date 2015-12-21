@@ -82,51 +82,77 @@ Spot.create([{
               description: "Free gym and recreational facilities."
              }])
 
+Tag.create([{
+             name: "parks"
+            },
+            {
+             name: "beaches"
+            },
+            {
+             name: "bowling"
+            },
+            {
+             name: "hiking"
+            },
+            {
+             name: "indoor"
+            },
+            {
+             name: "outdoor"
+            },
+            {
+             name: "playgrounds"
+            },
+            {
+             name: "trails"
+            }
+          ])
+
 Tagging.create([{
                  spot_id: 1,
-                 tag: "park"
+                 tag_id: 1
                 },
                 {
                  spot_id: 1,
-                 tag: "park"
+                 tag_id: 2
                 },
                 {
                  spot_id: 1,
-                 tag: "park"
+                 tag_id: 3
                 },
                 {
                  spot_id: 2,
-                 tag: "park"
+                 tag_id: 4
                 },
                 {
                  spot_id: 2,
-                 tag: "park"
+                 tag_id: 3
                 },
                 {
                  spot_id: 2,
-                 tag: "park"
+                 tag_id: 5
                 },
                 {
                  spot_id: 3,
-                 tag: "park"
+                 tag_id: 2
                 },
                 {
                  spot_id: 3,
-                 tag: "park"
+                 tag_id: 6
                 },
                 {
                  spot_id: 3,
-                 tag: "park"
+                 tag_id: 8
                 },
                 {
                  spot_id: 3,
-                 tag: "park"
+                 tag_id: 3
                 },
                 {
                  spot_id: 4,
-                 tag: "park"
+                 tag_id: 1
                 },
                 {
                  spot_id: 4,
-                 tag: "park"
-              }])
+                 tag_id: 6
+                }])

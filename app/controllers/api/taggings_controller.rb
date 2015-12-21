@@ -1,31 +1,31 @@
 class Api::TaggingsController < ApplicationController
   def index
-    @tags = Tagging.all
+    @taggings = Tagging.all
     render :index
   end
 
   def create
-    @tag = Tagging.new(tag_params)
+    @tagging = Tagging.new(tagging_params)
 
-    if @tag.save
+    if @tagging.save
       render :show
     else
-      flash[:errors] = @tag.errors.full_messages
+      flash[:errors] = @tagging.errors.full_messages
     end
   end
 
   def destroy
-    @tag = Tagging.find(params[:tagging][:id])
+    @tagging = Tagging.find(params[:tagging][:id])
 
-    if @tag.delete
+    if @tagging.delete
       render :show
     else
-      render json: @tag.errors.full_messages
+      render json: @tagging.errors.full_messages
     end
   end
 
   private
-  def tag_params
-    params.require(:tagging).permit(:spot_id, :tag)
+  def tagging_params
+    params.require(:tagging).permit(:spot_id, :tag_id)
   end
 end

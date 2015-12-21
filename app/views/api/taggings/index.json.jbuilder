@@ -1,3 +1,4 @@
-json.array! @tags do |tag|
-  json.extract!(tag, :id, :spot_id, :tag)
+json.array! @taggings do |tagging|
+  json.extract!(tagging, :id, :spot_id, :tag_id)
+  json.tag tagging.tag.name
 end
