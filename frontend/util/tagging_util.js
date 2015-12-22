@@ -21,6 +21,18 @@ var TaggingUtil = {
       }
     });
   },
+
+  deleteTagging: function(taggingId){
+    $.ajax({
+      url: 'api/taggings/' + taggingId,
+      dataType: 'json',
+      data: {taggingId: taggingId},
+      type: 'DELETE',
+      success: function(tagging){
+        TaggingActions.deleteSingleTagging(tagging);
+      }
+    });
+  }
 };
 
 window.TaggingUtil = TaggingUtil;

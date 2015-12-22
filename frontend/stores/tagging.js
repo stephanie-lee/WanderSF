@@ -10,7 +10,18 @@ var resetTaggings = function(newTaggings) {
 };
 
 var addTagging = function(newTagging) {
-  console.log(newTagging);
+  _taggings.push(newTagging);
+  console.log(_taggings);
+};
+
+var deleteTagging = function(deletedTagging) {
+  var tempTaggings;
+  for(var i = 0; i < _taggings.length; i++ ) {
+    if(_taggings[i].id === deletedTagging.id) {
+      _taggings.splice(i, 1);
+      break;
+    }
+  }
 };
 
 TaggingStore.__onDispatch = function (payload) {
@@ -21,6 +32,10 @@ TaggingStore.__onDispatch = function (payload) {
       break;
     case TaggingConstants.TAGGING_RECEIVED:
       addTagging(payload.tagging);
+      TaggingStore.__emitChange();
+      break;
+    case TaggingConstants.DELETE_TAGGING:
+      deleteTagging(payload.tagging);
       TaggingStore.__emitChange();
       break;
   }

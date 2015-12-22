@@ -15,6 +15,13 @@ var TaggingActions = {
       tagging: tagging
     });
   },
+
+  deleteSingleTagging: function(tagging){
+    AppDispatcher.dispatch({
+      actionType: TaggingConstants.DELETE_TAGGING,
+      tagging: tagging
+    });
+  }
 };
 
 module.exports = TaggingActions;

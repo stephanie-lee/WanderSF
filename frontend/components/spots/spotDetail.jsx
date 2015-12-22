@@ -10,6 +10,7 @@ var ReviewUserItem = require('../reviews/reviewUserItem.jsx');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var TaggingStore = require('../../stores/tagging');
 var TaggingUtil = require('../../util/tagging_util');
+var TagStore = require('../../stores/tag');
 
 var Link = ReactRouter.Link;
 
@@ -22,7 +23,7 @@ var SpotDetail = React.createClass({
              formView: true,
              taggings: TaggingStore.findBySpot(this.props.params.spotId),
              taggingFormView: false,
-             taggingFormString: "",
+             taggingFormString: ""
            };
   },
 
@@ -78,11 +79,26 @@ var SpotDetail = React.createClass({
 
   createTagging: function(e) {
     if (e.which == 13) {
-      if(e.target.value) {
-        // TagUtil.createTag({spot_id:, });
+      var spotId = this.props.params.spotId;
+      var tagString = e.target.value;
+      var spotTaggings = this.state.taggings;
+
+      var exist = false;
+      spotTaggings.forEach(function(spotTagging){
+        if(spotTagging.tag === tagString){
+          exist = true;
+          return;
+        }
+      });
+      if (!exist){
+        TaggingUtil.createTagging({spot_id: spotId, name: tagString});
       }
       this.setState({taggingFormView: false});
     }
+  },
+
+  removeTagging: function(e) {
+    TaggingUtil.deleteTagging(e.target.id);
   },
 
   render: function() {
@@ -128,9 +144,15 @@ var SpotDetail = React.createClass({
       taggingList = <li></li>;
     } else {
       taggingList = taggings.map(function(tagging, idx) {
-        return(<li key={tagging.id}><Link to="#">{tagging.tag}</Link></li>);
-      });
+        return(<li key={tagging.id}>
+                  <Link to="#">{tagging.tag}</Link>
+                  <span id={tagging.id} className="glyphicon glyphicon-remove-circle"
+                        onClick={this.removeTagging}></span>
+                </li>);
+      }.bind(this));
     }
+
+    //this.removeTagging
 
     if(this.state.taggingFormView) {
       taggingForm = <input autoFocus

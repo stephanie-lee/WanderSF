@@ -5,4 +5,12 @@ class Tagging < ActiveRecord::Base
 
   belongs_to :spot
   belongs_to :tag
+
+
+  # may use inverse_of
+  def self.new_with_tag(tag_data)
+    tag = Tag.find_by_name(tag_data[:name]) || Tag.create(name: tag_data[:name])
+    tagging = tag.taggings.new(spot_id: tag_data[:spot_id])
+  end
+
 end

@@ -1,27 +1,27 @@
-var TagActions = require require('../actions/tag_actions');
+var TagActions = require('../actions/tag_actions');
 
 var TagUtil = {
   fetchTags: function(){
     $.ajax({
-      url: 'api/taggings',
+      url: 'api/tags',
       success: function(tags){
-        TaggingActions.receiveAllTaggings(taggings);
+        TagActions.receiveAllTags(tags);
       }
     });
   },
 
-  createTagging: function(tagging){
+  createTag: function(tag){
     $.ajax({
-      url: 'api/taggings',
+      url: 'api/tags',
       dataType: 'json',
       type: 'POST',
-      data: {tagging: tagging},
-      success: function(tagging){
-        TaggingActions.receiveSingleTagging(tagging);
+      data: {tag: tag},
+      success: function(tag){
+        TagActions.receiveSingleTag(tag);
       }
     });
   },
 };
 
-window.TaggingUtil = TaggingUtil;
-module.exports = TaggingUtil;
+window.TagUtil = TagUtil;
+module.exports = TagUtil;

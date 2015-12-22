@@ -5,7 +5,7 @@ class Api::TaggingsController < ApplicationController
   end
 
   def create
-    @tagging = Tagging.new(tagging_params)
+    @tagging = Tagging.new_with_tag(tagging_params)
 
     if @tagging.save
       render :show
@@ -15,7 +15,7 @@ class Api::TaggingsController < ApplicationController
   end
 
   def destroy
-    @tagging = Tagging.find(params[:tagging][:id])
+    @tagging = Tagging.find(params[:id])
 
     if @tagging.delete
       render :show
@@ -24,8 +24,13 @@ class Api::TaggingsController < ApplicationController
     end
   end
 
+  def show
+    @tagging = Tagging.find(params[:id])
+    render :show
+  end
+
   private
   def tagging_params
-    params.require(:tagging).permit(:spot_id, :tag_id)
+    params.require(:tagging).permit(:spot_id, :name)
   end
 end
