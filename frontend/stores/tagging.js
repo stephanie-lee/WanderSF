@@ -5,6 +5,7 @@ var _spotTaggings = [];
 var TaggingStore = new Store(AppDispatcher);
 var TaggingConstants = require('../constants/tagging_constants');
 
+//s
 var resetTaggings = function(newTaggings) {
   _taggings = newTaggings;
 };
