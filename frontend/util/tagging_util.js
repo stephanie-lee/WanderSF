@@ -1,4 +1,5 @@
 var TaggingActions = require('../actions/tagging_actions');
+var SpotActions = require('../actions/spot_actions');
 
 var TaggingUtil = {
   fetchTaggings: function(){
@@ -16,8 +17,8 @@ var TaggingUtil = {
       dataType: 'json',
       type: 'POST',
       data: {tagging: tagging},
-      success: function(tagging){
-        TaggingActions.receiveSingleTagging(tagging);
+      success: function(spot){
+        SpotActions.updateSingleSpot(spot);
       }
     });
   },
@@ -28,8 +29,8 @@ var TaggingUtil = {
       dataType: 'json',
       data: {taggingId: taggingId},
       type: 'DELETE',
-      success: function(tagging){
-        TaggingActions.deleteSingleTagging(tagging);
+      success: function(spot){
+        SpotActions.updateSingleSpot(spot);
       }
     });
   }

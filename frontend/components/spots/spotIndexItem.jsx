@@ -36,12 +36,12 @@ var SpotIndexItem = React.createClass({
   },
 
   render: function() {
-    var taggings = this.props.spot.tags;
+    var taggings = this.props.spot.taggings;
     if(taggings.length === 0) {
       taggingList = <li></li>;
     } else {
       taggingList = taggings.map(function(tagging, idx){
-        return(<li key={tagging.id}><Link to="#">{tagging.name}</Link></li>);
+        return(<li key={tagging.tag_id}><Link to="#">{tagging.name}</Link></li>);
       });
     }
 

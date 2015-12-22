@@ -15,6 +15,13 @@ var SpotActions = {
       spot: spot
     });
   },
+
+  updateSingleSpot: function(spot){
+    AppDispatcher.dispatch({
+      actionType: SpotConstants.SPOT_UPDATED,
+      spot: spot
+    });
+  }
 };
 
 module.exports = SpotActions;

@@ -10,6 +10,15 @@ var SpotUtil = {
     });
   },
 
+  updateSingleSpot: function(id){
+    $.ajax({
+      url: 'api/spots/' + id,
+      success: function (spot) {
+        SpotActions.updateSingleSpot(spot); //check this
+      }
+    });
+  },
+
   fetchSingleSpot: function(id){
     $.ajax({
       url: 'api/spots/' + id,

@@ -8,7 +8,8 @@ class Api::TaggingsController < ApplicationController
     @tagging = Tagging.new_with_tag(tagging_params)
 
     if @tagging.save
-      render :show
+      @spot = @tagging.spot
+      render :show_spot
     else
       flash[:errors] = @tagging.errors.full_messages
     end
@@ -18,7 +19,8 @@ class Api::TaggingsController < ApplicationController
     @tagging = Tagging.find(params[:id])
 
     if @tagging.delete
-      render :show
+      @spot = @tagging.spot
+      render :show_spot
     else
       render json: @tagging.errors.full_messages
     end

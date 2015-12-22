@@ -129,7 +129,11 @@ height: 80px;
 /* spots details */
 .glyphicon-remove-circle {
   margin-left: 2px;
-  color: #bbbbbb
+  color: #bbbbbb;
+
+  &:hover{
+    cursor: crosshair;
+  }
 }
 
 /* footer */

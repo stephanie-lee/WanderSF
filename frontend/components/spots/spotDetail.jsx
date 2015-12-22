@@ -8,7 +8,7 @@ var ReviewStore = require('../../stores/review');
 var ReviewIndex = require('../reviews/reviewIndex');
 var ReviewUserItem = require('../reviews/reviewUserItem.jsx');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
-var TaggingStore = require('../../stores/tagging');
+// var TaggingStore = require('../../stores/tagging');
 var TaggingUtil = require('../../util/tagging_util');
 var TagStore = require('../../stores/tag');
 
@@ -16,12 +16,12 @@ var Link = ReactRouter.Link;
 
 var SpotDetail = React.createClass({
   getInitialState: function() {
-    return { spot: SpotStore.find(parseInt(this.props.params.spotId)),
+    return { spot: null,//SpotStore.find(parseInt(this.props.params.spotId)),
              reviews: ReviewStore.findBySpot(parseInt(this.props.params.spotId)),
              rating: 0,
              hasReviewed: false,
              formView: true,
-             taggings: TaggingStore.findBySpot(this.props.params.spotId),
+            //  taggings: TaggingStore.findBySpot(this.props.params.spotId),
              taggingFormView: false,
              taggingFormString: ""
            };
@@ -33,19 +33,26 @@ var SpotDetail = React.createClass({
     var formView = true;
 
     this.yourReview = ReviewStore.findMySpotReview(spotId);
-    this.taggings = TaggingStore.findBySpot(spotId);
+    // this.taggings = TaggingStore.findBySpot(spotId);
+    // if (this.state.spot) {
+    //   this.taggings = this.state.spot.taggings;
+    // }
+    var current_spot;
+    if (SpotStore.current()){
+      current_spot = SpotStore.current();
+    }
 
     if (this.yourReview) {
       hasReviewed = true;
       formView = false;
     }
-    this.setState({ spot: SpotStore.find(spotId),
+    this.setState({ spot: current_spot,//SpotStore.find(spotId),
                     reviews: ReviewStore.findBySpot(spotId),
                     hasReviewed: hasReviewed,
-                    formView: formView,
-                    taggings: this.taggings});
+                    formView: formView
+                  });
   },
-
+//
   componentWillReceiveProps: function (newProps) {
     SpotUtil.fetchSingleSpot(parseInt(newProps.params.spotId));
   },
@@ -53,16 +60,16 @@ var SpotDetail = React.createClass({
   componentDidMount: function() {
     this.spotListener = SpotStore.addListener(this.onChange);
     this.reviewListener = ReviewStore.addListener(this.onChange);
-    this.taggingListener = TaggingStore.addListener(this.onChange);
+    // this.taggingListener = TaggingStore.addListener(this.onChange);
     SpotUtil.fetchSingleSpot(parseInt(this.props.params.spotId));
     ReviewUtil.fetchReviews();
-    TaggingUtil.fetchTaggings();
+    // TaggingUtil.fetchTaggings();
   },
 
   componentWillUnmount: function() {
     this.spotListener.remove();
     this.reviewListener.remove();
-    this.taggingListener.remove();
+    // this.taggingListener.remove();
   },
 
   toggleReviewForm: function() {
@@ -79,13 +86,13 @@ var SpotDetail = React.createClass({
 
   createTagging: function(e) {
     if (e.which == 13) {
-      var spotId = this.props.params.spotId;
+      var spotId = this.state.spot.id;
       var tagString = e.target.value;
-      var spotTaggings = this.state.taggings;
-
+      var spotTaggings = this.state.spot.taggings;
       var exist = false;
+
       spotTaggings.forEach(function(spotTagging){
-        if(spotTagging.tag === tagString){
+        if(spotTagging.name === tagString){
           exist = true;
           return;
         }
@@ -138,15 +145,14 @@ var SpotDetail = React.createClass({
       } else {
         rating = ReviewStore.averageRating(spot.id);
       }
-
-    var taggings = this.state.taggings;
+    var taggings = this.state.spot.taggings;
     if(taggings.length === 0) {
-      taggingList = <li></li>;
+      taggingList = <li>No tags yet!</li>;
     } else {
       taggingList = taggings.map(function(tagging, idx) {
-        return(<li key={tagging.id}>
-                  <Link to="#">{tagging.tag}</Link>
-                  <span id={tagging.id} className="glyphicon glyphicon-remove-circle"
+        return(<li key={tagging.tag_id}>
+                  <Link to="#">{tagging.name}</Link>
+                  <span id="remove-tag" id={tagging.id} tagId={tagging.tag_id} className="glyphicon glyphicon-remove-circle"
                         onClick={this.removeTagging}></span>
                 </li>);
       }.bind(this));
