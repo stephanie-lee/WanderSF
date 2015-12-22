@@ -9,8 +9,11 @@ var resetSpots = function(newSpots) {
 };
 
 var resetSpot = function(newSpot) {
-  _spot = [];
-  _spots.push(newSpot);
+  _spots.forEach(function(spot){
+    if (spot.id === newSpot.id) {
+      return (spot = newSpot);
+    }
+  });
 };
 
 SpotStore.__onDispatch = function (payload) {

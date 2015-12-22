@@ -2,8 +2,6 @@ var React = require('react');
 var ReactRouter = require('react-router');
 var ReviewStore = require('../../stores/review');
 var ReviewUtil = require('../../util/review_util');
-var TaggingStore = require('../../stores/tagging');
-var TaggingUtil = require('../../util/tagging_util');
 var Link = ReactRouter.Link;
 var History = ReactRouter.History;
 
@@ -12,8 +10,7 @@ var SpotIndexItem = React.createClass({
   mixins: [History],
 
   getInitialState: function() {
-    return { avg: "No rating yet!",
-             taggings: []};
+    return { avg: "No rating yet!" };
   },
 
   showDetail: function() {
@@ -22,33 +19,29 @@ var SpotIndexItem = React.createClass({
 
   onChange: function() {
     this.avg = ReviewStore.averageRating(this.props.spot.id);
-    this.taggings = TaggingStore.findBySpot(this.props.spot.id);
 
     if(isNaN(this.avg)){
       this.avg = "No rating yet!";
     }
-    this.setState({ avg: this.avg, taggings: this.taggings });
+    this.setState({ avg: this.avg });
   },
 
   componentDidMount: function() {
     this.reviewListener = ReviewStore.addListener(this.onChange);
-    this.taggingListener = TaggingStore.addListener(this.onChange);
     ReviewUtil.fetchReviews();
-    TaggingUtil.fetchTaggings();
   },
 
   componentWillUnmount: function() {
     this.reviewListener.remove();
-    this.taggingListener.remove();
   },
 
   render: function() {
-    var taggings = this.state.taggings;
+    var taggings = this.props.spot.tags;
     if(taggings.length === 0) {
       taggingList = <li></li>;
     } else {
-      taggingList = taggings.map(function(tagging, idx) {
-        return(<li key={tagging.id}><Link to="#">{tagging.tag}</Link></li>);
+      taggingList = taggings.map(function(tagging, idx){
+        return(<li key={tagging.id}><Link to="#">{tagging.name}</Link></li>);
       });
     }
 

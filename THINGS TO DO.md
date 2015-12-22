@@ -12,11 +12,13 @@ Display on spots index and individual spot pages
 
 
 
+routes cleanup
+/api/
 
 
-
-
-
+tags search
+/api/tags?search=...
+/api/spots?search=...
 
 -add tag button on spot detail page
 -when click button, text box pops up to add tag,

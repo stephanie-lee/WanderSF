@@ -12,7 +12,6 @@ var resetTaggings = function(newTaggings) {
 
 var addTagging = function(newTagging) {
   _taggings.push(newTagging);
-  console.log(_taggings);
 };
 
 var deleteTagging = function(deletedTagging) {
