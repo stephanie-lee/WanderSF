@@ -1,4 +1,3 @@
-var TaggingActions = require('../actions/tagging_actions');
 var SpotActions = require('../actions/spot_actions');
 
 var TaggingUtil = {

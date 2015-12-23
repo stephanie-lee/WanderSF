@@ -8,10 +8,8 @@ var IndexRoute = ReactRouter.IndexRoute;
 // components required here
 var SpotsIndex = require('./components/spots/spotsIndex');
 var SpotStore = require('./stores/spot');
-var TaggingStore = require('./stores/tagging');
 var TagStore = require('./stores/tag');
 var TagUtil = require('./util/tag_util');
-var TaggingUtil = require('./util/tagging_util');
 var ReviewStore = require('./stores/review');
 var SpotDetail = require('./components/spots/spotDetail');
 var App = require('./components/app');
