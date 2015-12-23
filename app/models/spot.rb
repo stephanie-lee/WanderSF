@@ -8,4 +8,10 @@ class Spot < ActiveRecord::Base
   has_many :tags,
     through: :taggings,
     source: :tag
+
+
+  def self.find_by_tag_partial(str)
+    partial = "%#{str}%"
+    Spot.includes(:tags).references(:tags).where("tags.name LIKE ?", partial)
+  end
 end

@@ -1,6 +1,7 @@
 var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 var _tags = [];
+var _queriedTags = [];
 var TagStore = new Store(AppDispatcher);
 var TagConstants = require('../constants/tag_constants');
 
@@ -10,6 +11,10 @@ var resetTags = function(newTags) {
 
 var addTag = function(newTag) {
   _tags.push(newTag);
+};
+
+var resetQueriedTags = function(newTags) {
+  _queriedTags = newTags;
 };
 
 TagStore.__onDispatch = function (payload) {
@@ -22,6 +27,9 @@ TagStore.__onDispatch = function (payload) {
       addTag(payload.tag);
       TagStore.__emitChange();
       break;
+    case TagConstants.QUERIED_TAGS_RECEIVED:
+      resetQueriedTags(payload.tags);
+      TagStore.__emitChange();
   }
 };
 
@@ -35,6 +43,10 @@ TagStore.find = function(tagName) {
 
 TagStore.all = function() {
   return _tags.slice(0);
+};
+
+TagStore.queriedTags = function() {
+  return _queriedTags.slice(0);
 };
 
 window.TagStore = TagStore;

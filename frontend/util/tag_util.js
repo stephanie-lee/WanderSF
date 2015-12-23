@@ -21,6 +21,17 @@ var TagUtil = {
       }
     });
   },
+
+  fetchQueryTags: function(query){
+    $.ajax({
+      url: 'api/tags',
+      dataType: 'json',
+      data: {query: query},
+      success: function(tags){
+        TagActions.receiveQueryTags(tags);
+      }
+    });
+  }
 };
 
 window.TagUtil = TagUtil;

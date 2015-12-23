@@ -1,7 +1,12 @@
 class Api::TagsController < ApplicationController
   def index
-    @tags = Tag.all
-    render :index
+    if params[:query]
+      @tags = Tag.queried_tags(params[:query])
+      render :index
+    # else
+    #   @tags = Tag.all
+    #   render :index
+    end
   end
 
   def create

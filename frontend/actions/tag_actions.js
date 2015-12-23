@@ -15,6 +15,13 @@ var TagActions = {
       tag: tag
     });
   },
+
+  receiveQueryTags: function(tags){
+    AppDispatcher.dispatch({
+      actionType: TagConstants.QUERIED_TAGS_RECEIVED,
+      tags: tags
+    });
+  }
 };
 
 module.exports = TagActions;

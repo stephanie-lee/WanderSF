@@ -19,8 +19,9 @@
 /* universal */
 
 body {
-  padding-top: 100px;
-  margin: 30px;
+  padding-top: 0px;
+  margin-top: 0px;
+  // margin: 30px;
 }
 
 section {
@@ -109,21 +110,15 @@ p {
 }
 
 /* header */
-
-header {
-height: 80px;
+nav-item {
+  &:hover {
+    background: white;
+  }
 }
 
-.navbar-toggle {
-  top: -80px
-}
-
-.navbar-header { // position logo
-  margin-top: 10px;
-}
-
-#WanderSFlogo img{
-  margin-left: 8px;
+.navbar {
+  height: 100px;
+  margin: 0px
 }
 
 /* spots details */

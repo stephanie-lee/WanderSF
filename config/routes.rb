@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :spots, only: [:index, :new, :create, :show] #do
       # resources :reviews, only: [:show]
-    # end
+    #end
+    get 'spots/query', to: 'spots#query'
     resources :reviews, only: [:index, :create, :show, :update, :destroy]
     resources :taggings, only: [:index, :create, :show, :destroy]
     resources :tags, only: [:index, :create, :show]

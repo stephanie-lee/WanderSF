@@ -9,11 +9,15 @@ class Api::SpotsController < ApplicationController
     render :show
   end
 
+  # def query
+  #   @spots = Spot.find_by_tag_partial(params[])
+  # end
+
   private
   def get_spots_from_params
     @spots = Spot.all.includes(:tags)
     if params[:search]
-      @spots = @spots.where()
+      @spots = Spot.find_by_tag_partial(params[])
     end
   end
 end
