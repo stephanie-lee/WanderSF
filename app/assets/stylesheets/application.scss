@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_self
+ *= require jquery-ui
  */
 
 @import "bootstrap-sprockets";
@@ -110,15 +111,43 @@ p {
 }
 
 /* header */
-nav-item {
+
+nav-link {
+  float: inherit;
+
   &:hover {
     background: white;
   }
 }
 
 .navbar {
+  width: 100%;
+  position: fixed;
   height: 100px;
-  margin: 0px
+  margin: 0px;
+  overflow: hidden;
+}
+
+.below-nav {
+  top: 100px;
+  position: relative;
+}
+
+.main-search_suggestions {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+}
+
+.search-bar {
+  position: fixed;
+  padding-top: 30px;
+  left: 30%;
+}
+
+.search-bar input {
+  width: 300px
 }
 
 /* spots details */

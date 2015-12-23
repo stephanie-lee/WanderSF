@@ -7,7 +7,9 @@ var App = React.createClass({
     return (
       <div id="index">
         <NavBar />
-        {this.props.children}
+        <div className='container below-nav'>
+          {this.props.children}
+        </div>
       </div>
     );
   }

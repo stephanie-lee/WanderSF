@@ -27,6 +27,16 @@ var SpotUtil = {
       }
     });
   },
+
+  fetchSpotsByQuery: function(string){
+    $.ajax({
+      url: 'api/spots/',
+      data: {search: string},
+      success: function(spots) {
+        SpotActions.receiveAllSpots(spots);
+      }
+    });
+  }
 };
 
 module.exports = SpotUtil;

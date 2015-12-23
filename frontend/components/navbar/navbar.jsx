@@ -13,7 +13,7 @@ var NavBar = React.createClass({
                width="150">
           </img>
         </a>
-        <ul className="nav navbar-nav">
+        <ul className="nav navbar-nav fixed">
           <li className="nav-item">
             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
           </li>

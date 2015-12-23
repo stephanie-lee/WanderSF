@@ -5,7 +5,7 @@ class Tag < ActiveRecord::Base
   has_many :spots, through: :taggings, source: :spot
 
   def self.queried_tags(str)
-    partial = "%#{str}%"
-    Tag.where("name LIKE ?", partial)
+    partial = "%#{str.downcase}%"
+    Tag.where("lower(name) LIKE ?", partial)
   end
 end
