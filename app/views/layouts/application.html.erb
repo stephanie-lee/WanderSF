@@ -7,13 +7,13 @@
   <%= javascript_include_tag 'application' %>
 </head>
 <body>
-  <%= render partial: "shared/header" %>
   <%= render partial: "shared/errors" %>
+  <%= render partial: "shared/header" %>
 
   <div class="container">
     <%= yield %>
   </div>
-  
+
   <%= render partial: "shared/footer" %>
 </body>
 </html>

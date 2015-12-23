@@ -8,7 +8,6 @@ var ReviewStore = require('../../stores/review');
 var ReviewIndex = require('../reviews/reviewIndex');
 var ReviewUserItem = require('../reviews/reviewUserItem.jsx');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
-// var TaggingStore = require('../../stores/tagging');
 var TaggingUtil = require('../../util/tagging_util');
 var TagStore = require('../../stores/tag');
 
@@ -16,12 +15,11 @@ var Link = ReactRouter.Link;
 
 var SpotDetail = React.createClass({
   getInitialState: function() {
-    return { spot: null,//SpotStore.find(parseInt(this.props.params.spotId)),
+    return { spot: null,
              reviews: ReviewStore.findBySpot(parseInt(this.props.params.spotId)),
              rating: 0,
              hasReviewed: false,
              formView: true,
-            //  taggings: TaggingStore.findBySpot(this.props.params.spotId),
              taggingFormView: false,
              taggingFormString: ""
            };
@@ -33,10 +31,6 @@ var SpotDetail = React.createClass({
     var formView = true;
 
     this.yourReview = ReviewStore.findMySpotReview(spotId);
-    // this.taggings = TaggingStore.findBySpot(spotId);
-    // if (this.state.spot) {
-    //   this.taggings = this.state.spot.taggings;
-    // }
     var current_spot;
     if (SpotStore.current()){
       current_spot = SpotStore.current();
@@ -46,7 +40,7 @@ var SpotDetail = React.createClass({
       hasReviewed = true;
       formView = false;
     }
-    this.setState({ spot: current_spot,//SpotStore.find(spotId),
+    this.setState({ spot: current_spot,
                     reviews: ReviewStore.findBySpot(spotId),
                     hasReviewed: hasReviewed,
                     formView: formView
@@ -60,16 +54,13 @@ var SpotDetail = React.createClass({
   componentDidMount: function() {
     this.spotListener = SpotStore.addListener(this.onChange);
     this.reviewListener = ReviewStore.addListener(this.onChange);
-    // this.taggingListener = TaggingStore.addListener(this.onChange);
     SpotUtil.fetchSingleSpot(parseInt(this.props.params.spotId));
     ReviewUtil.fetchReviews();
-    // TaggingUtil.fetchTaggings();
   },
 
   componentWillUnmount: function() {
     this.spotListener.remove();
     this.reviewListener.remove();
-    // this.taggingListener.remove();
   },
 
   toggleReviewForm: function() {
@@ -152,13 +143,13 @@ var SpotDetail = React.createClass({
       taggingList = taggings.map(function(tagging, idx) {
         return(<li key={tagging.tag_id}>
                   <Link to="#">{tagging.name}</Link>
-                  <span id="remove-tag" id={tagging.id} tagId={tagging.tag_id} className="glyphicon glyphicon-remove-circle"
+                  <span id={tagging.id}
+                        tagId={tagging.tag_id}
+                        className="glyphicon glyphicon-remove-circle"
                         onClick={this.removeTagging}></span>
                 </li>);
       }.bind(this));
     }
-
-    //this.removeTagging
 
     if(this.state.taggingFormView) {
       taggingForm = <input autoFocus

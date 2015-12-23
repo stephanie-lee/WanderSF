@@ -36,6 +36,7 @@ var SpotIndexItem = React.createClass({
   },
 
   render: function() {
+    var spotLink = "/spots/" + this.props.spot.id;
     var taggings = this.props.spot.taggings;
     if(taggings.length === 0) {
       taggingList = <li></li>;
@@ -47,9 +48,9 @@ var SpotIndexItem = React.createClass({
 
     return(
       <div>
-        <li className="list-group-item hover-box" onClick={this.showDetail} key={this.props.spot.id}>
+        <li className="list-group-item hover-box" key={this.props.spot.id}>
           <ul className="list-unstyled">
-            <h4>{this.props.spot.name}</h4>
+            <h4 onClick={this.showDetail}><Link to={spotLink}>{this.props.spot.name}</Link></h4>
             <br/>
             <li>Rating: {this.state.avg}</li>
             <br/>
