@@ -18,7 +18,7 @@ var NavBar = React.createClass({
             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
           </li>
         </ul>
-        <SearchBar />
+        <SearchBar location={this.props.location}/>
 
       </nav>
     );

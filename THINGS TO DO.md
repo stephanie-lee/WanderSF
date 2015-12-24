@@ -1,28 +1,8 @@
-Tags:
+-rendering text
 
-tag Model -- associations, validations
+-routes/path explanation
+-keep query string?(differentiation between index and search)
 
-tag Store -- interacts with spots index
+-why does first return, return index
 
-tag controller
--index(params based on tag id OR search??)
-
-Display on spots index and individual spot pages
-
-
-
-
-routes cleanup
-/api/
-
-
-tags search
-/api/tags?search=...
-/api/spots?search=...
-
--add tag button on spot detail page
--when click button, text box pops up to add tag,
-  button to submit AND 'enter' event handle
-
-CREATE TAGS
--set existing, can only use prefill choices
+-keep search bar fixed

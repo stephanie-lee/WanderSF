@@ -50,6 +50,13 @@ var SearchBar = React.createClass({
   handleSearch: function(e) {
     e.preventDefault();
     this.refs.searchInput.blur();
+    // if (this.state.searchString.length === 0) {
+    //   SpotUtil.fetchSpots();
+    // } else {
+    //   // SpoutUtil.clear();
+    //   SpotUtil.fetchSpotsByQuery(this.state.searchString);
+    // }
+
     this.history.pushState(null, 'spots/search', {query: this.state.searchString});
   },
 

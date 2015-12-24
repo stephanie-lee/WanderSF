@@ -36,7 +36,7 @@ var SpotIndexItem = React.createClass({
   },
 
   render: function() {
-    var spotLink = "/spots/" + this.props.spot.id;
+    var spotLink = "/spot/" + this.props.spot.id;
     var taggings = this.props.spot.taggings;
     if(taggings.length === 0) {
       taggingList = <li></li>;

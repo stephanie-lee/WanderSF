@@ -6,7 +6,7 @@ var App = React.createClass({
   render: function(){
     return (
       <div id="index">
-        <NavBar />
+        <NavBar location={this.props.location}/>
         <div className='container below-nav'>
           {this.props.children}
         </div>
@@ -15,7 +15,4 @@ var App = React.createClass({
   }
 });
 
-        // <div className="spots-index">
-        //   <SpotIndex />
-        // </div>
 module.exports = App;

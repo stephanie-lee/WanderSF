@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :spots, only: [:index, :new, :create, :show] #do
       # resources :reviews, only: [:show]
     #end
-    get 'spots/query', to: 'spots#query'
+    get 'spots/search', to: 'spots#search'
     resources :reviews, only: [:index, :create, :show, :update, :destroy]
     resources :taggings, only: [:index, :create, :show, :destroy]
     resources :tags, only: [:index, :create, :show]
