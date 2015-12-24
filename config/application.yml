@@ -10,14 +10,6 @@
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
-    development:
-      secret_key_base: 6cc122d02e53a327886ab825e84ee10c3df0e85a4087ee527cff3dd6b475a93fbdf7efe52f3d85864025c9af04261c04b21cb6e6ed30ca761ed51835734dd0b3
-    test:
-      secret_key_base: 6cc122d02e53a327886ab825e84ee10c3df0e85a4087ee527cff3dd6b475a93fbdf7efe52f3d85864025c9af04261c04b21cb6e6ed30ca761ed51835734dd0b3
 
-    # Do not keep production secrets in the repository,
-    # instead read values from the environment.
-    staging:
-      secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
-    production:
-      secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+CLOUD_NAME: "stephlee"
+UPLOAD_PRESET: "upload preset goes here"

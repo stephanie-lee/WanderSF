@@ -35,7 +35,6 @@ var SpotDetail = React.createClass({
     if (SpotStore.current()){
       current_spot = SpotStore.current();
     }
-
     if (this.yourReview) {
       hasReviewed = true;
       formView = false;
@@ -166,11 +165,21 @@ var SpotDetail = React.createClass({
       taggingForm = <div></div>;
     }
 
+    spotPictures = this.state.spot.pictures;
+    var picturesList;
+    if(spotPictures) {
+      picturesList = spotPictures.map(function(picture){
+        var imageSource = "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_200,w_200/" + picture.source;
+        return(<img key={picture.id} src={imageSource}></img>);
+      });
+    }
+
     return(
       <div>
         <Link to="/" >Back to All Spots</Link>
         <div className="spot-detail-pane">
           <ul className="detail list-unstyled">
+            <li>{picturesList}</li>
             <li key='name'>Name: {spot.name}</li>
             <li key='rating'>Rating: {rating}</li>
             <li key='info'>Info: {spot.description}</li>

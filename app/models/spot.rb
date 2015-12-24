@@ -8,7 +8,7 @@ class Spot < ActiveRecord::Base
   has_many :tags,
     through: :taggings,
     source: :tag
-
+  has_many :pictures, as: :imageable
 
   def self.find_by_tag_partial(str)
     partial = "%#{str}%"

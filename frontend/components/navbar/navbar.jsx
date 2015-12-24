@@ -9,8 +9,8 @@ var NavBar = React.createClass({
         <a className="navbar-brand" href="#">
           <img src="/assets/WanderSF.png"
                alt="Wander SF logo"
-               height="50"
-               width="150">
+               height="60"
+               width="200">
           </img>
         </a>
         <ul className="nav navbar-nav fixed">

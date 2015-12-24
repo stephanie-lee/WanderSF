@@ -27,7 +27,7 @@ var ReviewForm = React.createClass({
                                 max: "5",
                                 step: "1",
                                 showClear: false,
-                                // showCaption: false,
+                                showCaption: false,
                                 size: "sm"}); //symbol: "👣"
     $("#review-rating").rating('update', this.state.rating);
     $('#review-rating').on('rating.change', function(event, value, caption) {
