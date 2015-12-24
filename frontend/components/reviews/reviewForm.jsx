@@ -23,11 +23,21 @@ var ReviewForm = React.createClass({
   },
 
   componentDidMount: function() {
-    var that = this;
-    $("#review-rating").rating({min: "0", max: "5", step: "1", showClear: false, showCaption: false, size: "sm"}); //symbol: "👣"
+    $("#review-rating").rating({min: "0",
+                                max: "5",
+                                step: "1",
+                                showClear: false,
+                                // showCaption: false,
+                                size: "sm"}); //symbol: "👣"
     $("#review-rating").rating('update', this.state.rating);
     $('#review-rating').on('rating.change', function(event, value, caption) {
-    that.setState({rating: value});
+    this.setState({rating: value});
+  }.bind(this));
+  },
+
+  componentWillUnmount: function() {
+    $('#review-rating').off('rating.change', function(event, value, caption) {
+    this.setState({rating: value});
     });
   },
 
@@ -70,13 +80,14 @@ var ReviewForm = React.createClass({
   render: function() {
     return(
       <div className="review-form">
-        <form onSubmit={this.handleSubmit}>
+        <form className="rating-choice" onSubmit={this.handleSubmit}>
           <input id="review-rating"
                  className="rating"
                  type="number"
                  min='1'
                  max='5'
                  valueLink={this.linkState('rating')}/>
+          <h7>Select a rating</h7>
           <br/><br/>
           <textarea cols='50'
                     rows='3'

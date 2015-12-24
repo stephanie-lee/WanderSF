@@ -54,7 +54,7 @@
 }
 
 .rating-disabled {
-    cursor: not-allowed;
+    cursor: default;
 }
 
 .rating-uni {
@@ -150,7 +150,7 @@
  */
 .star-rating .clear-rating, .star-rating-rtl .clear-rating {
     color: #aaa;
-    cursor: not-allowed;
+    cursor: default;
     display: inline-block;
     vertical-align: middle;
     font-size: 60%;
@@ -193,7 +193,7 @@
     .rating-container, .rating-container:before , .rating-container-rtl .rating-stars, .rating-container-rtl .rating-stars:before {
         color: #f3f3f3!important;
     }
-    
+
     .star-rating .clear-rating, .star-rating-rtl .clear-rating {
         display: none;
     }

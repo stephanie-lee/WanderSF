@@ -161,6 +161,16 @@ nav-link {
   }
 }
 
+/* reviews */
+.rating-choice > * {
+  display: inline-block;
+  right:100px
+}
+
+.rating-choice :last-child {
+  margin-left: 5px;
+}
+
 /* footer */
 
 footer {
