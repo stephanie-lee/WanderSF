@@ -42,7 +42,8 @@ var SpotIndexItem = React.createClass({
       taggingList = <li></li>;
     } else {
       taggingList = taggings.map(function(tagging, idx){
-        return(<li key={tagging.tag_id}><Link to="#">{tagging.name}</Link></li>);
+        var tagLink = "/spots/search?query=" + tagging.name
+        return(<li key={tagging.tag_id}><Link to={tagLink}>{tagging.name}</Link></li>);
       });
     }
 

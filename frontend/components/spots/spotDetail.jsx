@@ -141,8 +141,9 @@ var SpotDetail = React.createClass({
       taggingList = <li>No tags yet!</li>;
     } else {
       taggingList = taggings.map(function(tagging, idx) {
+        var tagLink = "/spots/search?query=" + tagging.name
         return(<li key={tagging.tag_id}>
-                  <Link to="#">{tagging.name}</Link>
+                  <Link to={tagLink}>{tagging.name}</Link>
                   <span id={tagging.id}
                         tagId={tagging.tag_id}
                         className="glyphicon glyphicon-remove-circle"
