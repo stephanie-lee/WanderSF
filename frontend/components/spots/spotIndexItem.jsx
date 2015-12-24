@@ -42,7 +42,7 @@ var SpotIndexItem = React.createClass({
       taggingList = <li></li>;
     } else {
       taggingList = taggings.map(function(tagging, idx){
-        var tagLink = "/spots/search?query=" + tagging.name
+        var tagLink = "/spots/search?query=" + tagging.name;
         return(<li key={tagging.tag_id}><Link to={tagLink}>{tagging.name}</Link></li>);
       });
     }
@@ -53,7 +53,7 @@ var SpotIndexItem = React.createClass({
           <ul className="list-unstyled">
             <h4 onClick={this.showDetail}><Link to={spotLink}>{this.props.spot.name}</Link></h4>
             <br/>
-            <li>Rating: {this.state.avg}</li>
+            <li className="rating">Rating: {this.state.avg}</li>
             <br/>
             <li>Info: {this.props.spot.description}</li>
             <br/>

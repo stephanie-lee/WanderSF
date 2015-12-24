@@ -6,7 +6,7 @@ var ReviewIndexItem = React.createClass({
   render:function()  {
     return (
       <div>
-        <ul>
+        <ul className="list-unstyled">
           <li>User: {this.props.user.first_name}
                     {this.props.user.last_name}</li>
           <li>{this.props.user.wanderer_title}</li>

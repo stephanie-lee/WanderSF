@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap
+//= require star-rating.js
 //= require bundle.js

@@ -106,11 +106,13 @@ var SpotDetail = React.createClass({
       return <div></div>;
     }
 
-    if (this.state.hasReviewed) {
+    if (this.state.hasReviewed && !this.state.formView) {
       yourReviewItem = <div>
         <h4>Your Review</h4>
         <ReviewUserItem
         yourReview={this.yourReview} /></div>;
+    } else if (this.state.hasReviewed && this.state.formView) {
+      yourReviewItem = <h4>Edit Your Review</h4>;
     } else {
       yourReviewItem = <div></div>;
     }
@@ -141,7 +143,7 @@ var SpotDetail = React.createClass({
       taggingList = <li>No tags yet!</li>;
     } else {
       taggingList = taggings.map(function(tagging, idx) {
-        var tagLink = "/spots/search?query=" + tagging.name
+        var tagLink = "/spots/search?query=" + tagging.name;
         return(<li key={tagging.tag_id}>
                   <Link to={tagLink}>{tagging.name}</Link>
                   <span id={tagging.id}
@@ -168,7 +170,7 @@ var SpotDetail = React.createClass({
       <div>
         <Link to="/" >Back to All Spots</Link>
         <div className="spot-detail-pane">
-          <ul className="detail">
+          <ul className="detail list-unstyled">
             <li key='name'>Name: {spot.name}</li>
             <li key='rating'>Rating: {rating}</li>
             <li key='info'>Info: {spot.description}</li>

@@ -5,7 +5,7 @@ var ReviewUserItem = React.createClass({
   render:function()  {
     return (
       <div>
-        <ul>
+        <ul className="list-unstyled">
           <li>Rating: {this.props.yourReview.rating}</li>
           <li>Review: {this.props.yourReview.comment}</li>
           <br/>

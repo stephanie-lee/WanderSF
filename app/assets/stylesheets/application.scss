@@ -12,6 +12,7 @@
  *
  *= require_self
  *= require jquery-ui
+ *= require star-rating.css
  */
 
 @import "bootstrap-sprockets";
@@ -126,6 +127,7 @@ nav-link {
   height: 100px;
   margin: 0px;
   overflow: hidden;
+  z-index: 99;
 }
 
 .below-nav {
@@ -141,7 +143,6 @@ nav-link {
 }
 
 .search-bar {
-  position: fixed;
   padding-top: 30px;
   left: 30%;
 }

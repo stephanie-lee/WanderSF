@@ -22,6 +22,15 @@ var ReviewForm = React.createClass({
     }
   },
 
+  componentDidMount: function() {
+    var that = this;
+    $("#review-rating").rating({min: "0", max: "5", step: "1", showClear: false, showCaption: false, size: "sm"}); //symbol: "👣"
+    $("#review-rating").rating('update', this.state.rating);
+    $('#review-rating').on('rating.change', function(event, value, caption) {
+    that.setState({rating: value});
+    });
+  },
+
   componentWillReceiveProps: function(newProps) {
     if (newProps.yourReview) {
       var yourReview = newProps.yourReview;
@@ -62,7 +71,12 @@ var ReviewForm = React.createClass({
     return(
       <div className="review-form">
         <form onSubmit={this.handleSubmit}>
-          <input type="number" min='1' max='5' valueLink={this.linkState('rating')}/>
+          <input id="review-rating"
+                 className="rating"
+                 type="number"
+                 min='1'
+                 max='5'
+                 valueLink={this.linkState('rating')}/>
           <br/><br/>
           <textarea cols='50'
                     rows='3'
