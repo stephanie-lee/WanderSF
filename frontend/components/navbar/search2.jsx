@@ -9,7 +9,6 @@ var SearchBar = React.createClass({
   mixins: [History],
 
   getInitialState: function() {
-    // debugger
     return {searchString: this.props.location.query.query || "",
             queryTags: []
            };

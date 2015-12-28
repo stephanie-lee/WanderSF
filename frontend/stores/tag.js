@@ -30,6 +30,7 @@ TagStore.__onDispatch = function (payload) {
     case TagConstants.QUERIED_TAGS_RECEIVED:
       resetQueriedTags(payload.tags);
       TagStore.__emitChange();
+      break;
   }
 };
 

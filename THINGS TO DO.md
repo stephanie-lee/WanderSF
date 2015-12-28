@@ -1,9 +1,6 @@
 clean up photos and formatting
-
-fix rating stars on all pages
-
+general styling
 address display
+google maps
 
 like function?
-
-demo account or react login

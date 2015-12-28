@@ -9,7 +9,6 @@ var SearchBar = React.createClass({
   mixins: [History],
 
   getInitialState: function() {
-    // debugger
     return {searchString: this.props.location.query.query || "",
             queryTags: []
            };
@@ -76,8 +75,7 @@ var SearchBar = React.createClass({
 
     }
     return (
-      <div className="col-xs-6 col-sm-3 search-bar">
-        <div className='row'>
+      <div>
           <form className="input-group">
           <input type="text"
                  className="form-control"
@@ -94,7 +92,6 @@ var SearchBar = React.createClass({
           </button>
           </span>
           </form>
-        </div>
       </div>
     );
   }

@@ -10,6 +10,7 @@ var ReviewUserItem = require('../reviews/reviewUserItem.jsx');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var TaggingUtil = require('../../util/tagging_util');
 var TagStore = require('../../stores/tag');
+var SpotDetailRating = require('./spotDetailRating');
 
 var Link = ReactRouter.Link;
 
@@ -44,6 +45,9 @@ var SpotDetail = React.createClass({
                     hasReviewed: hasReviewed,
                     formView: formView
                   });
+    var spotRating = ReviewStore.averageRating(parseInt(this.props.params.spotId));
+    var spotRatingId = "#" + this.props.params.spotId;
+    $(spotRatingId).rating('update', spotRating);
   },
 //
   componentWillReceiveProps: function (newProps) {
@@ -55,6 +59,14 @@ var SpotDetail = React.createClass({
     this.reviewListener = ReviewStore.addListener(this.onChange);
     SpotUtil.fetchSingleSpot(parseInt(this.props.params.spotId));
     ReviewUtil.fetchReviews();
+    var spotRatingId = "#" + this.props.params.spotId;
+    $(spotRatingId).rating({min: "1",
+                        max: "5",
+                        step: "1",
+                        showClear: false,
+                        showCaption: false,
+                        readonly: true,
+                        size: "sm"}); //symbol: "👣"
   },
 
   componentWillUnmount: function() {
@@ -131,11 +143,16 @@ var SpotDetail = React.createClass({
     }
 
     var spot = this.state.spot;
+    var spotRating = ReviewStore.averageRating(spot.id);
     var rating;
-    if(isNaN(ReviewStore.averageRating(spot.id))) {
+    if(isNaN(spotRating)) {
         rating = "Be the first to review!";
       } else {
-        rating = ReviewStore.averageRating(spot.id);
+        rating = <input id={spot.id}
+                   className="rating"
+                   type="number"
+                   min='1'
+                   max='5'/>;
       }
     var taggings = this.state.spot.taggings;
     if(taggings.length === 0) {
@@ -164,7 +181,6 @@ var SpotDetail = React.createClass({
     } else {
       taggingForm = <div></div>;
     }
-
     spotPictures = this.state.spot.pictures;
     var picturesList;
     if(spotPictures) {
@@ -179,9 +195,8 @@ var SpotDetail = React.createClass({
         <Link to="/" >Back to All Spots</Link>
         <div className="spot-detail-pane">
           <ul className="detail list-unstyled">
-            <li>{picturesList}</li>
             <li key='name'>Name: {spot.name}</li>
-            <li key='rating'>Rating: {rating}</li>
+            <li key='rating'><SpotDetailRating rating={spotRating} reviewCount={this.state.reviews.length} /></li>
             <li key='info'>Info: {spot.description}</li>
             <li>Tags:
               <ul className="list-unstyled list-inline">
@@ -194,6 +209,7 @@ var SpotDetail = React.createClass({
               </button>
               {taggingForm}
             </li>
+            <li>{picturesList}</li>
           <br/>
           <div className="reviews">
             {yourReviewItem}

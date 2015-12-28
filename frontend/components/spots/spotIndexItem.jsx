@@ -24,11 +24,21 @@ var SpotIndexItem = React.createClass({
       this.avg = "No rating yet!";
     }
     this.setState({ avg: this.avg });
+    var ratingId = "#" + this.props.spot.id;
+    $(ratingId).rating('update', this.state.avg);
   },
 
   componentDidMount: function() {
     this.reviewListener = ReviewStore.addListener(this.onChange);
     ReviewUtil.fetchReviews();
+    var ratingId = "#" + this.props.spot.id;
+    $(ratingId).rating({min: "0",
+                        max: "5",
+                        step: "1",
+                        showClear: false,
+                        showCaption: false,
+                        readonly: true,
+                        size: "xs"}); //symbol: "👣"
   },
 
   componentWillUnmount: function() {
@@ -53,7 +63,11 @@ var SpotIndexItem = React.createClass({
           <ul className="list-unstyled">
             <h4 onClick={this.showDetail}><Link to={spotLink}>{this.props.spot.name}</Link></h4>
             <br/>
-            <li className="rating">Rating: {this.state.avg}</li>
+              <li><input id={this.props.spot.id}
+                     className="rating"
+                     type="number"
+                     min='1'
+                     max='5'/></li>
             <br/>
             <li>Info: {this.props.spot.description}</li>
             <br/>

@@ -11,6 +11,12 @@
 
   </head>
 <body>
+  <% if current_user %>
+    <script>
+  	window.CURRENT_USER_ID = <%= current_user.id %>
+    </script>
+  <% end %>
+  
   <%= render partial: "shared/errors" %>
     <%= yield %>
   <%= render partial: "shared/footer" %>

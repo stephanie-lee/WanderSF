@@ -1,25 +1,68 @@
 var ReactDOM = require('react-dom');
 var React = require('react');
 var SearchBar = require('./search');
+var ApiUtil = require('../../util/api_util');
+var ReactRouter = require('react-router');
+var ReactBootstrap = require('react-bootstrap');
+var UserInfo = require('./userInfo');
+
+var Button = ReactBootstrap.Button;
+var SignOut = React.createClass({
+  mixins: [ReactRouter.History],
+
+  signOut: function(){
+    ApiUtil.destroySession(CURRENT_USER_ID);
+  },
+
+
+  render: function() {
+    return(
+        <Button className="btn btn-default navbar-btn button-md"
+                bsStyle="primary"
+                id="right-nav-button"
+                onClick={this.signOut}>Sign Out</Button>
+    );
+  }
+});
 
 var NavBar = React.createClass({
   render: function(){
     return (
-      <nav className="navbar navbar-inverse bg-faded">
-        <a className="navbar-brand" href="#">
-          <img src="/assets/WanderSF.png"
-               alt="Wander SF logo"
-               height="60"
-               width="200">
-          </img>
-        </a>
-        <ul className="nav navbar-nav fixed">
-          <li className="nav-item">
-            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-          </li>
-        </ul>
-        <SearchBar location={this.props.location}/>
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span className="sr-only">Toggle navigation</span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+            </button>
 
+            <a className="navbar-brand" href="#">
+              <img src="/assets/WanderSF.png"
+                   alt="Wander SF logo"
+                   height="60"
+                   width="200">
+              </img>
+            </a>
+          </div>
+
+          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul className="nav navbar-nav navbar-right">
+              <li className="search-bar"><SearchBar location={this.props.location}/></li>
+              <li><UserInfo className="left-nav"/></li>
+              <li></li>
+              <li className="dropdown">
+                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PICTURE<span className="caret"></span></a>
+                <ul className="dropdown-menu">
+                  <li><a href="#">My Profile</a></li>
+                  <li role="separator" className="divider"></li>
+                  <li><SignOut /></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
     );
   }

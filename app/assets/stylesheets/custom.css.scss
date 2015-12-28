@@ -1,0 +1,53 @@
+/* header */
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  height: 100px;
+  margin: 0px;
+  // overflow: hidden;
+  z-index: 98;
+}
+
+.navbar-nav {
+  display: inline-block;
+  padding-top: 30px;
+  width: auto;
+  float:right;
+}
+
+.navbar-nav > li {
+  float: left;
+  padding-left: 50px;
+  position: inherit;
+  z-index: 99;
+}
+
+.navbar-nav li:first-child {
+  width: 275px;
+}
+
+.navbar-nav .left-nav {
+  right: 0%;
+}
+
+.below-nav {
+  top: 100px;
+  position: relative;
+}
+
+.main-search_suggestions {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+}
+
+.search-bar {
+  padding-top: 10px;
+  left: 40%;
+}
+
+.search-bar input {
+  width: 300px
+}
