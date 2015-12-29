@@ -10,7 +10,8 @@ var SpotIndexItem = React.createClass({
   mixins: [History],
 
   getInitialState: function() {
-    return { avg: "No rating yet!" };
+    return { avg: "No rating yet!",
+             reviewCount: 0 };
   },
 
   showDetail: function() {
@@ -19,11 +20,13 @@ var SpotIndexItem = React.createClass({
 
   onChange: function() {
     this.avg = ReviewStore.averageRating(this.props.spot.id);
+    this.reviewCount = ReviewStore.findBySpot.length;
 
-    if(isNaN(this.avg)){
-      this.avg = "No rating yet!";
-    }
-    this.setState({ avg: this.avg });
+    // if(isNaN(this.avg)){
+    //   this.avg = "No rating yet!";
+    // }
+    this.setState({ avg: this.avg,
+                    reviewCount: this.reviewCount });
     var ratingId = "#" + this.props.spot.id;
     $(ratingId).rating('update', this.state.avg);
   },
@@ -38,7 +41,7 @@ var SpotIndexItem = React.createClass({
                         showClear: false,
                         showCaption: false,
                         readonly: true,
-                        size: "xs"}); //symbol: "👣"
+                        size: "xxs"}); //symbol: "👣"
   },
 
   componentWillUnmount: function() {
@@ -57,17 +60,38 @@ var SpotIndexItem = React.createClass({
       });
     }
 
+    this.avg = ReviewStore.averageRating(this.props.spot.id);
+    if (isNaN(this.avg)) {
+      ratingCount = "No rating yet!";
+    } else {
+      if(this.state.reviewCount === 1) {
+        ratingCount = this.state.reviewCount + " review";
+      } else {
+        ratingCount = this.state.reviewCount + " reviews";
+      }
+    }
+
+    var mainImage;
+    if (!this.props.spot) {
+      mainImage = <div></div>;
+    } else {
+      var firstPicture = this.props.spot.pictures[0];
+      var imageSource = "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_100,w_100/" + firstPicture.source;
+      mainImage = <img key={firstPicture.id} src={imageSource}></img>;
+    }
+
     return(
       <div>
-        <li className="list-group-item hover-box" key={this.props.spot.id}>
+        <li className="spot-index-item list-group-item hover-box" key={this.props.spot.id}>
           <ul className="list-unstyled">
-            <h4 onClick={this.showDetail}><Link to={spotLink}>{this.props.spot.name}</Link></h4>
+            <li>{mainImage}</li>
+            <li><h4 onClick={this.showDetail}><Link to={spotLink}>{this.props.spot.name}</Link></h4></li>
             <br/>
               <li><input id={this.props.spot.id}
                      className="rating"
                      type="number"
                      min='1'
-                     max='5'/></li>
+                     max='5'/> {ratingCount}</li>
             <br/>
             <li>Info: {this.props.spot.description}</li>
             <br/>

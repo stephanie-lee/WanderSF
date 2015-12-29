@@ -78,15 +78,15 @@ var SearchBar = React.createClass({
       <div>
           <form className="input-group">
           <input type="text"
-                 className="form-control"
+                 className="form-control search-box"
                  ref="searchInput"
                  value={this.state.searchString}
                  onChange={this.handleChange}
                  onSubmit={this.handleSearch}
-                 placeholder="Type Here" />
+                 placeholder="Find parks, beaches, bowling" />
         <span className="input-group-btn">
           <button type="submit"
-             className="btn btn-secondary"
+             className="btn btn-success"
              onClick={this.handleSearch}>
              <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
           </button>

@@ -1,4 +1,16 @@
-<h3 class="center">Sign In</h3>
+<br><br>
+
+<div class="center">
+  <img src="/assets/WanderSF.png"
+       alt="Wander SF logo"
+       height="90"
+       width="300">
+  </img>
+</div>
+
+<h3 class="sign-in-text center">Sign In</h3>
+
+<br><br>
 
 <div class="sign-in-box center">
   <div class="row col-xs-4 col-xs-offset-4">
@@ -14,9 +26,8 @@
 
       <button type="submit" class="btn btn-lg btn-success">Submit</Button>
     </form>
-
-    <p>New user? <%= link_to "Sign up now!", new_user_url %></p>
 <br>
+    <p>New to WanderSF? <%= link_to "Sign up here!", new_user_url %></p>
     <div class="row">
       <form action="<%= session_url %>" method="post">
         <%= auth_token %>
@@ -24,7 +35,7 @@
         <input type="hidden" name="user[password]" value="password">
 
         <div class="col-md-18 text-center">
-        <button class="btn btn-primary center-block"
+        <button class="btn btn-xs btn-info center-block"
                 id="guest-login"
                 type="submit"
                 value="Guest Login">Guest Login</button>

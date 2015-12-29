@@ -1,29 +1,40 @@
-<div class="main-page">
-  <div class="sign-in-box">
-    <div class="row col-xs-3 col-xs-offset-4">
-      <h3 class="col-xs-offset-3">Sign Up</h3>
+<div class="center">
+  <img src="/assets/WanderSF.png"
+       alt="Wander SF logo"
+       height="90"
+       width="300">
+  </img>
+</div>
 
-      <form class="" action="<%= users_url %>" method="post">
-        <%= auth_token %>
+<h3 class="sign-in-text center">Sign Up</h3>
 
-        <div class="form-group">
-          <input type="email" class="form-control" name="user[email]" value="" placeholder="email">
-        </div>
+<br><br>
 
-        <div class="form-group">
-          <input type="password" class="form-control" name="user[password]" value="" placeholder="password">
-        </div>
+<div class="sign-in-box center">
+  <div class="row col-xs-4 col-xs-offset-4">
+    <form action="<%= users_url %>" method="post">
+      <%= auth_token %>
+      <div class="form-group">
+        <input type="email" class="form-control" name="user[email]" value="" placeholder="email">
+      </div>
 
-        <div class="form-group">
-          <input type="text" class="form-control" name="user[first_name]" value="" placeholder="first name">
-        </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="user[password]" value="" placeholder="password">
+      </div>
 
-        <div class="form-group">
-          <input type="text" class="form-control" name="user[last_name]" value="" placeholder="last name">
-        </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="user[first_name]" value="" placeholder="first name">
+      </div>
 
-        <button type="submit" class="btn btn-primary col-xs-offset-4">Submit</button>
-      </form>
-    </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="user[last_name]" value="" placeholder="last name">
+      </div>
+
+      <button type="submit" class="btn btn-primary center-block">Sign Up!</button>
+    </form>
+
+    <br>
+
+    <p>Already have an account? <%= link_to "Sign in here!", new_session_url %></p>
   </div>
 </div>

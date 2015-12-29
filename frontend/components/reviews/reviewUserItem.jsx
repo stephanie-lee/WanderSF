@@ -10,7 +10,7 @@ var ReviewUserItem = React.createClass({
                                 showClear: false,
                                 showCaption: false,
                                 readonly: true,
-                                size: "xs"}); //symbol: "👣"
+                                size: "xxs"}); //symbol: "👣"
     $("#review-rating").rating('update', this.props.yourReview.rating);
   },
 

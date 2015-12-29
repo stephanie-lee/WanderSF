@@ -21,8 +21,10 @@
 /* universal */
 
 body {
+  font-family: helvetica;
   padding-top: 80px;
   margin-top: 0px;
+  background-color: #d3ffbd;
   // margin: 30px;
 }
 
@@ -115,6 +117,12 @@ p {
 .navbar {
   position: fixed;
   width: 100%;
+  background-color: #e5ffe0;
+  border-radius: 0px;
+  border-top: 1px #e5ffe0;
+  border-right: 1px #e5ffe0;
+  border-left: 1px #e5ffe0;
+  border-bottom: solid 1px #dddddd;
 }
 
 .navbar-brand {
@@ -130,21 +138,23 @@ nav {
 
 nav div ul {
     float: right;
-    padding-top: 20px
+    padding-top: 15px
 }
 
 .search-bar {
   width: 300px;
-  right: 35%;
-  left: 0px;
-  padding-top: 10px;
+  padding-top: 8px;
+}
+
+.search-box {
+  background-color: #e4f0fd
 }
 
 .dropdown-menu li {
   text-align: center
 }
 
-@media (max-width: 705px) {
+@media (max-width: 813px) {
     .navbar-header {
         float: none;
     }
@@ -181,6 +191,62 @@ nav div ul {
 	}
 }
 
+/* search index */
+.search-content-title {
+  height: 70px;
+  background-color: #e4f0fd;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.list-group-item:last-child {
+  border-radius: 0px;
+}
+
+.list-group-item {
+  border-bottom: solid 1px #f0f0f0;
+  border-right: 0px;
+  border-left: 0px;
+  border-top: 0px
+}
+
+.list-group-item ul {
+  padding-left: 20px;
+  display: inline-block;
+}
+
+.list-group-item ul li {
+  float: left;
+}
+
+.list-group-item ul li:not(:first-child) {
+  float: none;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+
+}
+
+/* below nav */
+.below-nav {
+  width: 100%;
+  padding: 0px;
+}
+
+ /* sign-in/sign-up pages */
+.sign-in-text {
+  color: #666666;
+}
+
+.form-control {
+  width: 230px;
+}
+
+.form-control {
+  display: initial;
+}
+
 /* spots details */
 .glyphicon-remove-circle {
   margin-left: 2px;
@@ -204,12 +270,14 @@ nav div ul {
 /* footer */
 
 #footer {
-  position:absolute;
+  background: transparentize(white, 0.10);
+  position:fixed;
    bottom:0;
    width:100%;
    height:40px;
   border-top: 1px solid #eaeaea;
   color: #777;
+  z-index: 99;
 }
 
 #footer a {

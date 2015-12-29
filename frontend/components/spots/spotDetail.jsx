@@ -45,9 +45,6 @@ var SpotDetail = React.createClass({
                     hasReviewed: hasReviewed,
                     formView: formView
                   });
-    var spotRating = ReviewStore.averageRating(parseInt(this.props.params.spotId));
-    var spotRatingId = "#" + this.props.params.spotId;
-    $(spotRatingId).rating('update', spotRating);
   },
 //
   componentWillReceiveProps: function (newProps) {
@@ -59,14 +56,6 @@ var SpotDetail = React.createClass({
     this.reviewListener = ReviewStore.addListener(this.onChange);
     SpotUtil.fetchSingleSpot(parseInt(this.props.params.spotId));
     ReviewUtil.fetchReviews();
-    var spotRatingId = "#" + this.props.params.spotId;
-    $(spotRatingId).rating({min: "1",
-                        max: "5",
-                        step: "1",
-                        showClear: false,
-                        showCaption: false,
-                        readonly: true,
-                        size: "sm"}); //symbol: "👣"
   },
 
   componentWillUnmount: function() {
@@ -144,16 +133,7 @@ var SpotDetail = React.createClass({
 
     var spot = this.state.spot;
     var spotRating = ReviewStore.averageRating(spot.id);
-    var rating;
-    if(isNaN(spotRating)) {
-        rating = "Be the first to review!";
-      } else {
-        rating = <input id={spot.id}
-                   className="rating"
-                   type="number"
-                   min='1'
-                   max='5'/>;
-      }
+
     var taggings = this.state.spot.taggings;
     if(taggings.length === 0) {
       taggingList = <li>No tags yet!</li>;
