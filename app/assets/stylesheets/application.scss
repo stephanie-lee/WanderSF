@@ -36,6 +36,13 @@ textarea {
   resize: vertical;
 }
 
+.btn-xxs {
+  border-radius: 3px;
+  padding: 2px 2px;
+  font-size: 10px;
+  line-height: normal;
+}
+
 .center {
   text-align: center;
 }
@@ -44,17 +51,34 @@ textarea {
   margin-bottom: 10px;
 }
 
+.spot-info li:last-child ul {
+  padding-left: 0px;
+}
+
+.list-group-item .spot-info ul {
+  padding-left: 0px;
+}
+
 .list-inline { //list tags side by side
   display: inline-block;
-  margin-left: 0px
+  margin-left: 0px;
+}
+
+.list-group-item .spot-info .tag-list li {
+  padding-right: 5px;
+}
+
+.list-inline li:first-child {
+  padding-left: 5px;
 }
 
 .list-inline li {
-  padding-right: 0px;
+  padding-right: 5px;
+  padding-left: 0px;
 }
 
 .list-inline li:last-child {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .list-inline li:last-child:after {
@@ -113,6 +137,10 @@ p {
   line-height: 1.7em;
 }
 
+h4 {
+  margin-bottom: 0px;
+}
+
 /* header */
 .navbar {
   position: fixed;
@@ -127,6 +155,7 @@ p {
 
 .navbar-brand {
   padding-top: 10px;
+  position:absolute;
 }
 
 nav {
@@ -152,6 +181,16 @@ nav div ul {
 
 .dropdown-menu li {
   text-align: center
+}
+
+.dropdown .user-avatar {
+  float: right;
+  bottom: 100%;
+  padding: 0px;
+}
+
+.dropdown open {
+  background-color: #5cb85c;
 }
 
 @media (max-width: 813px) {
@@ -192,6 +231,19 @@ nav div ul {
 }
 
 /* search index */
+#search-index-container {
+  width: 65%;
+}
+
+#search-index-map-container {
+  position: fixed;
+  top: 80px;
+  right: 0px;
+  width: 40%;
+  height: calc(100% - 120px);
+  background-color: black;
+}
+
 .search-content-title {
   height: 70px;
   background-color: #e4f0fd;
@@ -209,7 +261,8 @@ nav div ul {
   border-bottom: solid 1px #f0f0f0;
   border-right: 0px;
   border-left: 0px;
-  border-top: 0px
+  border-top: 0px;
+  height: 150px;
 }
 
 .list-group-item ul {
@@ -217,15 +270,26 @@ nav div ul {
   display: inline-block;
 }
 
+.list-group-item ul:first-child {
+  margin: 0px
+}
+
 .list-group-item img {
-  ;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  display: inline-block;
+  float: left;
 }
 
 .list-group-item ul li:not(:first-child) {
   float: none;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
+}
 
+tr td:last-child {
+  padding-left: 7px;
 }
 
 /* below nav */
@@ -247,6 +311,16 @@ nav div ul {
   display: initial;
 }
 
+/* spot index */
+.spot-info {
+  padding-top: 15px;
+  position: absolute;
+}
+
+.spot-rating-list {
+  display: inline-block;
+}
+
 /* spots details */
 .glyphicon-remove-circle {
   margin-left: 2px;
@@ -257,6 +331,14 @@ nav div ul {
   }
 }
 
+.spot-detail-page {
+  padding-top: 25px;
+  padding-left: 30px;
+}
+
+.spot-detail-pane .detail .spot-name {
+  font-size: 30px;
+}
 /* reviews */
 .rating-choice > * {
   display: inline-block;

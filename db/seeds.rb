@@ -6,66 +6,31 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create([ {email: "guest@guest.com",
-               first_name: "guest",
-               last_name: "user",
-               password_digest: "$2a$10$64zO0aa.zvYGC4/Rz6GJrukqNQjLxwZIgLEGOoUm3475VluKxbBTC",
-               wanderer_title: "Cautious Adventurer"},
+User.delete_all
+Spot.delete_all
+Review.delete_all
+Tag.delete_all
+Tagging.delete_all
+Picture.delete_all
 
-              {email: "steph@steph.com",
-              first_name: "steph",
-              last_name: "lee",
-              password_digest: "abc",
-              wanderer_title: "Navigator"},
+User.create( email: "guest@guest.com",
+             first_name: "guest",
+             last_name: "user",
+             password: "password",
+             wanderer_title: "Cautious Adventurer"
+            )
 
-             {email: "teresa@teresa.com",
-               first_name: "teresa",
-               last_name: "wen",
-               password_digest: "abc",
-               wanderer_title: "Amateur Wanderer"},
+Picture.create( name: "Guest Picture",
+                source: "http://res.cloudinary.com/stephlee/image/upload/c_scale,h_200,w_200/v1451364008/puppy_hipster_mg5xie.jpg",
+                imageable_id: 1,
+                imageable_type: "User")
 
-             {email: "alissa@alissa.com",
-               first_name: "alissa",
-               last_name: "fang",
-               password_digest: "abc",
-               wanderer_title: "Professional Wanderer"},
-
-             {email: "ash@ash.com",
-               first_name: "ash",
-               last_name: "africa",
-               password_digest: "abc",
-               wanderer_title: "Hopelessly Lost"},
-
-             {email: "millie@millie.com",
-               first_name: "millie",
-               last_name: "fung",
-               password_digest: "abc",
-               wanderer_title: "Crossing Uncharted Territory"}])
-
-Review.create([{spot_id: 1,
-                user_id: 1,
-                rating: 4
-                },
-
-               {spot_id: 3,
-                user_id: 2,
-                rating: 5
-               },
-
-               {spot_id: 2,
-                user_id: 5,
-                rating: 1
-               },
-
-               {spot_id: 4,
-                user_id: 3,
-                rating: 2
-               },
-
-               {spot_id: 5,
-                user_id: 4,
-                rating: 3
-               }])
+Review.create( spot_id: 1,
+               user_id: 1,
+               rating: 5,
+               comment: "Man, this place is AWESOME! You can see the
+                        entire city in all its glory. I will definitely
+                        return to watch the sun rise.")
 
 Spot.create([{
               name: "Bernal Heights Park",
@@ -88,169 +53,213 @@ Spot.create([{
               description: "Free gym and recreational facilities."
              }])
 
-Tag.create([{
-             name: "parks"
-            },
-            {
-             name: "beaches"
-            },
-            {
-             name: "bowling"
-            },
-            {
-             name: "hiking"
-            },
-            {
-             name: "indoor"
-            },
-            {
-             name: "outdoor"
-            },
-            {
-             name: "playgrounds"
-            },
-            {
-             name: "trails"
-            }
-          ])
-
-Tagging.create([{
-                 spot_id: 1,
-                 tag_id: 1
-                },
-                {
-                 spot_id: 1,
-                 tag_id: 2
-                },
-                {
-                 spot_id: 1,
-                 tag_id: 3
-                },
-                {
-                 spot_id: 2,
-                 tag_id: 4
-                },
-                {
-                 spot_id: 2,
-                 tag_id: 3
-                },
-                {
-                 spot_id: 2,
-                 tag_id: 5
-                },
-                {
-                 spot_id: 3,
-                 tag_id: 2
-                },
-                {
-                 spot_id: 3,
-                 tag_id: 6
-                },
-                {
-                 spot_id: 3,
-                 tag_id: 8
-                },
-                {
-                 spot_id: 3,
-                 tag_id: 3
-                },
-                {
-                 spot_id: 4,
-                 tag_id: 1
-                },
-                {
-                 spot_id: 4,
-                 tag_id: 6
-                }])
-
 Picture.create([{
-                 name: "Bernal Heights 1",
-                 source: "v1450993606/bernal_heights1_zrnigs.jpg",
+                name: "Bernal Heights 1",
+                source: "v1450993606/bernal_heights1_zrnigs.jpg",
+                imageable_id: 1,
+                imageable_type: "Spot"
+               },
+               {
+                 name: "Bernal Heights 2",
+                 source: "v1450993586/bernal_heights2_ewipim.jpg",
                  imageable_id: 1,
                  imageable_type: "Spot"
-                },
-                {
-                  name: "Bernal Heights 2",
-                  source: "v1450993586/bernal_heights2_ewipim.jpg",
-                  imageable_id: 1,
+               },
+               {
+                 name: "Bernal Heights 3",
+                 source: "v1450993588/bernalheights3_epzmi6.jpg",
+                 imageable_id: 1,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Dolores Park 1",
+                 source: "v1450993613/dolo1_bo7hef.jpg",
+                 imageable_id: 2,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Dolores Park 2",
+                 source: "v1450993596/dolo2_i3nxhg.jpg",
+                 imageable_id: 2,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Dolores Park 3",
+                 source: "v1450993615/dolo3_gnn9ee.jpg",
+                 imageable_id: 2,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Mission Cliffs 1",
+                 source: "v1450993609/missioncliffs1_wvajz9.jpg",
+                 imageable_id: 3,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Mission Cliffs 2",
+                 source: "v1450993613/missioncliffs2_hhfsy1.jpg",
+                 imageable_id: 3,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Mission Cliffs 3",
+                 source: "v1450993612/missioncliffs3_dk4vbc.jpg",
+                 imageable_id: 3,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Fisherman's Wharf 1",
+                 source: "v1450993588/FishermansWharf1_ge9ur3.jpg",
+                 imageable_id: 4,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Fisherman's Wharf 2",
+                 source: "v1450993632/fishermanswharf2_leelw7.jpg",
+                 imageable_id: 4,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Fisherman's Wharf 3",
+                 source: "v1450993616/fishermans-wharf3_pnqgew.jpg",
+                 imageable_id: 4,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Mission Recreational Center 1",
+                 source: "v1450993603/mission_rec1_jyzord.jpg",
+                 imageable_id: 5,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Mission Recreational Center 2",
+                 source: "v1450993614/missionrec2_wnhcyt.jpg",
+                 imageable_id: 5,
+                 imageable_type: "Spot"
+               },
+               {
+                 name: "Mission Recreational Center 3",
+                 source: "v1450993615/missionrec3_yhf35x.jpg",
+                 imageable_id: 5,
+                 imageable_type: "Spot"
+               }
+               ])
+
+Tag.create([{ name: "parks" },
+            { name: "beaches" },
+            { name: "bowling" },
+            { name: "hiking" },
+            { name: "indoor" },
+            { name: "outdoor" },
+            { name: "playgrounds" },
+            { name: "trails" },
+            { name: "rock climbing" },
+            { name: "$$$" },
+            { name: "tourist attraction" },
+            { name: "hangout" },
+            { name: "food" },
+            { name: "gym" },
+            { name: "free" },
+            { name: "walking" },
+            { name: "jogging" },
+            { name: "biking" },
+            { name: "tennis" },
+            { name: "basketball" },
+            { name: "baseball" },
+            { name: "skating" },
+            { name: "museum" },
+            { name: "seating" },
+            { name: "popular" },
+            { name: "transportation" },
+            { name: "swimming" },
+            { name: "shopping" },
+            { name: "tours" },
+            { name: "landmark" },
+            { name: "pet-friendly" },
+          ])
+
+Tagging.create([{ spot_id: 1, tag_id: 1 },
+                { spot_id: 1, tag_id: 4 },
+                { spot_id: 1, tag_id: 6 },
+                { spot_id: 2, tag_id: 7 },
+                { spot_id: 2, tag_id: 1 },
+                { spot_id: 2, tag_id: 6 },
+                { spot_id: 3, tag_id: 5 },
+                { spot_id: 3, tag_id: 9 },
+                { spot_id: 3, tag_id: 10 },
+                { spot_id: 4, tag_id: 11 },
+                { spot_id: 4, tag_id: 12 },
+                { spot_id: 4, tag_id: 13 },
+                { spot_id: 5, tag_id: 5 },
+                { spot_id: 5, tag_id: 7 },
+                { spot_id: 5, tag_id: 13 }
+              ])
+
+50.times do
+  wanderer_title = ["Navigator",
+                    "Amateur Wanderer",
+                    "Professional Wanderer",
+                    "Hopelessly Lost",
+                    "Crossing Uncharted Territory",
+                    "Outdoor Camper",
+                    "Jungle Connoisseur",
+                    "Wanderer For Pay",
+                    "Castaway"]
+  name = Faker::Name.name.split
+  first_name, last_name = name[0], name[1]
+  email = Faker::Internet.email
+
+  User.create(email: email,
+              first_name: first_name,
+              last_name: last_name,
+              password: "mystery",
+              wanderer_title: wanderer_title.sample)
+end
+
+200.times do
+  spot_id = rand(2..50)
+  user_id = rand(1..50)
+  rating = rand(1..5)
+  review = Faker::Lorem.sentences(5)
+  Review.create(spot_id: spot_id,
+                user_id: user_id,
+                rating: rating,
+                comment: review.join(" ")
+                )
+end
+
+25.times do
+  random_type = ["Park",
+                 "Field",
+                 "Gym",
+                 "Boardwalk",
+                 "Alley",
+                 "",
+                 "Hill",
+                 "Peaks",
+                 "Square",
+                 "Fitness",
+                 "Recreation Center"]
+
+  spot_name = Faker::Address.street_name + " " + random_type.sample
+  description = Faker::Lorem.sentences(5)
+
+  Spot.create(name: spot_name,
+              description: description)
+end
+
+25.times do |n|
+  name = Faker::Lorem.words(2)
+  Picture.create(
+                  name: name,
+                  source: "v1450993606/bernal_heights1_zrnigs.jpg",
+                  imageable_id: (n + 6),
                   imageable_type: "Spot"
-                },
-                {
-                  name: "Bernal Heights 3",
-                  source: "v1450993588/bernalheights3_epzmi6.jpg",
-                  imageable_id: 1,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Dolores Park 1",
-                  source: "v1450993613/dolo1_bo7hef.jpg",
-                  imageable_id: 2,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Dolores Park 2",
-                  source: "v1450993596/dolo2_i3nxhg.jpg",
-                  imageable_id: 2,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Dolores Park 3",
-                  source: "v1450993615/dolo3_gnn9ee.jpg",
-                  imageable_id: 2,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Mission Cliffs 1",
-                  source: "v1450993609/missioncliffs1_wvajz9.jpg",
-                  imageable_id: 3,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Mission Cliffs 2",
-                  source: "v1450993613/missioncliffs2_hhfsy1.jpg",
-                  imageable_id: 3,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Mission Cliffs 3",
-                  source: "v1450993612/missioncliffs3_dk4vbc.jpg",
-                  imageable_id: 3,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Fisherman's Wharf 1",
-                  source: "v1450993588/FishermansWharf1_ge9ur3.jpg",
-                  imageable_id: 4,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Fisherman's Wharf 2",
-                  source: "v1450993632/fishermanswharf2_leelw7.jpg",
-                  imageable_id: 4,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Fisherman's Wharf 3",
-                  source: "v1450993616/fishermans-wharf3_pnqgew.jpg",
-                  imageable_id: 4,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Mission Recreational Center 1",
-                  source: "v1450993603/mission_rec1_jyzord.jpg",
-                  imageable_id: 5,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Mission Recreational Center 2",
-                  source: "v1450993614/missionrec2_wnhcyt.jpg",
-                  imageable_id: 5,
-                  imageable_type: "Spot"
-                },
-                {
-                  name: "Mission Recreational Center 3",
-                  source: "v1450993615/missionrec3_yhf35x.jpg",
-                  imageable_id: 5,
-                  imageable_type: "Spot"
-                }
-                ])
+                 )
+end
+
+100.times do
+  spot_id = rand(6..30)
+  tag_id = rand(1..31)
+  Tagging.create( spot_id: spot_id, tag_id: tag_id )
+end

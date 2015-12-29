@@ -36,9 +36,10 @@ var SpotsSearchIndex = React.createClass({
         <div className="search-content-title">
           Tags matching <strong>"{this.props.location.query.query}"</strong>
         </div>
-        <ul className="list-group">
+        <ul id="search-index-container" className="list-group">
           {spot}
         </ul>
+        <div id="search-index-map-container">map</div>
         {this.props.children}
       </div>
     );

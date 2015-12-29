@@ -5,6 +5,9 @@ var ReviewUtil = require('../../util/review_util');
 var Link = ReactRouter.Link;
 var History = ReactRouter.History;
 
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
 
 var SpotIndexItem = React.createClass({
   mixins: [History],
@@ -20,7 +23,7 @@ var SpotIndexItem = React.createClass({
 
   onChange: function() {
     this.avg = ReviewStore.averageRating(this.props.spot.id);
-    this.reviewCount = ReviewStore.findBySpot.length;
+    this.reviewCount = ReviewStore.findBySpot(this.props.spot.id).length;
 
     // if(isNaN(this.avg)){
     //   this.avg = "No rating yet!";
@@ -56,7 +59,7 @@ var SpotIndexItem = React.createClass({
     } else {
       taggingList = taggings.map(function(tagging, idx){
         var tagLink = "/spots/search?query=" + tagging.name;
-        return(<li key={tagging.tag_id}><Link to={tagLink}>{tagging.name}</Link></li>);
+        return(<li key={tagging.tag_id}><Link to={tagLink}>{tagging.name.capitalizeFirstLetter()}</Link></li>);
       });
     }
 
@@ -86,17 +89,33 @@ var SpotIndexItem = React.createClass({
       <div>
         <li className="spot-index-item list-group-item hover-box" key={this.props.spot.id}>
           {mainImage}
-          <ul className="list-unstyled">
+          <ul className="list-unstyled spot-info">
             <li><h4 onClick={this.showDetail}><Link to={spotLink}>{this.props.spot.name}</Link></h4></li>
-            <br/>
-            <li><input id={this.props.spot.id}
-                   className="rating"
-                   type="number"
-                   min='1'
-                   max='5'/> {ratingCount}</li>
-            <br/>
-            <li><ul className="list-unstyled list-inline">{taggingList}</ul></li>
-            <br/><br/>
+
+          <table>
+            <tbody>
+              <tr>
+                <td className="col">
+                  <ul className="list-unstyled">
+                    <li><input id={this.props.spot.id}
+                      className="rating"
+                      type="number"
+                      min='1'
+                      max='5'/>
+                    </li>
+                  </ul>
+                </td>
+
+                <td className="col">
+                  <ul className="list-unstyled">
+                    <li>{ratingCount}</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+            <li><ul className="list-unstyled list-inline tag-list">{taggingList}</ul></li>
           </ul>
         </li>
       </div>

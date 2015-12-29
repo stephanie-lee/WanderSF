@@ -4,6 +4,7 @@ var SearchBar = require('./search');
 var ApiUtil = require('../../util/api_util');
 var ReactRouter = require('react-router');
 var UserInfo = require('./userInfo');
+var UserAvatar = require('./userAvatar');
 
 var SignOut = React.createClass({
   mixins: [ReactRouter.History],
@@ -24,6 +25,7 @@ var SignOut = React.createClass({
 
 var NavBar = React.createClass({
   render: function(){
+      var liStyle = {bottom: '5px', left: '5px'};
     return (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
@@ -49,8 +51,13 @@ var NavBar = React.createClass({
               <li className="search-bar"><SearchBar location={this.props.location}/></li>
               <li><UserInfo className="left-nav"/></li>
               <li></li>
-              <li className="dropdown">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PICTURE<span className="caret"></span></a>
+              <li className="dropdown" style={liStyle}>
+                <a href="#"
+                   className="dropdown-toggle user-avatar"
+                   data-toggle="dropdown"
+                   role="button"
+                   aria-haspopup="true"
+                   aria-expanded="false"><UserAvatar /><span className="caret"></span></a>
                 <ul className="dropdown-menu">
                   <li><a href="#">My Profile</a></li>
                   <li role="separator" className="divider"></li>

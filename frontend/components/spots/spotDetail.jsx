@@ -14,6 +14,10 @@ var SpotDetailRating = require('./spotDetailRating');
 
 var Link = ReactRouter.Link;
 
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
 var SpotDetail = React.createClass({
   getInitialState: function() {
     return { spot: null,
@@ -141,7 +145,7 @@ var SpotDetail = React.createClass({
       taggingList = taggings.map(function(tagging, idx) {
         var tagLink = "/spots/search?query=" + tagging.name;
         return(<li key={tagging.tag_id}>
-                  <Link to={tagLink}>{tagging.name}</Link>
+                  <Link to={tagLink}>{tagging.name.capitalizeFirstLetter()}</Link>
                   <span id={tagging.id}
                         tagId={tagging.tag_id}
                         className="glyphicon glyphicon-remove-circle"
@@ -165,30 +169,29 @@ var SpotDetail = React.createClass({
     var picturesList;
     if(spotPictures) {
       picturesList = spotPictures.map(function(picture){
-        var imageSource = "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_200,w_200/" + picture.source;
+        var imageSource = "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_150,w_150/" + picture.source;
         return(<img key={picture.id} src={imageSource}></img>);
       });
     }
 
     return(
-      <div>
-        <Link to="/" >Back to All Spots</Link>
+      <div className="spot-detail-page">
         <div className="spot-detail-pane">
           <ul className="detail list-unstyled">
-            <li key='name'>Name: {spot.name}</li>
+            <li key='name' className="spot-name">{spot.name}</li>
             <li key='rating'><SpotDetailRating rating={spotRating} reviewCount={this.state.reviews.length} /></li>
-            <li key='info'>Info: {spot.description}</li>
             <li>Tags:
               <ul className="list-unstyled list-inline">
                 {taggingList}
               </ul>
               <button type="submit"
-                      className="btn btn-xs btn-secondary"
+                      className="btn btn-xxs btn-secondary"
                       onClick={this.toggleTaggingForm}>
                       Add Tag <span className="glyphicon glyphicon-tag" aria-hidden="true"></span>
               </button>
               {taggingForm}
             </li>
+            <br />
             <li>{picturesList}</li>
           <br/>
           <div className="reviews">
@@ -197,6 +200,7 @@ var SpotDetail = React.createClass({
             <br/><br/>
             <h4>Reviews</h4>
             <ReviewIndex reviews={this.state.reviews} yourReview={this.yourReview} />
+            <br /><br /><br />
           </div>
           </ul>
         </div>

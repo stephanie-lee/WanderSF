@@ -30,12 +30,28 @@ var SpotDetailRating = React.createClass({
     return (
       <div>
         <ul className="list-unstyled">
-          <li><input id="spot-detail-rating"
-                 className="rating"
-                 type="number"
-                 min='1'
-                 max='5'/> {ratingCount}</li>
-          <br/>
+          <table>
+            <tbody>
+              <tr>
+                <td className="col">
+                  <ul className="list-unstyled">
+                    <li><input id="spot-detail-rating"
+                           className="rating"
+                           type="number"
+                           min='1'
+                           max='5'/>
+                    </li>
+                  </ul>
+                </td>
+
+                <td className="col">
+                  <ul className="list-unstyled">
+                    <li>{ratingCount}</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </ul>
       </div>
     );
