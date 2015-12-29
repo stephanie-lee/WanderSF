@@ -11,7 +11,7 @@ User.create([ {email: "guest@guest.com",
                last_name: "user",
                password_digest: "$2a$10$64zO0aa.zvYGC4/Rz6GJrukqNQjLxwZIgLEGOoUm3475VluKxbBTC",
                wanderer_title: "Cautious Adventurer"},
-               
+
               {email: "steph@steph.com",
               first_name: "steph",
               last_name: "lee",
@@ -238,19 +238,19 @@ Picture.create([{
                 {
                   name: "Mission Recreational Center 1",
                   source: "v1450993603/mission_rec1_jyzord.jpg",
-                  imageable_id: 4,
+                  imageable_id: 5,
                   imageable_type: "Spot"
                 },
                 {
                   name: "Mission Recreational Center 2",
                   source: "v1450993614/missionrec2_wnhcyt.jpg",
-                  imageable_id: 4,
+                  imageable_id: 5,
                   imageable_type: "Spot"
                 },
                 {
                   name: "Mission Recreational Center 3",
                   source: "v1450993615/missionrec3_yhf35x.jpg",
-                  imageable_id: 4,
+                  imageable_id: 5,
                   imageable_type: "Spot"
                 }
                 ])

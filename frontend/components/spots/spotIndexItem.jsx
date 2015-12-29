@@ -76,24 +76,24 @@ var SpotIndexItem = React.createClass({
       mainImage = <div></div>;
     } else {
       var firstPicture = this.props.spot.pictures[0];
-      var imageSource = "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_100,w_100/" + firstPicture.source;
-      mainImage = <img key={firstPicture.id} src={imageSource}></img>;
+      if (firstPicture) {
+        var imageSource = "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_100,w_100/" + firstPicture.source;
+        mainImage = <img key={firstPicture.id} src={imageSource}></img>;
+      }
     }
 
     return(
       <div>
         <li className="spot-index-item list-group-item hover-box" key={this.props.spot.id}>
+          {mainImage}
           <ul className="list-unstyled">
-            <li>{mainImage}</li>
             <li><h4 onClick={this.showDetail}><Link to={spotLink}>{this.props.spot.name}</Link></h4></li>
             <br/>
-              <li><input id={this.props.spot.id}
-                     className="rating"
-                     type="number"
-                     min='1'
-                     max='5'/> {ratingCount}</li>
-            <br/>
-            <li>Info: {this.props.spot.description}</li>
+            <li><input id={this.props.spot.id}
+                   className="rating"
+                   type="number"
+                   min='1'
+                   max='5'/> {ratingCount}</li>
             <br/>
             <li><ul className="list-unstyled list-inline">{taggingList}</ul></li>
             <br/><br/>

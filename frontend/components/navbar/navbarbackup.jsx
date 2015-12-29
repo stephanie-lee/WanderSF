@@ -3,10 +3,8 @@ var React = require('react');
 var SearchBar = require('./search');
 var ApiUtil = require('../../util/api_util');
 var ReactRouter = require('react-router');
-var ReactBootstrap = require('react-bootstrap');
 var UserInfo = require('./userInfo');
 
-var Button = ReactBootstrap.Button;
 var SignOut = React.createClass({
   mixins: [ReactRouter.History],
 
@@ -17,7 +15,7 @@ var SignOut = React.createClass({
 
   render: function() {
     return(
-        <Button className="btn btn-default navbar-btn pull-right" bsStyle="primary" id="right-nav-button" onClick={this.signOut}>Sign Out</Button>
+        <button className="btn btn-default navbar-btn pull-right" bsStyle="primary" id="right-nav-button" onClick={this.signOut}>Sign Out</button>
     );
   }
 });
