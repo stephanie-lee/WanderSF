@@ -25,9 +25,6 @@ var SpotIndexItem = React.createClass({
     this.avg = ReviewStore.averageRating(this.props.spot.id);
     this.reviewCount = ReviewStore.findBySpot(this.props.spot.id).length;
 
-    // if(isNaN(this.avg)){
-    //   this.avg = "No rating yet!";
-    // }
     this.setState({ avg: this.avg,
                     reviewCount: this.reviewCount });
     var ratingId = "#" + this.props.spot.id;
@@ -88,7 +85,7 @@ var SpotIndexItem = React.createClass({
     return(
       <div>
         <li className="spot-index-item list-group-item hover-box" key={this.props.spot.id}>
-          {mainImage}
+          <Link to={spotLink}>{mainImage}</Link>
           <ul className="list-unstyled spot-info">
             <li><h4 onClick={this.showDetail}><Link to={spotLink}>{this.props.spot.name}</Link></h4></li>
 

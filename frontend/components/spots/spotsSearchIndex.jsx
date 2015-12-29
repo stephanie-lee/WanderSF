@@ -3,6 +3,7 @@ var SpotStore = require('../../stores/spot');
 var SpotUtil = require('../../util/spot_util');
 var SpotIndexItem = require('./spotIndexItem');
 var ReviewStore = require('../../stores/review');
+var Map = require('./map');
 
 var SpotsSearchIndex = React.createClass({
   getInitialState: function() {
@@ -27,8 +28,12 @@ var SpotsSearchIndex = React.createClass({
     this.spotListener.remove();
   },
 
+  handleMarkerClick: function (spot) {
+    this.props.history.pushState(null, "spot/" + spot.id);
+  },
+
   render: function() {
-    var spot = this.state.spots.map(function(spotItem, idx) {
+    var spots = this.state.spots.map(function(spotItem, idx) {
       return(<SpotIndexItem key={idx} spot={spotItem} />);
     });
     return(
@@ -37,9 +42,11 @@ var SpotsSearchIndex = React.createClass({
           Tags matching <strong>"{this.props.location.query.query}"</strong>
         </div>
         <ul id="search-index-container" className="list-group">
-          {spot}
+          {spots}
         </ul>
-        <div id="search-index-map-container">map</div>
+        <div id="search-index-map-container">
+          <Map spots={this.state.spots} onMarkerClick={this.handleMarkerClick}/>
+        </div>
         {this.props.children}
       </div>
     );

@@ -34,23 +34,33 @@ Review.create( spot_id: 1,
 
 Spot.create([{
               name: "Bernal Heights Park",
-              description: "Beautiful and easy hike to the top. Dogs love to run there!"
+              description: "Beautiful and easy hike to the top. Dogs love to run there!",
+              lat: 37.743285,
+              lng: -122.414607
              },
              {
               name: "Dolores Park",
-              description: "Grassy plains cover a whole block. Recreational facilities are well taken care of!"
+              description: "Grassy plains cover a whole block. Recreational facilities are well taken care of!",
+              lat: 37.7583,
+              lng: -122.4275
              },
              {
               name: "Mission Cliffs",
-              description: "Indoor rock climbing gym has challenging courses. Gym equipment is available as well."
+              description: "Indoor rock climbing gym has challenging courses. Gym equipment is available as well.",
+              lat: 37.760508,
+              lng: -122.412504
              },
              {
               name: "Fisherman's Wharf",
-              description: "Perfect for fun weekend excursions! Great shopping, eating, and touring experiences!"
+              description: "Perfect for fun weekend excursions! Great shopping, eating, and touring experiences!",
+              lat: 37.8083,
+              lng: -122.4156
              },
              {
-              name: "Mission Recreational Center",
-              description: "Free gym and recreational facilities."
+              name: "Mission Recreation Center",
+              description: "Free gym and recreational facilities.",
+              lat: 37.758155,
+              lng: -122.412791
              }])
 
 Picture.create([{
@@ -243,9 +253,13 @@ end
 
   spot_name = Faker::Address.street_name + " " + random_type.sample
   description = Faker::Lorem.sentences(5)
+  lat = rand(37.6413...37.8046)
+  lng = rand(-122.510...-122.3872)
 
   Spot.create(name: spot_name,
-              description: description)
+              description: description,
+              lat: lat,
+              lng: lng)
 end
 
 25.times do |n|

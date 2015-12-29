@@ -233,24 +233,34 @@ nav div ul {
 /* search index */
 #search-index-container {
   width: 65%;
+  top: 150px;
+  position: absolute;
 }
 
 #search-index-map-container {
   position: fixed;
-  top: 80px;
+  top: 150px;
   right: 0px;
-  width: 40%;
-  height: calc(100% - 120px);
-  background-color: black;
+  width: 35%;
+  height: calc(100% - 190px);
+}
+
+#search-index-map-container .map {
+  width: 100%;
+  height: 100%;
 }
 
 .search-content-title {
   height: 70px;
   background-color: #e4f0fd;
+  top: 80px;
+  width: 100%;
   padding-top: 20px;
   padding-left: 20px;
   font-size: 20px;
   text-align: center;
+  z-index: 99;
+  position: fixed;
 }
 
 .list-group-item:last-child {
