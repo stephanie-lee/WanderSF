@@ -4,8 +4,6 @@ var ReviewStore = require('../../stores/review');
 var ReviewUtil = require('../../util/review_util');
 var Link = ReactRouter.Link;
 var History = ReactRouter.History;
-var SpotSearchIndexItemRating  = require('./spotSearchIndexItemRating');
-var Address = require('./spotMiniComponents/address');
 
 String.prototype.capitalizeFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -27,19 +25,30 @@ var SpotIndexItem = React.createClass({
     this.avg = ReviewStore.averageRating(this.props.spot.id);
     this.reviewCount = ReviewStore.findBySpot(this.props.spot.id).length;
 
+    // if(isNaN(this.avg)){
+    //   this.avg = "No rating yet!";
+    // }
     this.setState({ avg: this.avg,
                     reviewCount: this.reviewCount });
+    var ratingId = "#" + this.props.spot.id;
+    $(ratingId).rating('update', this.state.avg);
   },
 
   componentDidMount: function() {
-    this.spotListener = SpotStore.addListener(this.onChange);
     this.reviewListener = ReviewStore.addListener(this.onChange);
     ReviewUtil.fetchReviews();
+    var ratingId = "#" + this.props.spot.id;
+    $(ratingId).rating({min: "0",
+                        max: "5",
+                        step: "1",
+                        showClear: false,
+                        showCaption: false,
+                        readonly: true,
+                        size: "xxs"}); //symbol: "👣"
   },
 
   componentWillUnmount: function() {
     this.reviewListener.remove();
-    this.spotListener.remove();
   },
 
   render: function() {
@@ -55,6 +64,15 @@ var SpotIndexItem = React.createClass({
     }
 
     this.avg = ReviewStore.averageRating(this.props.spot.id);
+    if (isNaN(this.avg)) {
+      ratingCount = "No rating yet!";
+    } else {
+      if(this.state.reviewCount === 1) {
+        ratingCount = this.state.reviewCount + " review";
+      } else {
+        ratingCount = this.state.reviewCount + " reviews";
+      }
+    }
 
     var mainImage;
     if (!this.props.spot) {
@@ -66,16 +84,39 @@ var SpotIndexItem = React.createClass({
         mainImage = <img key={firstPicture.id} src={imageSource}></img>;
       }
     }
+
     return(
       <div>
         <li className="spot-index-item list-group-item hover-box" key={this.props.spot.id}>
-          <Link to={spotLink}>{mainImage}</Link>
+          {mainImage}
           <ul className="list-unstyled spot-info">
             <li><h4 onClick={this.showDetail}><Link to={spotLink}>{this.props.spot.name}</Link></h4></li>
-            <li><SpotSearchIndexItemRating spotId={this.props.spot.id} rating={this.avg} reviewCount={this.state.reviewCount} /></li>
+
+          <table>
+            <tbody>
+              <tr>
+                <td className="col">
+                  <ul className="list-unstyled">
+                    <li><input id={this.props.spot.id}
+                      className="rating"
+                      type="number"
+                      min='1'
+                      max='5'/>
+                    </li>
+                  </ul>
+                </td>
+
+                <td className="col">
+                  <ul className="list-unstyled">
+                    <li>{ratingCount}</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
             <li><ul className="list-unstyled list-inline tag-list">{taggingList}</ul></li>
           </ul>
-          <div id="address-container"><Address address={this.props.spot.address}/></div>
         </li>
       </div>
     );

@@ -63,6 +63,37 @@ Spot.create([{
               lng: -122.412791
              }])
 
+SpotAddress.create([{
+                      spot_id: 1,
+                      street_address: "Bernal Heights Blvd",
+                      zip: 94110,
+                      neighborhood: "Bernal Heights"
+                    },
+                    {
+                      spot_id: 2,
+                      street_address: "19th & Dolores St",
+                      zip: 94114,
+                      neighborhood: "Mission District"
+                    },
+                    {
+                      spot_id: 3,
+                      street_address: "2295 Harrison St.",
+                      zip: 94110,
+                      neighborhood: "Mission District"
+                    },
+                    {
+                      spot_id: 4,
+                      street_address: "Fisherman's Wharf",
+                      zip: 94133,
+                      neighborhood: "Fisherman's Wharf"
+                    },
+                    {
+                      spot_id: 5,
+                      street_address: "2450 Harrison St.",
+                      zip: 94110,
+                      neighborhood: "Mission District"
+                    }])
+
 Picture.create([{
                 name: "Bernal Heights 1",
                 source: "v1450993606/bernal_heights1_zrnigs.jpg",
@@ -239,7 +270,7 @@ end
 end
 
 25.times do
-  random_type = ["Park",
+  RANDOM_TYPE = ["Park",
                  "Field",
                  "Gym",
                  "Boardwalk",
@@ -251,15 +282,38 @@ end
                  "Fitness",
                  "Recreation Center"]
 
-  spot_name = Faker::Address.street_name + " " + random_type.sample
+  spot_name = Faker::Address.street_name + " " + RANDOM_TYPE.sample
   description = Faker::Lorem.sentences(5)
   lat = rand(37.6413...37.8046)
   lng = rand(-122.510...-122.3872)
 
-  Spot.create(name: spot_name,
-              description: description,
-              lat: lat,
-              lng: lng)
+  new_spot = Spot.create(name: spot_name,
+                        description: description,
+                        lat: lat,
+                        lng: lng)
+
+  SF_ZIPS = [94102, 94103, 94104, 94105, 94107, 94108, 94109, 94110,
+             94111, 94112, 94114, 94115, 94116, 94117, 94118, 94121,
+             94122, 94123, 94124, 94127, 94129, 94130, 94131, 94132,
+             94133, 94134, 94158]
+
+  SF_NEIGHBORHOODS = [ "Bernal Heights", "The Castro", "Chinatown",
+                       "Fisherman's Wharf", "Golden Gate Park",
+                       "The Haight", "Hayes Valley", "Inner Richmond",
+                       "Inner Sunset", "The Marina", "The Mission",
+                       "Nob Hill", "Noe Valley", "North Beach",
+                       "Outer Richmond", "Outer Sunset", "Pacific Heights",
+                       "Potrero Hill", "Russian Hill", "SoMa",
+                       "Tenderloin", "Union Square", "Western Addition"]
+
+  street_address = Faker::Address.street_address
+  zip = SF_ZIPS.sample
+  neighborhood = SF_NEIGHBORHOODS.sample
+
+  SpotAddress.create( spot_id: new_spot.id,
+                      street_address: street_address,
+                      zip: zip,
+                      neighborhood: neighborhood)
 end
 
 25.times do |n|
