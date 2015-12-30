@@ -89,7 +89,7 @@ var ReviewForm = React.createClass({
                  valueLink={this.linkState('rating')}/>
           <h7>Select a rating</h7>
           <br/><br/>
-          <textarea autoFocus
+          <textarea
                     cols='50'
                     rows='3'
                     valueLink={this.linkState('comment')}>

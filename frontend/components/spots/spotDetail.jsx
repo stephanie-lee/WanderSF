@@ -11,6 +11,7 @@ var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var TaggingUtil = require('../../util/tagging_util');
 var TagStore = require('../../stores/tag');
 var SpotDetailRating = require('./spotDetailRating');
+var SpotAddressMap = require('./spotMiniComponents/spotAddressMap');
 
 var Link = ReactRouter.Link;
 
@@ -180,7 +181,7 @@ var SpotDetail = React.createClass({
           <ul className="detail list-unstyled">
             <li key='name' className="spot-name">{spot.name}</li>
             <li key='rating'><SpotDetailRating rating={spotRating} reviewCount={this.state.reviews.length} /></li>
-            <li>Tags:
+            <li>
               <ul className="list-unstyled list-inline">
                 {taggingList}
               </ul>
@@ -191,8 +192,13 @@ var SpotDetail = React.createClass({
               </button>
               {taggingForm}
             </li>
+            <li>
+              <ul className="list-unstyled spot-details-map-pictures">
+                <li><SpotAddressMap spot={this.state.spot} /></li>
+                <li className="pictures-list">{picturesList}</li>
+              </ul>
+            </li>
             <br />
-            <li>{picturesList}</li>
           <br/>
           <div className="reviews">
             {yourReviewItem}

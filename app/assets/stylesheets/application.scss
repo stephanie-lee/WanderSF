@@ -367,6 +367,40 @@ tr td:last-child {
 .spot-detail-pane .detail .spot-name {
   font-size: 30px;
 }
+
+#map-address-container {
+  margin-top: 20px;
+  border: 1px solid #f0f0f0;
+  background-color: #fffeee;
+  height: 275px;
+  width: 350px;
+}
+
+#map-address-container > li:first-child {
+  height: 70%;
+  width: 100%;
+  padding: 3px;
+}
+
+#map-address-container li .map {
+  height: 100%;
+  width: 100%;
+}
+
+#map-address-container .details-address-box {
+  padding-left: 8px;
+  font-size: 15px;
+}
+
+.spot-details-map-pictures > li {
+  display: inline-block;
+}
+
+.spot-details-map-pictures .pictures-list {
+  position: absolute;
+  top: 300px;
+}
+
 /* reviews */
 .rating-choice > * {
   display: inline-block;
