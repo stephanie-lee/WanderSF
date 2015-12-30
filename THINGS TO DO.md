@@ -1,8 +1,7 @@
-clean up photos and formatting
-general styling
+address display--add to details page
+google maps--continue
 
-address display
-google maps
+scroll bar next to results
 
 like function?
 
