@@ -13,6 +13,11 @@ var TagStore = require('../../stores/tag');
 var SpotDetailRating = require('./spotDetailRating');
 var SpotAddressMap = require('./spotMiniComponents/spotAddressMap');
 var MyUserInfo = require('./spotMiniComponents/myUserInfo');
+var Scroll = require('react-scroll');
+
+var SLink = Scroll.Link;
+var Element = Scroll.Element;
+var Events = Scroll.Events;
 
 var Link = ReactRouter.Link;
 
@@ -21,6 +26,7 @@ String.prototype.capitalizeFirstLetter = function() {
 };
 
 var SpotDetail = React.createClass({
+  mixins: [Events],
   getInitialState: function() {
     return { spot: null,
              reviews: ReviewStore.findBySpot(parseInt(this.props.params.spotId)),
@@ -62,11 +68,21 @@ var SpotDetail = React.createClass({
     this.reviewListener = ReviewStore.addListener(this.onChange);
     SpotUtil.fetchSingleSpot(parseInt(this.props.params.spotId));
     ReviewUtil.fetchReviews();
+
+    this.scrollEvent.register('begin', function() {
+      console.log("begin", arguments);
+    });
+
+    this.scrollEvent.register('end', function() {
+      console.log("end", arguments);
+    });
   },
 
   componentWillUnmount: function() {
     this.spotListener.remove();
     this.reviewListener.remove();
+    this.scrollEvent.remove('begin');
+    this.scrollEvent.remove('end');
   },
 
   toggleReviewForm: function() {
@@ -203,8 +219,16 @@ var SpotDetail = React.createClass({
             <br />
           <br/>
           <div className="reviews-container">
-            <h4>Recent Reviews</h4>
-            <div className="current-user-review-container">
+            <h4>
+              <SLink to="reviews" spy={true} smooth={true} duration={500}>
+                <div className="scroll-to-reviews">
+                  <span>Recent Reviews</span> <span className="glyphicon glyphicon-chevron-down"></span>
+                </div>
+              </SLink>
+            </h4>
+
+        <Element name="reviews" className="element">
+          <div className="current-user-review-container">
               <ul className="list-unstyled current-user-review-components">
                 <li id="current-user-info"><MyUserInfo /></li>
                 <li id="current-user-review">{yourReviewItem} {reviewForm}</li>
@@ -214,7 +238,8 @@ var SpotDetail = React.createClass({
             <br/><br/>
             <ReviewIndex reviews={this.state.reviews} yourReview={this.yourReview} />
             <br /><br />
-          </div>
+          </Element>
+        </div>
           </ul>
         </div>
 

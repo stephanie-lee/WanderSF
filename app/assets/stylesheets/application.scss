@@ -436,6 +436,29 @@ tr td:last-child {
 
 /* reviews */
 
+.scroll-to-reviews {
+  height: 20px;
+  &:hover {
+   cursor: pointer;
+   text-decoration: none;
+  }
+}
+
+.scroll-to-reviews>span:first-child {
+  position:absolute;
+}
+
+.scroll-to-reviews .glyphicon {
+  padding-left: 15px;
+  top: 2px;
+  left: 130px;
+  &:hover {
+   cursor: pointer;
+   top: 0px;
+   font-size: 25px;
+  }
+}
+
 .current-user-review-components {
   display: -webkit-inline-box;
   border-top: 1px solid #f0f0f0;
