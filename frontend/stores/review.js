@@ -48,6 +48,17 @@ var findMyReviews = function() {
   _myReviews = myReviews;
 };
 
+var findUserReviews = function(userId) {
+  var userReviews = [];
+  _reviews.forEach(function(review) {
+    if(review.user_id === userId) {
+      userReviews.push(review);
+    }
+  });
+
+  return userReviews;
+};
+
 var findMySpotReview = function(spotId) {
   for( var i = 0; i < _myReviews.length; i++ ) {
     if (_myReviews[i].spot_id === spotId) {
@@ -86,7 +97,7 @@ ReviewStore.findBySpot = function(spotId) {
 
   _reviews.forEach(function(review){
     if (review.spot_id === spotId) {
-      spotReviews.push(review); //////
+      spotReviews.push(review); 
     }
   });
   return spotReviews;

@@ -28,7 +28,7 @@ var UserAvatar = React.createClass({
 
   render: function(){
     return(<img src={this.state.avatar}
-                alt="Guest Avatar"
+                alt="User Avatar"
                 height="60"
                 width="60">
            </img>

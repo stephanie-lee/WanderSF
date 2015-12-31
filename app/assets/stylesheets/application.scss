@@ -435,6 +435,34 @@ tr td:last-child {
 }
 
 /* reviews */
+
+.current-user-review-components {
+  display: -webkit-inline-box;
+  border-top: 1px solid #f0f0f0;
+  width: 100%;
+  margin-top: 15px;
+}
+
+#current-user-info {
+  width: 35%;
+  padding-top: 25px;
+}
+
+#current-user-info img {
+  float: left;
+  margin-right: 15px;
+}
+
+#current-user-review {
+  width: 65%;
+  padding-left: 20px;
+  padding-top: 25px;
+}
+
+.delete-review {
+  margin-left: 5px;
+}
+
 .rating-choice > * {
   display: inline-block;
   right:100px
@@ -442,6 +470,16 @@ tr td:last-child {
 
 .rating-choice :last-child {
   margin-left: 5px;
+}
+
+.stars-with-date {
+  display: inline-flex;
+  margin-bottom:15px;
+}
+
+.stars-with-date>div:last-child {
+  padding-top: 6px;
+  margin-left: 10px;
 }
 
 /* footer */

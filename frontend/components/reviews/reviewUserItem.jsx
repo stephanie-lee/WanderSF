@@ -18,12 +18,14 @@ var ReviewUserItem = React.createClass({
     return (
       <div>
         <ul className="list-unstyled">
-          <li><input id="review-rating"
+          <li className="stars-with-date">
+            <input id="review-rating"
                  className="rating"
                  type="number"
                  min='1'
-                 max='5'/></li>
-          <li>Review: {this.props.yourReview.comment}</li>
+                 max='5'/>
+            <div>{this.props.yourReview.date}</div></li>
+          <li>{this.props.yourReview.comment}</li>
           <br/>
         </ul>
       </div>

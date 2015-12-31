@@ -12,6 +12,7 @@ var TaggingUtil = require('../../util/tagging_util');
 var TagStore = require('../../stores/tag');
 var SpotDetailRating = require('./spotDetailRating');
 var SpotAddressMap = require('./spotMiniComponents/spotAddressMap');
+var MyUserInfo = require('./spotMiniComponents/myUserInfo');
 
 var Link = ReactRouter.Link;
 
@@ -129,9 +130,9 @@ var SpotDetail = React.createClass({
         yourReview={this.yourReview} />;
     } else {
       reviewForm = <div>
-                      <button className="edit-review"
+                      <button className="edit-review btn btn-success"
                               onClick={this.toggleReviewForm}>Edit</button>
-                      <button className="delete-review"
+                      <button className="delete-review btn btn-secondary"
                               onClick={this.deleteYourReview}>Delete</button>
                    </div>;
     }
@@ -201,11 +202,16 @@ var SpotDetail = React.createClass({
             </li>
             <br />
           <br/>
-          <div className="reviews">
-            {yourReviewItem}
-            {reviewForm}
+          <div className="reviews-container">
+            <h4>Recent Reviews</h4>
+            <div className="current-user-review-container">
+              <ul className="list-unstyled current-user-review-components">
+                <li id="current-user-info"><MyUserInfo /></li>
+                <li id="current-user-review">{yourReviewItem} {reviewForm}</li>
+              </ul>
+            </div>
+
             <br/><br/>
-            <h4>Reviews</h4>
             <ReviewIndex reviews={this.state.reviews} yourReview={this.yourReview} />
             <br /><br />
           </div>

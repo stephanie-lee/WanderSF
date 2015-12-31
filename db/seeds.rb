@@ -284,8 +284,8 @@ end
 
   spot_name = Faker::Address.street_name + " " + RANDOM_TYPE.sample
   description = Faker::Lorem.sentences(5)
-  lat = rand(37.6413...37.8046)
-  lng = rand(-122.510...-122.3872)
+  lat = rand(37.6941...37.8046)
+  lng = rand(-122.507...-122.3872)
 
   new_spot = Spot.create(name: spot_name,
                         description: description,

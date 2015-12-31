@@ -15,11 +15,13 @@ var Map = React.createClass({
   componentDidMount: function(){
     var map = ReactDOM.findDOMNode(this.refs.map);
     var mapOptions = {
-      center: {lat: 37.7458, lng: -122.4416},
+      center: {lat: 37.7358, lng: -122.4416},
       zoom: 12,
       scrollwheel: false
     };
     this.map = new google.maps.Map(map, mapOptions);
+    this.markers = [];
+    this.props.spots.forEach(this.createMarkerFromSpot);
   },
 
   componentDidUpdate: function (oldProps) {
@@ -31,7 +33,25 @@ var Map = React.createClass({
   },
 
   _onChange: function(){
-    this.props.spots.forEach(this.createMarkerFromSpot);
+    var spots = this.props.spots;
+    var toAdd = [], toRemove = this.markers.slice(0);
+    spots.forEach(function(spot, idx) {
+      var removeIdx = -1;
+
+      for(var i = 0; i < toRemove.length; i++){
+        if(toRemove[i].spotId == spot.id){
+          removeIdx = i;
+          break;
+        }
+      }
+      if(removeIdx === -1){
+        toAdd.push(spot);
+      } else {
+        toRemove.splice(removeIdx, 1);
+      }
+    });
+    toAdd.forEach(this.createMarkerFromSpot);
+    toRemove.forEach(this.removeMarker);
   },
 
   componentWillUnmount: function(){
@@ -49,6 +69,17 @@ var Map = React.createClass({
     this.markerListener = marker.addListener('click', function () {
       that.props.onMarkerClick(spot);
     });
+    this.markers.push(marker);
+  },
+
+  removeMarker: function(marker){
+    for(var i = 0; i < this.markers.length; i++){
+      if (this.markers[i].spotId === marker.spotId){
+        this.markers[i].setMap(null);
+        this.markers.splice(i, 1);
+        break;
+      }
+    }
   },
 
   render: function(){

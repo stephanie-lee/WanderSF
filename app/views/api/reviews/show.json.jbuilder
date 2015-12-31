@@ -1,4 +1,4 @@
-json.extract! @review, :id, :comment, :spot_id, :rating
+json.extract! @review, :id, :comment, :spot_id, :rating, :updated_at
 json.user do
   json.extract! @review.user, :first_name, :last_name, :wanderer_title
 end

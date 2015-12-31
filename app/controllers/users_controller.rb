@@ -11,7 +11,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(email: user_params[:email],
+                     first_name: user_params[:first_name].capitalize,
+                     last_name: user_params[:last_name].capitalize,
+                     password: user_params[:password])
 
     if @user.save
       login_user!(@user)
