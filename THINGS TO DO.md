@@ -1,8 +1,3 @@
-address display--add to details page
-google maps--continue
-
-scroll bar next to results
-
 like function?
 
 

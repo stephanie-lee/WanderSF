@@ -170,13 +170,14 @@ var SpotDetail = React.createClass({
     var picturesList;
     if(spotPictures) {
       picturesList = spotPictures.map(function(picture){
-        var imageSource = "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_150,w_150/" + picture.source;
+        var imageSource = "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/" + picture.source;
         return(<img key={picture.id} src={imageSource}></img>);
       });
     }
 
     return(
       <div className="spot-detail-page">
+        <div className="blue-blackground-container"></div>
         <div className="spot-detail-pane">
           <ul className="detail list-unstyled">
             <li key='name' className="spot-name">{spot.name}</li>
@@ -206,7 +207,7 @@ var SpotDetail = React.createClass({
             <br/><br/>
             <h4>Reviews</h4>
             <ReviewIndex reviews={this.state.reviews} yourReview={this.yourReview} />
-            <br /><br /><br />
+            <br /><br />
           </div>
           </ul>
         </div>
