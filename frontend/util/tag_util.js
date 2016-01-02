@@ -31,7 +31,18 @@ var TagUtil = {
         TagActions.receiveQueryTags(tags);
       }
     });
-  }
+  },
+
+  fetchRandomTags: function(number) {
+    $.ajax({
+      url: 'api/tags',
+      dataType: 'json',
+      data: {number: number},
+      success: function(tags){
+        TagActions.receiveAllTags(tags);
+      }
+    });
+  },
 };
 
 window.TagUtil = TagUtil;

@@ -1,6 +1,6 @@
 class Api::ReviewsController < ApplicationController
   def index
-    @reviews = Review.all
+    get_reviews_from_params
     render :index
   end
 
@@ -42,5 +42,14 @@ class Api::ReviewsController < ApplicationController
   private
   def review_params
     params.require(:review).permit(:rating, :comment, :spot_id)
+  end
+
+  def get_reviews_from_params
+    if params[:number]
+      limit = params[:number].to_i * -1
+      @reviews = Review.all.slice(limit..-1)
+    else
+      @reviews = Review.all
+    end
   end
 end

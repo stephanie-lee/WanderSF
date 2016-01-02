@@ -12,6 +12,16 @@ var ApiUtil = {
     });
   },
 
+  // fetchSpotReviewers:function(spotId) {
+  //   $.ajax({
+  //     url: "api/users/",
+  //     data: spotId,
+  //     success: function(users){
+  //       UserActions.receiveSpotReviewers(users);
+  //     }
+  //   });
+  // },
+  //
   destroySession: function(id) {
 		$.ajax({
 			url: "/session",

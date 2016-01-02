@@ -2,7 +2,7 @@
   <div class="errors">
     <% messages = flash[:errors]%>
     <% messages.each do |message| %>
-      <%= message %>
+      <p class="flash"><%= message %></p>
     <% end %>
   </div>
 <% end %>

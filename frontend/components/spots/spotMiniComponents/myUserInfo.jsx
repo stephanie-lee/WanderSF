@@ -51,12 +51,12 @@ var MyUserInfo = React.createClass({
     }
 
     return(<div>
-            <div className="user-info">
               <img src={this.state.avatar}
                 alt="Current User Avatar"
                 height="90"
                 width="90">
               </img>
+            <div className="user-info">
               <ul className="list-unstyled">
                 <li>{displayName}</li>
                 <li>{this.state.title}</li>

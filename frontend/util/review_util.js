@@ -44,7 +44,18 @@ var ReviewUtil = {
         ReviewActions.deleteSingleReview(review);
       }
     });
-  }
+  },
+
+  fetchRecentReviews: function(number){
+    $.ajax({
+      url: 'api/reviews',
+      dataType: 'json',
+      data: {number: number},
+      success: function(reviews){
+        ReviewActions.receiveRecentReviews(reviews);
+      }
+    });
+  },
 };
 
 module.exports = ReviewUtil;

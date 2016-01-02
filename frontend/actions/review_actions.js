@@ -28,7 +28,14 @@ var ReviewActions = {
       actionType: ReviewConstants.DELETE_REVIEW,
       review: review
     });
-  }
+  },
+
+  receiveRecentReviews: function(reviews){
+    AppDispatcher.dispatch({
+      actionType: ReviewConstants.RECEIVE_RANDOM_REVIEWS,
+      reviews: reviews
+    });
+  },
 };
 
 module.exports = ReviewActions;

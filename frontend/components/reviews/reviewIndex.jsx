@@ -8,14 +8,22 @@ var ReviewStore = require('../../stores/review');
 ReviewIndex = React.createClass({
   render: function() {
     var reviews = this.props.reviews;
-    var yourReview = this.props.yourReview;
+    var yourReview = this.props.userReview;
 
-    if (yourReview) {
-      for(var idx in reviews) {
-        if (reviews[idx] === yourReview) {
-          reviews.splice(idx, 1);
+    function userReviewCount(userId) {
+      allReviews = ReviewStore.all();
+      count = 0;
+      for( var review in allReviews ) {
+        if (allReviews[review].user.id === userId) {
+          count += 1;
         }
       }
+      return count;
+    }
+
+    if (yourReview) {
+      idx = reviews.indexOf(yourReview);
+      reviews.splice(idx, 1);
     }
 
     if (reviews.length === 0 && !yourReview) {
@@ -25,7 +33,8 @@ ReviewIndex = React.createClass({
     } else {
       reviewIndexDisplay = <div className="review-index">
                             {reviews.map(function(review) {
-                              return <ReviewIndexItem key={review.id} {...review} />;
+                              reviewCount = userReviewCount(review.user.id);
+                              return <ReviewIndexItem key={review.id} {...review} reviewCount={reviewCount} />;
                             })}
                           </div>;
     }

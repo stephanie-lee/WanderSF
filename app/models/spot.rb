@@ -15,4 +15,9 @@ class Spot < ActiveRecord::Base
     partial = "%#{str}%"
     Spot.includes(:tags).references(:tags).where("tags.name LIKE ?", partial)
   end
+
+  def self.find_by_spot_partial(str)
+    partial = "%#{str.downcase}%"
+    Spot.where("lower(name) LIKE ?", partial)
+  end
 end

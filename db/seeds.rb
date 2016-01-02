@@ -14,8 +14,8 @@ Tagging.delete_all
 Picture.delete_all
 
 User.create( email: "guest@guest.com",
-             first_name: "guest",
-             last_name: "user",
+             first_name: "Guest",
+             last_name: "Guest",
              password: "password",
              wanderer_title: "Cautious Adventurer"
             )
@@ -250,16 +250,22 @@ Tagging.create([{ spot_id: 1, tag_id: 1 },
   first_name, last_name = name[0], name[1]
   email = Faker::Internet.email
 
-  User.create(email: email,
-              first_name: first_name,
-              last_name: last_name,
-              password: "mystery",
-              wanderer_title: wanderer_title.sample)
+  user = User.create(email: email,
+                     first_name: first_name,
+                     last_name: last_name,
+                     password: "mystery",
+                     wanderer_title: wanderer_title.sample)
+
+  bg = ["bg1", "bg2"]
+  Picture.create(name: "User Avatar",
+                 source: Faker::Avatar.image(email, "200x200", "png", "set1", bg.sample),
+                 imageable_id: user.id,
+                 imageable_type: "User")
 end
 
 200.times do
-  spot_id = rand(2..50)
-  user_id = rand(1..50)
+  spot_id = rand(2..30)
+  user_id = rand(1..51)
   rating = rand(1..5)
   review = Faker::Lorem.sentences(5)
   Review.create(spot_id: spot_id,

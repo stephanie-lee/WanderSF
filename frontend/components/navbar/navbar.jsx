@@ -49,7 +49,6 @@ var NavBar = React.createClass({
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav navbar-right">
               <li className="search-bar"><SearchBar location={this.props.location}/></li>
-              <li><UserInfo className="left-nav"/></li>
               <li></li>
               <li className="dropdown" style={liStyle}>
                 <a href="#"
@@ -59,8 +58,6 @@ var NavBar = React.createClass({
                    aria-haspopup="true"
                    aria-expanded="false"><UserAvatar /><span className="caret"></span></a>
                 <ul className="dropdown-menu">
-                  <li><a href="#">My Profile</a></li>
-                  <li role="separator" className="divider"></li>
                   <li><SignOut /></li>
                 </ul>
               </li>

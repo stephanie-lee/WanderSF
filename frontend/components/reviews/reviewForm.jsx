@@ -10,7 +10,7 @@ var ReviewForm = React.createClass({
 
   getInitialState: function () {
     if(this.props.hasReviewed) {
-      var yourReview = this.props.yourReview;
+      var yourReview = this.props.userReview;
       return ({ id: yourReview.rating,
                 rating: yourReview.rating,
                 comment: yourReview.comment });
@@ -42,8 +42,8 @@ var ReviewForm = React.createClass({
   },
 
   componentWillReceiveProps: function(newProps) {
-    if (newProps.yourReview) {
-      var yourReview = newProps.yourReview;
+    if (newProps.userReview) {
+      var yourReview = newProps.userReview;
       this.setState({ id: yourReview.id,
                       rating: yourReview.rating,
                       comment: yourReview.comment
@@ -64,7 +64,7 @@ var ReviewForm = React.createClass({
     );
 
     if(this.props.hasReviewed) {
-      var reviewId = this.props.yourReview.id;
+      var reviewId = this.props.userReview.id;
       review.id = reviewId;
       ReviewUtil.updateSingleReview(review);
     } else {
@@ -90,12 +90,12 @@ var ReviewForm = React.createClass({
           <h7>Select a rating</h7>
           <br/><br/>
           <textarea
-                    cols='50'
-                    rows='3'
+                    cols='60'
+                    rows='4'
                     valueLink={this.linkState('comment')}>
 </textarea>
           <br/>
-          <input type="submit" />
+          <input type="submit" className="btn btn-success"/>
         </form>
       </div>
     );
@@ -104,5 +104,3 @@ var ReviewForm = React.createClass({
 });
 
 module.exports = ReviewForm;
-
-// <button onClick={/*this.handleCancel*/}>Cancel</button>

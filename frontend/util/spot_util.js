@@ -30,9 +30,20 @@ var SpotUtil = {
 
   fetchSpotsByQuery: function(string){
     $.ajax({
-      url: 'api/spots/',
-      data: {search: string},
+      url: 'api/spots',
+      data: {tag_search: string},
       success: function(spots) {
+        SpotActions.receiveAllSpots(spots);
+      }
+    });
+  },
+
+  fetchQuerySpots: function(string){
+    $.ajax({
+      url: 'api/spots',
+      dataType: 'json',
+      data: {spot_search: string},
+      success: function(spots){
         SpotActions.receiveAllSpots(spots);
       }
     });

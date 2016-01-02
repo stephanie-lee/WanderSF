@@ -7,7 +7,13 @@ var UserActions = {
       actionType: UserConstants.USER_RECEIVED,
       user: user
     });
-  }
+  },
+  // receiveSpotReviewers: function(users){
+  //   AppDispatcher.dispatch({
+  //     actionType: UserConstants.SPOT_REVIEWERS_RECEIVED,
+  //     users: users
+  //   });
+  // },
 };
 
 module.exports = UserActions;

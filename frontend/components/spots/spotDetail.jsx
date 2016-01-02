@@ -21,10 +21,6 @@ var Events = Scroll.Events;
 
 var Link = ReactRouter.Link;
 
-String.prototype.capitalizeFirstLetter = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
 var SpotDetail = React.createClass({
   mixins: [Events],
   getInitialState: function() {
@@ -94,7 +90,11 @@ var SpotDetail = React.createClass({
   },
 
   toggleTaggingForm: function() {
-    this.setState({taggingFormView: true});
+    if(this.state.spot.taggings.length > 4) {
+      alert("Limit 5 tags per spot! Please remove a tag if you want to add a new tag.");
+    } else {
+      this.setState({taggingFormView: true});
+    }
   },
 
   createTagging: function(e) {
@@ -132,7 +132,7 @@ var SpotDetail = React.createClass({
       yourReviewItem = <div>
         <h4>Your Review</h4>
         <ReviewUserItem
-        yourReview={this.yourReview} /></div>;
+        userReview={this.yourReview} /></div>;
     } else if (this.state.hasReviewed && this.state.formView) {
       yourReviewItem = <h4>Edit Your Review</h4>;
     } else {
@@ -143,7 +143,7 @@ var SpotDetail = React.createClass({
       reviewForm = <ReviewForm
         spotId={this.props.params.spotId}
         hasReviewed={this.state.hasReviewed}
-        yourReview={this.yourReview} />;
+        userReview={this.yourReview} />;
     } else {
       reviewForm = <div>
                       <button className="edit-review btn btn-success"
@@ -163,7 +163,7 @@ var SpotDetail = React.createClass({
       taggingList = taggings.map(function(tagging, idx) {
         var tagLink = "/spots/search?query=" + tagging.name;
         return(<li key={tagging.tag_id}>
-                  <Link to={tagLink}>{tagging.name.capitalizeFirstLetter()}</Link>
+                  <Link to={tagLink}>{tagging.name}</Link>
                   <span id={tagging.id}
                         tagId={tagging.tag_id}
                         className="glyphicon glyphicon-remove-circle"
@@ -236,7 +236,7 @@ var SpotDetail = React.createClass({
             </div>
 
             <br/><br/>
-            <ReviewIndex reviews={this.state.reviews} yourReview={this.yourReview} />
+            <ReviewIndex reviews={this.state.reviews} userReview={this.yourReview} />
             <br /><br />
           </Element>
         </div>

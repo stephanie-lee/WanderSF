@@ -2,6 +2,7 @@ var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 var _reviews = [];
 var _myReviews = [];
+var _recentReviews = [];
 var currentReview = null;
 var ReviewStore = new Store(AppDispatcher);
 var ReviewConstants = require('../constants/review_constants');
@@ -36,6 +37,10 @@ var deleteReview = function(deletedReview) {
   });
   _reviews = _reviews.splice(index, 1);
   findMyReviews();
+};
+
+var resetRecentReviews = function(reviews) {
+  _recentReviews = reviews;
 };
 
 var findMyReviews = function() {
@@ -86,6 +91,11 @@ ReviewStore.__onDispatch = function (payload) {
     case ReviewConstants.DELETE_REVIEW:
       deleteReview(payload.review);
       ReviewStore.__emitChange();
+      break;
+    case ReviewConstants.RECEIVE_RANDOM_REVIEWS:
+      resetRecentReviews(payload.reviews);
+      ReviewStore.__emitChange();
+      break;
   }
 };
 
@@ -97,7 +107,7 @@ ReviewStore.findBySpot = function(spotId) {
 
   _reviews.forEach(function(review){
     if (review.spot_id === spotId) {
-      spotReviews.push(review); 
+      spotReviews.push(review);
     }
   });
   return spotReviews;
@@ -129,6 +139,10 @@ ReviewStore.averageRating = function(spotId) {
     totalRatings += review.rating;
   });
   return (Math.round((totalRatings / spotReviews.length) * 2 ) / 2);
+};
+
+ReviewStore.recentReviews = function() {
+  return _recentReviews.slice(0);
 };
 
 window.ReviewStore = ReviewStore;

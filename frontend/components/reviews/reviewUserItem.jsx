@@ -11,7 +11,7 @@ var ReviewUserItem = React.createClass({
                                 showCaption: false,
                                 readonly: true,
                                 size: "xxs"}); //symbol: "👣"
-    $("#review-rating").rating('update', this.props.yourReview.rating);
+    $("#review-rating").rating('update', this.props.userReview.rating);
   },
 
   render:function()  {
@@ -24,8 +24,8 @@ var ReviewUserItem = React.createClass({
                  type="number"
                  min='1'
                  max='5'/>
-            <div>{this.props.yourReview.date}</div></li>
-          <li>{this.props.yourReview.comment}</li>
+            <div>{this.props.userReview.date}</div></li>
+          <li>{this.props.userReview.comment}</li>
           <br/>
         </ul>
       </div>

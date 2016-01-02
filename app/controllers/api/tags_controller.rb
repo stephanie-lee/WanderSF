@@ -3,10 +3,14 @@ class Api::TagsController < ApplicationController
     if params[:query]
       @tags = Tag.queried_tags(params[:query])
       render :index
-    # else
-    #   @tags = Tag.all
-    #   render :index
+    elsif params[:number]
+      @tags = []
+      params[:number].to_i.times do
+        @tags << Tag.all.sample
+      end
+      render :index
     end
+
   end
 
   def create
