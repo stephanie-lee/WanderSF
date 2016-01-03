@@ -46,9 +46,10 @@ var SpotsSearchIndex = React.createClass({
     if (!this.state) {
       spotItems = <div></div>;
     } else if(this.state.spots.length === 0) {
-      spotItems = <div>
+      spotItems = <div className="failed-search-container">
                     <h4>Try a different tag. Here are some suggestions:</h4>
-                    <ul className="list-unstyled">
+                    <br/>
+                    <ul className="list-unstyled tag-suggestions">
                       {this.state.tagSuggestions.map(function(tag, idx){
                         var tagLink = "/spots/search?query=" + tag.name;
                         return <li key={idx}><Link to={tagLink}>{tag.name}</Link></li>;

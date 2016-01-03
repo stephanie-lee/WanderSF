@@ -21,11 +21,11 @@
 /* universal */
 
 body {
-  font-family: helvetica;
+  font-family: 'Roboto', sans-serif;
   padding-top: 80px;
   margin-top: 0px;
   background-color: #F7FCF8;
-  // margin: 30px;
+  color: #4d4d4d;
 }
 
 section {
@@ -33,7 +33,9 @@ section {
 }
 
 textarea {
-  resize: vertical;
+  resize: none;
+  z-index: 50;
+  border: 1px solid #ccc;
 }
 
 .btn-xxs {
@@ -70,7 +72,6 @@ textarea {
   }
 
   #home-page-container .left-column {
-    border: 1px solid black;
     height: 100%;
     width: 75%;
   }
@@ -81,12 +82,14 @@ textarea {
     width: 30%;
   }
 
+  .spot-review-title {
+    padding-left: 20px;
+  }
+
   .home-review-form {
     margin: 20px;
-    padding: 10px;
-    border: 0px;
+    padding: 15px;
     background-color: #e4f0fd;
-    width: 550px;
   }
 
   .message--error {
@@ -97,7 +100,7 @@ textarea {
 
   .message--info {
     color: green;
-    padding-left: 40px;
+    padding-left: 30px;
   }
 
   .spot-search-box {
@@ -112,25 +115,41 @@ textarea {
     display: inherit;
   }
 
+  .home-review-form {
+    height: auto;
+  }
+
   .home-review-form textarea {
     margin-top: 20px;
   }
 
   .home-review-form form {
     display: table-caption;
+    height: auto;
   }
 
   .no-spot-suggest {
     width: 150px;
     height: 40px;
     text-align: center;
-    margin-left: 100px;
+    margin-left: 130px;
   }
 
   @media (max-width: 787px) {
     .right-column {
       display: none;
     }
+    #home-page-container .left-column {
+      width: 100%;
+    }
+    .home-review-form {
+      width: 540px;
+    }
+  }
+
+  .recent-review-title {
+    padding-left: 20px;
+    padding-bottom: 10px;
   }
 
   .recent-reviews-container {
@@ -138,9 +157,31 @@ textarea {
     margin-top: 30px;
   }
 
+  .recent-stars-with-date {
+    display: inline-flex;
+  }
+
+  .recent-stars-with-date > div:last-child {
+    padding-top: 6px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
   #recent-review-item {
+    margin-left: 5%;
+    width: 90%;
     border-top: 1px solid #f0f0f0;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  #recent-review-item .recent-review-info {
+    margin-left: 115px;
+  }
+
+  #recent-review-item .recent-review-info > li:first-child {
+    margin-left: -10px;
+    margin-bottom: 5px;
   }
 
   #recent-review-item img {
@@ -452,6 +493,18 @@ tr td:last-child {
 
 .spot-rating-list {
   display: inline-block;
+}
+
+.failed-search-container {
+  margin: 20px;
+}
+
+.tag-suggestions {
+  margin-left: 20px;
+}
+
+.tag-suggestions > li {
+  padding: 3px;
 }
 
 /* spots details */

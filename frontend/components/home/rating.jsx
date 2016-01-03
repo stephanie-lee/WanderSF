@@ -10,7 +10,7 @@ var HomeRating = React.createClass({
                                 showClear: false,
                                 showCaption: false,
                                 readonly: true,
-                                size: "xs"}); //symbol: "👣"
+                                size: "xxs"}); //symbol: "👣"
   },
 
   componentWillReceiveProps: function(newProp) {

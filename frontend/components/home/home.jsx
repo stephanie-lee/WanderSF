@@ -27,6 +27,7 @@ var Home = React.createClass({
   render: function() {
     return (<div id="home-page-container">
               <div className="left-column">
+                <h3 className="spot-review-title">Review a Spot!</h3>
                 <div className="home-review-form">
                   <HomeReviewForm userSpots = {this.state.userSpotReviews} />
                 </div>

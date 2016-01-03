@@ -268,10 +268,13 @@ end
   user_id = rand(1..51)
   rating = rand(1..5)
   review = Faker::Lorem.sentences(5)
+  time = Faker::Time.between(20.days.ago, Date.today)
   Review.create(spot_id: spot_id,
                 user_id: user_id,
                 rating: rating,
-                comment: review.join(" ")
+                comment: review.join(" "),
+                created_at: time,
+                updated_at: time,
                 )
 end
 

@@ -78,9 +78,9 @@ var HomeReviewForm = React.createClass({
 
   handleSubmit: function(event) {
     event.preventDefault();
-    var currentReview = { spot_id: parseInt(event.target[3].value),
+    var currentReview = { spot_id: parseInt(event.target[2].value),
                           rating: parseInt(event.target[1].value),
-                          comment: event.target[2].value }
+                          comment: event.target[3].value }
     if(isNaN(currentReview.spot_id) || currentReview.spot_id === 0) {
       var error = ["**Please select an existing spot**"]
       this.setState({error: error});
@@ -112,14 +112,14 @@ var HomeReviewForm = React.createClass({
           this.refs.searchInput.blur();
 
           this.setState({info: ["Your review has been created!"]})
-          setTimeout(function(){that.setState({info: null})}, 5000)
+          setTimeout(function(){that.setState({info: null})}, 7000)
         }
       } else {
         ReviewUtil.createReview(currentReview);
         this.refs.searchInput.blur();
 
         this.setState({info: ["Your review has been created!"]})
-        setTimeout(function(){that.setState({info: null})}, 5000)
+        setTimeout(function(){that.setState({info: null})}, 7000)
       }
     }
   },
@@ -160,10 +160,8 @@ var HomeReviewForm = React.createClass({
                    max='5'/>
             <h7>Select a rating</h7>
           </div>
-          <div className="review-text-box">
-            <textarea cols='60'rows='4'></textarea>
-          </div>
           <input type="hidden" id="txtAllowSearchID"/>
+          <textarea cols='70'rows='4'></textarea>
           <input type="submit" className="btn btn-success"/>
           {successMessage}
         </form>
