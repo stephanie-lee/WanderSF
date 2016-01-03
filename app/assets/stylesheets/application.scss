@@ -125,6 +125,19 @@ textarea {
     }
   }
 
+  .recent-reviews-container {
+    padding-bottom: 40px;
+    margin-top: 30px;
+  }
+
+  #recent-review-item {
+    border-top: 1px solid #f0f0f0;
+    padding: 20px;
+  }
+
+  #recent-review-item img {
+    float: left;
+  }
 /* page details */
 
 .spot-info li:last-child ul {

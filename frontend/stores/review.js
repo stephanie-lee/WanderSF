@@ -3,6 +3,7 @@ var AppDispatcher = require('../dispatcher/dispatcher');
 var _reviews = [];
 var _myReviews = [];
 var _recentReviews = [];
+var _userReviews = [];
 var currentReview = null;
 var ReviewStore = new Store(AppDispatcher);
 var ReviewConstants = require('../constants/review_constants');
@@ -12,9 +13,15 @@ var resetReviews = function(newReviews) {
   findMyReviews();
 };
 
+var resetUserReviews = function(newReviews) {
+  _userReviews = newReviews;
+};
+
 var addReview = function(newReview) {
   _reviews.push(newReview);
   findMyReviews();
+  _recentReviews.splice(-1, 1);
+  _recentReviews.unshift(newReview);
 };
 
 var updateReview = function(edittedReview) {
@@ -25,6 +32,17 @@ var updateReview = function(edittedReview) {
     }
   });
   findMyReviews();
+  _recentReviews.forEach(function(review, idx) {
+    if(review.id === targetId) {
+      _recentReviews.splice(idx, 1);
+      _recentReviews.unshift(edittedReview);
+    }
+  });
+
+  if (_recentReviews.indexOf(edittedReview) === -1){
+    _recentReviews.splice(-1, 1);
+    _recentReviews.unshift(edittedReview);
+  }
 };
 
 var deleteReview = function(deletedReview) {
@@ -96,6 +114,10 @@ ReviewStore.__onDispatch = function (payload) {
       resetRecentReviews(payload.reviews);
       ReviewStore.__emitChange();
       break;
+    case ReviewConstants.RECEIVE_USER_REVIEWS:
+      resetUserReviews(payload.reviews);
+      ReviewStore.__emitChange();
+      break;
   }
 };
 
@@ -130,6 +152,10 @@ ReviewStore.all = function() {
 
 ReviewStore.allMyReviews = function() {
   return _myReviews.slice(0);
+};
+
+ReviewStore.singleUserAllReviews = function() {
+  return _userReviews.slice(0);
 };
 
 ReviewStore.averageRating = function(spotId) {

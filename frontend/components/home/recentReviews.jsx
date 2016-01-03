@@ -4,6 +4,7 @@ var HomeReviewForm = require('./homeReviewForm');
 var ReviewStore = require('../../stores/review');
 var ReviewUtil = require('../../util/review_util');
 var Rating = require('./rating');
+var Link = ReactRouter.Link;
 
 var RecentReviews = React.createClass({
   getInitialState: function() {
@@ -19,6 +20,9 @@ var RecentReviews = React.createClass({
     this.setState( {recentReviews: ReviewStore.recentReviews() });
   },
 
+  componentWillUnmount: function() {
+    this.reviewListener.remove();
+  },
 
   render: function() {
     if (this.state.recentReviews.length === 0) {
@@ -28,16 +32,15 @@ var RecentReviews = React.createClass({
         var name = review.user.first_name + " " +
                    review.user.last_name[0] + ".";
         var altTag = name + " User Avatar";
-        var status = name + " wrote a review for " + review.spot_name;
-        return <ul key={review.id} className="list-unstyled">
-                <li>
-                  <img src={review.user.avatar.source}
-                    alt={altTag}
-                    height="90"
-                    width="90">
-                  </img>
-                </li>
-                <li>{status}</li>
+        var spotLink = "/spot/" + review.spot_name.id;
+        var status = name + " wrote a review for ";
+        return <ul key={review.id} className="list-unstyled" id="recent-review-item">
+                <img src={review.user.avatar.source}
+                  alt={altTag}
+                  height="90"
+                  width="90">
+                </img>
+                <li>{status}<Link to={spotLink}>{review.spot_name.name}</Link></li>
                 <li className="stars-with-date">
                   <Rating rating={review.rating} ratingId={review.id}/>
                   <div>{review.date}</div></li>
@@ -47,7 +50,7 @@ var RecentReviews = React.createClass({
     }
 
     return (
-      <div>
+      <div className="recent-reviews-container">
         <h4>Recent Reviews</h4>
           {reviews}
       </div>

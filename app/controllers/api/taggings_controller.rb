@@ -11,7 +11,7 @@ class Api::TaggingsController < ApplicationController
       @spot = @tagging.spot
       render :show_spot
     else
-      flash[:errors] = @tagging.errors.full_messages
+      render json: @tagging.errors.full_messages
     end
   end
 

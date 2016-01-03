@@ -34,6 +34,7 @@ var SpotSearchBar = React.createClass({
     this.setState({searchString: e.target.innerHTML});
   },
 
+
   // handleSearch: function(e) {
   //   e.preventDefault();
   //   this.refs.searchInput.blur();
@@ -57,11 +58,11 @@ var SpotSearchBar = React.createClass({
     });
   },
 
-  render: function() {
-    if (!this.state.searchString) {
-    } else {
+  componentWillUnmount: function() {
+    this.spotListener.remove();
+  },
 
-    }
+  render: function() {
     return (
       <div>
         <input type="text"

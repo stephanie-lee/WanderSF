@@ -6,18 +6,16 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.new(review_params)
-
     if @review.save
       render :show
     else
-      flash[:errors] = @review.errors.full_messages
+      render json: @review.errors.full_messages
     end
   end
 
-  # def show
-  #   @review = Review.find(params[:id])
-  #   render :show
-  # end
+  def show
+    @review = Review.find(params[:id])
+  end
 
   def update
     @review = Review.find(params[:review][:id])
@@ -46,8 +44,10 @@ class Api::ReviewsController < ApplicationController
 
   def get_reviews_from_params
     if params[:number]
-      limit = params[:number].to_i * -1
-      @reviews = Review.all.slice(limit..-1)
+      limit = params[:number]
+      @reviews = Review.where("updated_at <= ?", DateTime.now).order("created_at DESC").limit(limit)
+    elsif params[:user_id]
+      @reviews = Review.where("user_id = #{params[:user_id]}")
     else
       @reviews = Review.all
     end

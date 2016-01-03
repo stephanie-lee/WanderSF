@@ -56,6 +56,17 @@ var ReviewUtil = {
       }
     });
   },
+
+  fetchUserReviews: function(userId) {
+    $.ajax({
+      url: 'api/reviews',
+      dataType: 'json',
+      data: {user_id: userId},
+      success: function(reviews){
+        ReviewActions.receiveUserReviews(reviews);
+      }
+    });
+  }
 };
 
 module.exports = ReviewUtil;

@@ -49,9 +49,9 @@ var SpotsSearchIndex = React.createClass({
       spotItems = <div>
                     <h4>Try a different tag. Here are some suggestions:</h4>
                     <ul className="list-unstyled">
-                      {this.state.tagSuggestions.map(function(tag){
+                      {this.state.tagSuggestions.map(function(tag, idx){
                         var tagLink = "/spots/search?query=" + tag.name;
-                        return <li><Link to={tagLink}>{tag.name}</Link></li>;
+                        return <li key={idx}><Link to={tagLink}>{tag.name}</Link></li>;
                       })}
                     </ul>
                   </div>;

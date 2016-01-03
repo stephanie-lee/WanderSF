@@ -36,6 +36,13 @@ var ReviewActions = {
       reviews: reviews
     });
   },
+
+  receiveUserReviews: function(reviews){
+    AppDispatcher.dispatch({
+      actionType: ReviewConstants.RECEIVE_USER_REVIEWS,
+      reviews: reviews
+    });
+  }
 };
 
 module.exports = ReviewActions;

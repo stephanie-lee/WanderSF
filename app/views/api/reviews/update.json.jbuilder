@@ -1,13 +1,15 @@
-json.id @review.id
-json.spot_id @review.spot_id
-json.rating @review.rating
-json.comment @review.comment
-
+json.extract! @review, :id, :rating, :comment, :spot_id, :updated_at
+json.spot_name @review.spot, :id, :name
 json.user do
-  json.user_id @review.user.id
-  json.first_name @review.user.first_name
-  json.last_name @review.user.last_name
-  json.wanderer_title @review.user.wanderer_title
+  json.extract! @review.user, :id, :first_name, :last_name, :wanderer_title
+  if @review.user.picture
+    json.avatar @review.user.picture, :name, :source
+  end
 end
 
 json.belongsToCurrentUser true
+
+
+date_array = @review[:updated_at].to_s(:db).split.first.split("-")
+
+json.date "#{date_array[1]}/#{date_array[2]}/#{date_array[0]}"

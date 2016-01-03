@@ -1,6 +1,5 @@
 var React = require('react');
 var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
 
 var ReviewIndexItem = React.createClass({
   componentDidMount: function() {
