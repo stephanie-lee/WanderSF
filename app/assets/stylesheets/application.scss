@@ -89,7 +89,15 @@ textarea {
     width: 550px;
   }
 
-  .recent-review-form {
+  .message--error {
+    color: red;
+    text-align: center;
+    padding-left: 140px;
+  }
+
+  .message--info {
+    color: green;
+    padding-left: 40px;
   }
 
   .spot-search-box {

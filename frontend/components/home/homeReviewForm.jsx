@@ -5,6 +5,7 @@ var ReviewUtil = require('../../util/review_util');
 var SpotUtil = require('../../util/spot_util');
 var SpotStore = require('../../stores/spot');
 var History = require('react-router').History;
+var Message = require('react-message');
 
 
 var HomeReviewForm = React.createClass({
@@ -15,7 +16,9 @@ var HomeReviewForm = React.createClass({
             querySpots: [],
             spot_id: "",
             rating: "",
-            review: ""
+            review: "",
+            error: null,
+            info: ""
            };
   },
 
@@ -78,32 +81,66 @@ var HomeReviewForm = React.createClass({
     var currentReview = { spot_id: parseInt(event.target[3].value),
                           rating: parseInt(event.target[1].value),
                           comment: event.target[2].value }
-
-    if(!currentReview.spot_id || !currentReview.rating || !currentReview.comment) {
-      console.log("nope")
-    }
-
-    var userSpots = this.props.userSpots
-    if (userSpots.length > 0) {
-      for( review in userSpots ) {
-        if(userSpots[review].spot_id === currentReview.spot_id) { //user reviewed before
-          var conf = confirm("You've already reviewed this spot. Do you want to overwrite your past review?")
+    if(isNaN(currentReview.spot_id) || currentReview.spot_id === 0) {
+      var error = ["**Please select an existing spot**"]
+      this.setState({error: error});
+    } else if (!currentReview.rating || !currentReview.comment) {
+      var error = ["**All fields must be filled out.**"]
+      this.setState({error: error});
+    } else {
+      that = this
+      this.setState({error: null});
+      var userSpots = this.props.userSpots
+      if (userSpots.length > 0) {
+        var exists;
+        for( review in userSpots ) {
+          if(userSpots[review].spot_id === currentReview.spot_id) { //user reviewed before
+            var conf = confirm("You've already reviewed this spot. Do you want to overwrite your past review?")
             if (conf === true) {
               currentReview.id = userSpots[review].review_id
               ReviewUtil.updateSingleReview(currentReview);
-              break;
+              exists = true
+              this.refs.searchInput.blur();
+              console.log(this)
+              this.setState({info: ["Your review has been updated!"]})
+              setTimeout(function(){that.setState({info: null})}, 5000)
             }
           }
         }
-    } else {
-      ReviewUtil.createReview(currentReview);
+        if (!exists) {
+          ReviewUtil.createReview(currentReview);
+          this.refs.searchInput.blur();
+
+          this.setState({info: ["Your review has been created!"]})
+          setTimeout(function(){that.setState({info: null})}, 5000)
+        }
+      } else {
+        ReviewUtil.createReview(currentReview);
+        this.refs.searchInput.blur();
+
+        this.setState({info: ["Your review has been created!"]})
+        setTimeout(function(){that.setState({info: null})}, 5000)
+      }
     }
   },
 
   render: function() {
+    if (this.state.error) {
+      currentError = <Message type="error" messages={this.state.error} />
+    } else {
+      currentError = <div></div>
+    }
+
+    if (this.state.info) {
+      successMessage = <Message type="info" messages={this.state.info} />
+    } else {
+      successMessage = <div></div>
+    }
+
     return(
       <div>
-        <form className="rating-choice" onSubmit={this.handleSubmit}>
+        <form className="rating-choice" onSubmit={this.handleSubmit} name="form" noValidate>
+          <div>{currentError}</div>
           <div className="search-bar-stars">
             <div>
               <input type="text"
@@ -128,6 +165,7 @@ var HomeReviewForm = React.createClass({
           </div>
           <input type="hidden" id="txtAllowSearchID"/>
           <input type="submit" className="btn btn-success"/>
+          {successMessage}
         </form>
       </div>
     );
