@@ -26,6 +26,10 @@ body {
   margin-top: 0px;
   background-color: #F7FCF8;
   color: #4d4d4d;
+  background-image:url(http://res.cloudinary.com/stephlee/image/upload/co_rgb:292f2a,e_green:15,o_28/e_brightness:-53/v1451936473/bigstock-Baker-Beach-San-Francisco-Large_u96gu8.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 section {
@@ -60,17 +64,6 @@ textarea {
   margin-bottom: 10px;
 }
 
-/*log in and sign up*/
-
-.log-in-background {
-    background-color: #d3ffbd;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    top: -10px;
-    position: absolute;
-}
-
 /* home page */
   #home-page-container {
     height: 100%;
@@ -80,14 +73,14 @@ textarea {
 
   #home-page-container .left-column {
     height: 100%;
-    width: calc(65% - 30px);
+    width: calc(70% - 30px);
     margin-left: 20px;
     margin-right: 10px
   }
 
   #home-page-container .right-column {
-    width: calc(35% - 40px);
-    margin-right: 20px;
+    width: calc(30% - 10px);
+    margin-right: 0px;
     margin-left: 10px;
     background-color: #F7FCF8;
   }
@@ -510,7 +503,9 @@ nav div ul {
 
 /* search index */
 #search-index-container {
-  width: 65%;
+  width: calc(65% - 80px);
+  opacity: .8;
+  margin-left: 40px;
   top: 150px;
   position: absolute;
 }
@@ -655,6 +650,7 @@ tr td:last-child {
   background-color: white;
   border-left: 1px solid #f0f0f0;
   border-right: 1px solid #f0f0f0;
+  opacity: .8;
 }
 
 .spot-detail-pane {
@@ -785,6 +781,7 @@ tr td:last-child {
 
 .review-index-pane {
   width: 100%;
+  opacity: 50%;
 }
 
 .current-user-review-components {
