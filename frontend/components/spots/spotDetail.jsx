@@ -202,8 +202,9 @@ var SpotDetail = React.createClass({
 
     return(
       <div className="spot-detail-page">
-        <div className="spot-detail-pane">
-          <ul className="detail list-unstyled">
+            <div className="blue-background-container">
+              <ul className="detail list-unstyled">
+
             <li key='name' className="spot-name">{spot.name}</li>
             <li key='rating'><SpotDetailRating rating={spotRating} reviewCount={this.state.reviews.length} /></li>
             <li>
@@ -224,11 +225,19 @@ var SpotDetail = React.createClass({
               </ul>
             </li>
             <br />
-          <br/>
+            <br/>
+            </ul>
+            </div>
+          <div className="spot-detail-pane">
+            <ul className="detail list-unstyled">
+
           <div className="reviews-container">
+            <br /><br /><br />
           <Element name="reviews" className="element" >
             <div className="box"></div>
+
           </Element>
+            <br />
             <h4>
               <SLink to="reviews" spy={true} smooth={true} duration={500}>
                 <div className="scroll-to-reviews">

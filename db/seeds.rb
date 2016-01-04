@@ -28,9 +28,7 @@ Picture.create( name: "Guest Picture",
 Review.create( spot_id: 1,
                user_id: 1,
                rating: 5,
-               comment: "Man, this place is AWESOME! You can see the
-                        entire city in all its glory. I will definitely
-                        return to watch the sun rise.")
+               comment: "Man, this place is AWESOME! You can see the entire city in all its glory. I will definitely return to watch the sun rise.")
 
 Spot.create([{
               name: "Bernal Heights Park",
