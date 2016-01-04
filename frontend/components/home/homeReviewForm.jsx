@@ -40,7 +40,7 @@ var HomeReviewForm = React.createClass({
 
   loadAutocomplete: function() {
     var _this = this;
-    $(this.refs.searchInput).autocomplete({
+    $(this.refs.spotSearchInput).autocomplete({
       source: _this.state.querySpots
     });
   },
@@ -50,7 +50,7 @@ var HomeReviewForm = React.createClass({
     var spots = this.state.querySpots.map(function(spot){
       return {id: spot.id, value: spot.name};
     });
-    $(this.refs.searchInput).autocomplete("option", {
+    $(this.refs.spotSearchInput).autocomplete("option", {
       source: spots,
       select: function(event, ui) {
         $("#txtAllowSearch").val(ui.item.value); // display the selected text
@@ -81,6 +81,12 @@ var HomeReviewForm = React.createClass({
     var currentReview = { spot_id: parseInt(event.target[2].value),
                           rating: parseInt(event.target[1].value),
                           comment: event.target[3].value }
+    var formReset = function() {$('#txtAllowSearch').val('');
+                                $('#textarea').val('');
+                                $('#home-review-rating').rating('reset');
+                                $('#txtAllowSearchID').val('')
+                              };
+
     if(isNaN(currentReview.spot_id) || currentReview.spot_id === 0) {
       var error = ["**Please select an existing spot**"]
       this.setState({error: error});
@@ -99,54 +105,56 @@ var HomeReviewForm = React.createClass({
             if (conf === true) {
               currentReview.id = userSpots[review].review_id
               ReviewUtil.updateSingleReview(currentReview);
+              this.refs.spotSearchInput.blur();
               exists = true
-              this.refs.searchInput.blur();
-              console.log(this)
-              this.setState({info: ["Your review has been updated!"]})
-              setTimeout(function(){that.setState({info: null})}, 5000)
+              this.setState({info: ["Your review has been updated!"]});
+              setTimeout(function(){that.setState({info: null})}, 5000);
+              formReset();
             }
           }
         }
         if (!exists) {
+          this.refs.spotSearchInput.blur();
           ReviewUtil.createReview(currentReview);
-          this.refs.searchInput.blur();
 
-          this.setState({info: ["Your review has been created!"]})
-          setTimeout(function(){that.setState({info: null})}, 7000)
+          this.setState({info: ["Your review has been created!"]});
+          setTimeout(function(){that.setState({info: null})}, 5000);
+          formReset();
         }
       } else {
+        this.refs.spotSearchInput.blur();
         ReviewUtil.createReview(currentReview);
-        this.refs.searchInput.blur();
 
-        this.setState({info: ["Your review has been created!"]})
-        setTimeout(function(){that.setState({info: null})}, 7000)
+        this.setState({info: ["Your review has been created!"]});
+        setTimeout(function(){that.setState({info: null})}, 5000);
+        formReset();
       }
     }
   },
 
   render: function() {
     if (this.state.error) {
-      currentError = <Message type="error" messages={this.state.error} />
+      currentError = <Message key="error" type="error" messages={this.state.error} />
     } else {
-      currentError = <div></div>
+      currentError = <div key="error"></div>
     }
 
     if (this.state.info) {
-      successMessage = <Message type="info" messages={this.state.info} />
+      successMessage = <Message key="info" type="info" messages={this.state.info} />
     } else {
-      successMessage = <div></div>
+      successMessage = <div key="error"></div>
     }
 
     return(
       <div>
         <form className="rating-choice" onSubmit={this.handleSubmit} name="form" noValidate>
-          <div>{currentError}</div>
+          <div key="error">{currentError}</div>
           <div className="search-bar-stars">
             <div>
               <input type="text"
                      id="txtAllowSearch"
                      className="form-control spot-search-box"
-                     ref="searchInput"
+                     ref="spotSearchInput"
                      onChange={this.handleChange}
                      placeholder="Where did you wander?" />
               <div className="no-spot-suggest">
@@ -161,9 +169,9 @@ var HomeReviewForm = React.createClass({
             <h7>Select a rating</h7>
           </div>
           <input type="hidden" id="txtAllowSearchID"/>
-          <textarea cols='70'rows='4'></textarea>
+          <textarea id="textarea" cols='70'rows='4'></textarea>
           <input type="submit" className="btn btn-success"/>
-          {successMessage}
+          <div key="success">{successMessage}</div>
         </form>
       </div>
     );

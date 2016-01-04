@@ -68,11 +68,9 @@ var SpotDetail = React.createClass({
     ReviewUtil.fetchUserReviews(CURRENT_USER_ID);
 
     this.scrollEvent.register('begin', function() {
-      console.log("begin", arguments);
     });
 
     this.scrollEvent.register('end', function() {
-      console.log("end", arguments);
     });
   },
 
@@ -164,7 +162,7 @@ var SpotDetail = React.createClass({
     }
 
     var spot = this.state.spot;
-    var spotRating = ReviewStore.averageRating(spot.id);
+    var spotRating = ReviewStore.averageRating();
 
     var taggings = this.state.spot.taggings;
     if(taggings.length === 0) {

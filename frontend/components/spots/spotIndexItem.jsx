@@ -24,11 +24,16 @@ var SpotIndexItem = React.createClass({
   },
 
   onChange: function() {
-    this.avg = ReviewStore.averageRating(this.props.spot.id);
-    this.reviewCount = ReviewStore.findBySpot(this.props.spot.id).length;
+    this.spotReviews = ReviewStore.spotReviewsFromAll(this.props.spot.id);
+    var total = 0;
+    this.spotReviews.forEach(function(review) {
+      total += review.rating;
+    });
+
+    this.avg = total / this.spotReviews.length;
 
     this.setState({ avg: this.avg,
-                    reviewCount: this.reviewCount });
+                    reviewCount: this.spotReviews.length });
   },
 
   componentDidMount: function() {
@@ -54,16 +59,14 @@ var SpotIndexItem = React.createClass({
       });
     }
 
-    this.avg = ReviewStore.averageRating(this.props.spot.id);
-
     var mainImage;
     if (!this.props.spot) {
       mainImage = <div></div>;
     } else {
       var firstPicture = this.props.spot.pictures[0];
       if (firstPicture) {
-        var imageSource = "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_100,w_100/" + firstPicture.source;
-        mainImage = <img key={firstPicture.id} src={imageSource}></img>;
+        var imageSource = firstPicture.source;
+        mainImage = <img key={firstPicture.id} src={imageSource} width="140" height="140" ></img>;
       }
     }
     return(
@@ -72,7 +75,7 @@ var SpotIndexItem = React.createClass({
           <Link to={spotLink}>{mainImage}</Link>
           <ul className="list-unstyled spot-info">
             <li><h4 onClick={this.showDetail}><Link to={spotLink}>{this.props.spot.name}</Link></h4></li>
-            <li><SpotSearchIndexItemRating spotId={this.props.spot.id} rating={this.avg} reviewCount={this.state.reviewCount} /></li>
+            <li><SpotSearchIndexItemRating spotId={this.props.spot.id} rating={this.state.avg} reviewCount={this.state.reviewCount} /></li>
             <li><ul className="list-unstyled list-inline tag-list">{taggingList}</ul></li>
           </ul>
           <div id="address-container"><Address address={this.props.spot.address}/></div>

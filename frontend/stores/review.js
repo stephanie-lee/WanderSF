@@ -139,6 +139,16 @@ ReviewStore.findBySpot = function() {
   return _spotReviews.slice(0);
 };
 
+ReviewStore.spotReviewsFromAll = function(spotId) {
+  _itemSpotReviews = [];
+  _reviews.forEach(function(review) {
+    if(review.spot_id === spotId) {
+      _itemSpotReviews.push(review);
+    }
+  });
+  return _itemSpotReviews;
+};
+
 ReviewStore.findBySpotLimit = function() {
   return _spotReviews.slice(0, 3);
 };

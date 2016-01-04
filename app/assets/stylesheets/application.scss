@@ -567,7 +567,8 @@ nav div ul {
   border-right: 0px;
   border-left: 0px;
   border-top: 0px;
-  height: 150px;
+  padding-bottom: 5px;
+  height: 160px;
 }
 
 .list-group-item ul {
@@ -650,7 +651,6 @@ tr td:last-child {
 }
 
 .spot-detail-page {
-  border: 1px solid black;
   margin: 0px 120px;
   background-color: white;
 }

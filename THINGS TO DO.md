@@ -3,9 +3,6 @@
 
 background #d3ffbd
 
-moment you sign up; you get an avatar
-
-
 fix ReviewStore.allMyReviews
 
 

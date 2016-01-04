@@ -327,10 +327,47 @@ end
 
 25.times do |n|
   name = Faker::Lorem.words(2)
+  pictures = ["http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451882671/4B01A1274CA990A3577CC37E1DAA72F88DE353F8_osiure.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883631/337847_inrms3.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883626/GARNER-SP_HDR_3941_slqmdy.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883608/WaterworksPark4_x6beai.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883603/Jefferson_Park_in_Chicago_rg0gy7.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883558/Crooked_20Lake_20Sunset_qrxdrm_srfeg2.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883539/Round_Lake__2__-_Fayetteville_NY_emqu9o_omcelx.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883532/stelprdb5199597_v0ipna_bjlmqd.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883527/download.php_kxsom5_lqskah.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883501/4-day-taiwan-tour-from-taipei-sun-moon-lake-taroko-gorge-kenting-in-taipei-119083_ggleu0_h13eqt.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883491/Japantown-plaza-14jul2005_fhh4yf_lmilws.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883482/Cherry-Blossom-Festival_GEOS-SF_a5fo17_yik3t6.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883472/Ocean-Beach-Pier1_qdrtcq_lj8y1b.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883459/Drexel_Rec_Center_hot8tw_si87h2.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883447/Cottonwood_20Recreation_20Center4_nsmadd_ell6cw.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883435/IMG_9151_201404151630229903_xygbu6_itshec.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883521/Lambi_boardwalk_eornnu_wu4oaf.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883515/sun-moon-lake04_ta6ti5_l8i1ry.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883603/Jefferson_Park_in_Chicago_rg0gy7.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883608/WaterworksPark4_x6beai.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883626/GARNER-SP_HDR_3941_slqmdy.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451883631/337847_inrms3.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884128/scenic-hd-wallpapers_umqx1k.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884135/Sunrise_20Scenic_bt38l1.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884140/302002_lccmmf.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884146/N8IuzKe_gxmwg7.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884172/scenic-wallpapers-relaxing-tarantulatree-beautiful-tarantula-196011_dp4nzi.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884177/scenic_byways_dqowlx.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884181/9017360551_9687893e52_xq4e0h.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884185/14493_1512_Grand_Teton_Park_Scenic_Drive_md_wbad8n.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884191/karma_photography_scenic_010_t9z5ww.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884191/karma_photography_scenic_010_t9z5ww.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884197/scenic-photography-backgrounds_a6gwzl.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884200/drive_20ad7f68-4437-e663-4aa2f3a0079d8644_nqvilz.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884206/1750254_fjjea5.jpg",
+              "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1451884218/Van_duzer_state_scenic_corridor_dt77k3.jpg"
+              ]
   3.times do
     Picture.create(
                     name: name,
-                    source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993606/bernal_heights1_zrnigs.jpg",
+                    source: pictures.sample,
                     imageable_id: (n + 6),
                     imageable_type: "Spot"
                    )
