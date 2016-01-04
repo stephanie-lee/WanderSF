@@ -48,6 +48,12 @@ var updateReview = function(edittedReview) {
     _recentReviews.splice(-1, 1);
     _recentReviews.unshift(edittedReview);
   }
+
+  _userReviews.forEach(function(review, idx){
+    if (review.id === targetId) {
+      _userReviews[idx] = edittedReview;
+    }
+  });
 };
 
 var deleteReview = function(deletedReview) {
@@ -139,9 +145,9 @@ ReviewStore.findBySpotLimit = function() {
 
 ReviewStore.findMySpotReview = function(spotId) {
   currentReview = undefined;
-  for( var i = 0; i < _myReviews.length; i++ ) {
-    if (_myReviews[i].spot_id === spotId) {
-      currentReview = _myReviews[i];
+  for( var i = 0; i < _userReviews.length; i++ ) {
+    if (_userReviews[i].spot_id === spotId) {
+      currentReview = _userReviews[i];
       break;
     }
   }

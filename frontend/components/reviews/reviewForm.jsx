@@ -88,12 +88,11 @@ var ReviewForm = React.createClass({
                  max='5'
                  valueLink={this.linkState('rating')}/>
           <h7>Select a rating</h7>
-          <br/><br/>
           <textarea
                     cols='60'
                     rows='4'
                     valueLink={this.linkState('comment')}>
-</textarea>
+          </textarea>
           <br/>
           <input type="submit" className="btn btn-success"/>
         </form>

@@ -31,6 +31,10 @@ var SearchBar = React.createClass({
     this.loadAutocomplete();
   },
 
+  componentWillUnmount: function() {
+    this.tagListener.remove();
+  },
+
   componentWillReceiveProps: function(newProp) {
     if(typeof newProp.location.query !== "undefined") {
       var queryStr = newProp.location.query.query;

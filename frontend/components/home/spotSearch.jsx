@@ -34,13 +34,6 @@ var SpotSearchBar = React.createClass({
     this.setState({searchString: e.target.innerHTML});
   },
 
-
-  // handleSearch: function(e) {
-  //   e.preventDefault();
-  //   this.refs.searchInput.blur();
-  //   this.history.pushState(null, 'spots/search', {query: this.state.searchString});
-  // },
-
   loadAutocomplete: function() {
     var _this = this;
     $(this.refs.searchInput).autocomplete({

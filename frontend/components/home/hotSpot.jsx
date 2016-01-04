@@ -14,11 +14,16 @@ var HotSpot = React.createClass({
   },
 
   componentDidMount: function() {
-    var randSpot = Math.floor((Math.random() * 30) + 2);
+    var randSpot = Math.floor((Math.random() * 29) + 2);
     SpotUtil.fetchSingleSpot(randSpot);
     ReviewUtil.fetchSpotReviews(randSpot);
     spotListener = SpotStore.addListener(this.onChange);
     reviewListener = ReviewStore.addListener(this.onChange);
+  },
+
+  componentWillUnmount: function() {
+    spotListener.remove();
+    reviewListener.remove();
   },
 
   onChange: function() {
@@ -30,6 +35,7 @@ var HotSpot = React.createClass({
   render: function() {
 
     var hotSpot = this.state.hotSpot;
+    var name;
     var rating = ReviewStore.averageRating();
     var spotLink="";
     var imgSource="";
@@ -39,6 +45,7 @@ var HotSpot = React.createClass({
       hotSpotRating = <HotSpotRating rating={rating}/>;
       spotLink = "/spot/" + hotSpot.id;
       imgSource = hotSpot.pictures[0].source;
+      name = hotSpot.name;
     }
 
     reviews = this.state.reviews;
@@ -49,8 +56,8 @@ var HotSpot = React.createClass({
         var altTag = review.user.first_name + " avatar";
         var nameDisplay = review.user.first_name + " " + review.user.last_name[0] + ".";
         var comment;
-        if (review.comment.split("").length > 25){
-          comment = review.comment.split("").slice(0, 25).join("") + "...";
+        if (review.comment.split("").length > 75){
+          comment = review.comment.split("").slice(0, 75).join("") + "...";
         } else {
           comment = review.comment;
         }
@@ -61,8 +68,8 @@ var HotSpot = React.createClass({
                     height="70"
                     width="70">
                   </img>
-                  <ul>
-                    <li>{nameDisplay}</li>
+                  <ul className="list-unstyled">
+                    <li className="info-heading"><strong>{nameDisplay}</strong></li>
                     <li>{comment}</li>
                   </ul>
                 </div>
@@ -71,21 +78,22 @@ var HotSpot = React.createClass({
     }
 
     var visitorCount = "Visited by " + ReviewStore.findBySpot().length + " wanderers";
-    return (<div>
-              <h4>Hot Spot!</h4>
+    return (<div className="hot-spot-tight-container">
+              <h4><strong>Hot Spot!</strong></h4>
               <div className="hot-spot-info">
                 <img src={imgSource}
-                  alt={hotSpot.name}
+                  alt={name}
                   height="90"
                   width="90">
                 </img>
                 <ul className="list-unstyled">
-                  <li><Link to={spotLink}>{hotSpot.name}</Link></li>
-                  <li>{hotSpotRating}</li>
+                  <li className="info-heading alegreya"><strong><Link to={spotLink}>{name}</Link></strong></li>
+                  <li id="hot-spot-stars">{hotSpotRating}</li>
                   <li>{visitorCount}</li>
                 </ul>
               </div>
               <div className="hot-spot-reviews">
+                <h5>Thoughts on this Spot: </h5>
                 {reviewList}
               </div>
             </div>

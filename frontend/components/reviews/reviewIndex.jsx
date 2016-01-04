@@ -4,8 +4,26 @@ var ReviewIndexItem = require('../reviews/reviewIndexItem');
 var ReactRouter = require('react-router');
 var ReviewForm = require('../reviews/reviewForm');
 var ReviewStore = require('../../stores/review');
+var ReviewUtil = require('../../util/review_util');
 
 ReviewIndex = React.createClass({
+  getInitialState: function() {
+    return ({ allReviews: [] });
+  },
+
+  componentDidMount: function() {
+    reviewListener = ReviewStore.addListener(this.onChange);
+    ReviewUtil.fetchReviews();
+  },
+
+  componentWillUnmount: function() {
+    reviewListener.remove();
+  },
+
+  onChange: function() {
+    this.setState({ allReviews: ReviewStore.all() });
+  },
+
   render: function() {
     var reviews = this.props.reviews;
     var yourReview = this.props.userReview;
@@ -20,9 +38,14 @@ ReviewIndex = React.createClass({
       }
       return count;
     }
-
     if (yourReview) {
-      idx = reviews.indexOf(yourReview);
+      var idx;
+      for (var review in reviews) {
+        if (reviews[review].belongsToCurrentUser === true) {
+          idx = review;
+        }
+        break;
+      }
       reviews.splice(idx, 1);
     }
 

@@ -2,6 +2,10 @@ var React = require('react');
 var ReactRouter = require('react-router');
 
 var ReviewUserItem = React.createClass({
+  getInitialState: function() {
+    return ({userReview: this.props.userReview});
+  },
+
   componentDidMount: function() {
     var that = this;
     $("#review-rating").rating({min: "0",
@@ -12,6 +16,10 @@ var ReviewUserItem = React.createClass({
                                 readonly: true,
                                 size: "xxs"}); //symbol: "👣"
     $("#review-rating").rating('update', this.props.userReview.rating);
+  },
+
+  componentWillReceiveProps: function() {
+    this.setState({userReview: this.props.userReview});
   },
 
   render:function()  {

@@ -17,9 +17,8 @@ var ReviewIndexItem = React.createClass({
 
   render:function()  {
     var reviewId = "review-rating-user-" + this.props.id;
-    var name = this.props.user.first_name +
-               " " +
-               this.props.user.last_name;
+    var name = this.props.user.first_name + " " +
+               this.props.user.last_name[0] + ".";
     var altTag = name + " User Avatar";
 
     var userReviewCount;

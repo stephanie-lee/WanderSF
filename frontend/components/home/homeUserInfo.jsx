@@ -16,8 +16,12 @@ var UserInfo = React.createClass({
   },
 
   componentDidMount: function() {
-    userListener = UserStore.addListener(this.onChange);
+    this.userListener = UserStore.addListener(this.onChange);
     ApiUtil.fetchUser(CURRENT_USER_ID);
+  },
+
+  componentWillUnmount: function() {
+    this.userListener.remove();
   },
 
   onChange: function() {

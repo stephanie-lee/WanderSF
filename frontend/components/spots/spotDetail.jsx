@@ -40,6 +40,7 @@ var SpotDetail = React.createClass({
     var formView = true;
 
     this.yourReview = ReviewStore.findMySpotReview(spotId);
+
     var current_spot;
     if (SpotStore.current()){
       current_spot = SpotStore.current();
@@ -64,6 +65,7 @@ var SpotDetail = React.createClass({
     this.reviewListener = ReviewStore.addListener(this.onChange);
     SpotUtil.fetchSingleSpot(parseInt(this.props.params.spotId));
     ReviewUtil.fetchSpotReviews(parseInt(this.props.params.spotId));
+    ReviewUtil.fetchUserReviews(CURRENT_USER_ID);
 
     this.scrollEvent.register('begin', function() {
       console.log("begin", arguments);
@@ -123,6 +125,13 @@ var SpotDetail = React.createClass({
 
   render: function() {
     var reviewForm;
+    var reviewCount;
+
+    if (!ReviewStore.singleUserAllReviews().length) {
+      reviewCount = 0;
+    } else {
+      reviewCount = ReviewStore.singleUserAllReviews().length;
+    }
 
     if (!this.state.spot){
       return <div></div>;
@@ -132,6 +141,7 @@ var SpotDetail = React.createClass({
       yourReviewItem = <div>
         <h4>Your Review</h4>
         <ReviewUserItem
+        reviewCount={reviewCount}
         userReview={this.yourReview} /></div>;
     } else if (this.state.hasReviewed && this.state.formView) {
       yourReviewItem = <h4>Edit Your Review</h4>;
@@ -194,7 +204,6 @@ var SpotDetail = React.createClass({
 
     return(
       <div className="spot-detail-page">
-        <div className="blue-blackground-container"></div>
         <div className="spot-detail-pane">
           <ul className="detail list-unstyled">
             <li key='name' className="spot-name">{spot.name}</li>
@@ -219,6 +228,9 @@ var SpotDetail = React.createClass({
             <br />
           <br/>
           <div className="reviews-container">
+          <Element name="reviews" className="element" >
+            <div className="box"></div>
+          </Element>
             <h4>
               <SLink to="reviews" spy={true} smooth={true} duration={500}>
                 <div className="scroll-to-reviews">
@@ -227,7 +239,6 @@ var SpotDetail = React.createClass({
               </SLink>
             </h4>
 
-        <Element name="reviews" className="element">
           <div className="current-user-review-container">
               <ul className="list-unstyled current-user-review-components">
                 <li id="current-user-info"><MyUserInfo /></li>
@@ -238,7 +249,6 @@ var SpotDetail = React.createClass({
             <br/><br/>
             <ReviewIndex reviews={this.state.reviews} userReview={this.yourReview} />
             <br /><br />
-          </Element>
         </div>
           </ul>
         </div>

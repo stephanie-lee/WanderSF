@@ -17,6 +17,10 @@ var Home = React.createClass({
     ReviewUtil.fetchUserReviews(CURRENT_USER_ID);
   },
 
+  componentWillUnmount: function() {
+    this.reviewListener.remove();
+  },
+
   onChange: function() {
     var reviews = ReviewStore.singleUserAllReviews();
     var refIds = reviews.map(function(review) {
@@ -30,9 +34,11 @@ var Home = React.createClass({
     userReviewCount =  this.state.userSpotReviews.length;
     return (<div id="home-page-container">
               <div className="left-column">
-                <h3 className="spot-review-title">Review a Spot!</h3>
-                <div className="home-review-form">
-                  <HomeReviewForm userSpots = {this.state.userSpotReviews} />
+                <div className="form-tight-container">
+                  <h3 className="spot-review-title"><strong>Review a Spot!</strong></h3>
+                  <div className="home-review-form">
+                    <HomeReviewForm userSpots = {this.state.userSpotReviews} />
+                  </div>
                 </div>
                 <div className="recent-activity"><RecentReviews /></div>
               </div>

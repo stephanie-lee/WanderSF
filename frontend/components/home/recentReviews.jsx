@@ -43,7 +43,7 @@ var RecentReviews = React.createClass({
                 </img>
                 <li>
                   <ul className="list-unstyled recent-review-info">
-                    <li>{nameDisplay}{status}<Link to={spotLink}>{review.spot_name.name}:</Link></li>
+                    <li className="alegreya">{nameDisplay}{status}<Link to={spotLink}>{review.spot_name.name}:</Link></li>
                     <li className="recent-stars-with-date">
                       <Rating rating={review.rating} ratingId={review.id}/>
                       <div>{review.date}</div></li>

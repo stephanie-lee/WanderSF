@@ -17,6 +17,10 @@ class UsersController < ApplicationController
                      password: user_params[:password])
 
     if @user.save
+      Picture.create( name: "User Picture",
+                      source: Faker::Avatar.image(@user.email, "200x200", "png", "set1", "bg1"),
+                      imageable_id: @user.id,
+                      imageable_type: "User")
       login_user!(@user)
       redirect_to :root
     else
