@@ -42,6 +42,13 @@ var ReviewActions = {
       actionType: ReviewConstants.RECEIVE_USER_REVIEWS,
       reviews: reviews
     });
+  },
+
+  receiveSpotReviews: function(reviews){
+    AppDispatcher.dispatch({
+      actionType: ReviewConstants.RECEIVE_SPOT_REVIEWS,
+      reviews: reviews
+    });
   }
 };
 

@@ -66,6 +66,17 @@ var ReviewUtil = {
         ReviewActions.receiveUserReviews(reviews);
       }
     });
+  },
+
+  fetchSpotReviews: function(spotId) {
+    $.ajax({
+      url: "api/reviews",
+      dataType: 'json',
+      data: {spot_id: spotId},
+      success: function(reviews) {
+        ReviewActions.receiveSpotReviews(reviews);
+      }
+    });
   }
 };
 

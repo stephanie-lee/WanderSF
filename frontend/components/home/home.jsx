@@ -4,6 +4,8 @@ var HomeReviewForm = require('./homeReviewForm');
 var RecentReviews = require('./recentReviews');
 var ReviewUtil = require('../../util/review_util');
 var ReviewStore = require('../../stores/review');
+var UserInfo = require('./homeUserInfo');
+var HotSpot = require('./hotSpot');
 
 var Home = React.createClass({
   getInitialState: function() {
@@ -25,6 +27,7 @@ var Home = React.createClass({
   },
 
   render: function() {
+    userReviewCount =  this.state.userSpotReviews.length;
     return (<div id="home-page-container">
               <div className="left-column">
                 <h3 className="spot-review-title">Review a Spot!</h3>
@@ -34,8 +37,14 @@ var Home = React.createClass({
                 <div className="recent-activity"><RecentReviews /></div>
               </div>
               <div className="right-column">
-                <div className="user-info">User Info</div>
-                <div className="hot-spot">Hot Spot</div>
+                <div className="tight-container">
+                  <div className="user-info">
+                    <UserInfo reviewCount={userReviewCount}/>
+                  </div>
+                  <div className="hot-spot-container">
+                    <HotSpot />
+                  </div>
+                </div>
               </div>
             </div>
     );

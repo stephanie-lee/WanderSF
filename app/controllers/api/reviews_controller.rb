@@ -47,7 +47,9 @@ class Api::ReviewsController < ApplicationController
       limit = params[:number]
       @reviews = Review.where("updated_at <= ?", DateTime.now).order("created_at DESC").limit(limit)
     elsif params[:user_id]
-      @reviews = Review.where("user_id = #{params[:user_id]}")
+      @reviews = Review.where("user_id = #{params[:user_id]}").order("created_at DESC").limit(limit)
+    elsif params[:spot_id]
+      @reviews = Review.where("spot_id = #{params[:spot_id]}").order("created_at DESC").limit(limit)
     else
       @reviews = Review.all
     end

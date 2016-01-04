@@ -4,6 +4,7 @@ var _reviews = [];
 var _myReviews = [];
 var _recentReviews = [];
 var _userReviews = [];
+var _spotReviews = [];
 var currentReview = null;
 var ReviewStore = new Store(AppDispatcher);
 var ReviewConstants = require('../constants/review_constants');
@@ -15,6 +16,10 @@ var resetReviews = function(newReviews) {
 
 var resetUserReviews = function(newReviews) {
   _userReviews = newReviews;
+};
+
+var resetSpotReviews = function(newReviews) {
+  _spotReviews = newReviews;
 };
 
 var addReview = function(newReview) {
@@ -118,21 +123,18 @@ ReviewStore.__onDispatch = function (payload) {
       resetUserReviews(payload.reviews);
       ReviewStore.__emitChange();
       break;
+    case ReviewConstants.RECEIVE_SPOT_REVIEWS:
+      resetSpotReviews(payload.reviews);
+      ReviewStore.__emitChange();
   }
 };
 
-ReviewStore.findBySpot = function(spotId) {
-  spotReviews = [];
-  if (_reviews.length === 0) {
-    return [];
-  }
+ReviewStore.findBySpot = function() {
+  return _spotReviews.slice(0);
+};
 
-  _reviews.forEach(function(review){
-    if (review.spot_id === spotId) {
-      spotReviews.push(review);
-    }
-  });
-  return spotReviews;
+ReviewStore.findBySpotLimit = function() {
+  return _spotReviews.slice(0, 3);
 };
 
 ReviewStore.findMySpotReview = function(spotId) {
@@ -158,13 +160,12 @@ ReviewStore.singleUserAllReviews = function() {
   return _userReviews.slice(0);
 };
 
-ReviewStore.averageRating = function(spotId) {
-  spotReviews = this.findBySpot(spotId);
+ReviewStore.averageRating = function() {
   totalRatings = 0;
-  spotReviews.forEach(function(review) {
+  _spotReviews.forEach(function(review) {
     totalRatings += review.rating;
   });
-  return (Math.round((totalRatings / spotReviews.length) * 2 ) / 2);
+  return (Math.round((totalRatings / _spotReviews.length) * 2 ) / 2);
 };
 
 ReviewStore.recentReviews = function() {

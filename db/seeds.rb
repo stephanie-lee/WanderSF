@@ -96,91 +96,91 @@ SpotAddress.create([{
 
 Picture.create([{
                 name: "Bernal Heights 1",
-                source: "v1450993606/bernal_heights1_zrnigs.jpg",
+                source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993606/bernal_heights1_zrnigs.jpg",
                 imageable_id: 1,
                 imageable_type: "Spot"
                },
                {
                  name: "Bernal Heights 2",
-                 source: "v1450993586/bernal_heights2_ewipim.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993586/bernal_heights2_ewipim.jpg",
                  imageable_id: 1,
                  imageable_type: "Spot"
                },
                {
                  name: "Bernal Heights 3",
-                 source: "v1450993588/bernalheights3_epzmi6.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993588/bernalheights3_epzmi6.jpg",
                  imageable_id: 1,
                  imageable_type: "Spot"
                },
                {
                  name: "Dolores Park 1",
-                 source: "v1450993613/dolo1_bo7hef.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993613/dolo1_bo7hef.jpg",
                  imageable_id: 2,
                  imageable_type: "Spot"
                },
                {
                  name: "Dolores Park 2",
-                 source: "v1450993596/dolo2_i3nxhg.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993596/dolo2_i3nxhg.jpg",
                  imageable_id: 2,
                  imageable_type: "Spot"
                },
                {
                  name: "Dolores Park 3",
-                 source: "v1450993615/dolo3_gnn9ee.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993615/dolo3_gnn9ee.jpg",
                  imageable_id: 2,
                  imageable_type: "Spot"
                },
                {
                  name: "Mission Cliffs 1",
-                 source: "v1450993609/missioncliffs1_wvajz9.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993609/missioncliffs1_wvajz9.jpg",
                  imageable_id: 3,
                  imageable_type: "Spot"
                },
                {
                  name: "Mission Cliffs 2",
-                 source: "v1450993613/missioncliffs2_hhfsy1.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993613/missioncliffs2_hhfsy1.jpg",
                  imageable_id: 3,
                  imageable_type: "Spot"
                },
                {
                  name: "Mission Cliffs 3",
-                 source: "v1450993612/missioncliffs3_dk4vbc.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993612/missioncliffs3_dk4vbc.jpg",
                  imageable_id: 3,
                  imageable_type: "Spot"
                },
                {
                  name: "Fisherman's Wharf 1",
-                 source: "v1450993588/FishermansWharf1_ge9ur3.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993588/FishermansWharf1_ge9ur3.jpg",
                  imageable_id: 4,
                  imageable_type: "Spot"
                },
                {
                  name: "Fisherman's Wharf 2",
-                 source: "v1450993632/fishermanswharf2_leelw7.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993632/fishermanswharf2_leelw7.jpg",
                  imageable_id: 4,
                  imageable_type: "Spot"
                },
                {
                  name: "Fisherman's Wharf 3",
-                 source: "v1450993616/fishermans-wharf3_pnqgew.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993616/fishermans-wharf3_pnqgew.jpg",
                  imageable_id: 4,
                  imageable_type: "Spot"
                },
                {
                  name: "Mission Recreational Center 1",
-                 source: "v1450993603/mission_rec1_jyzord.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993603/mission_rec1_jyzord.jpg",
                  imageable_id: 5,
                  imageable_type: "Spot"
                },
                {
                  name: "Mission Recreational Center 2",
-                 source: "v1450993614/missionrec2_wnhcyt.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993614/missionrec2_wnhcyt.jpg",
                  imageable_id: 5,
                  imageable_type: "Spot"
                },
                {
                  name: "Mission Recreational Center 3",
-                 source: "v1450993615/missionrec3_yhf35x.jpg",
+                 source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993615/missionrec3_yhf35x.jpg",
                  imageable_id: 5,
                  imageable_type: "Spot"
                }
@@ -327,12 +327,14 @@ end
 
 25.times do |n|
   name = Faker::Lorem.words(2)
-  Picture.create(
-                  name: name,
-                  source: "v1450993606/bernal_heights1_zrnigs.jpg",
-                  imageable_id: (n + 6),
-                  imageable_type: "Spot"
-                 )
+  3.times do
+    Picture.create(
+                    name: name,
+                    source: "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/v1450993606/bernal_heights1_zrnigs.jpg",
+                    imageable_id: (n + 6),
+                    imageable_type: "Spot"
+                   )
+  end
 end
 
 100.times do

@@ -25,7 +25,7 @@ var SpotDetail = React.createClass({
   mixins: [Events],
   getInitialState: function() {
     return { spot: null,
-             reviews: ReviewStore.findBySpot(parseInt(this.props.params.spotId)),
+             reviews: null,
              rating: 0,
              hasReviewed: false,
              formView: true,
@@ -49,7 +49,7 @@ var SpotDetail = React.createClass({
       formView = false;
     }
     this.setState({ spot: current_spot,
-                    reviews: ReviewStore.findBySpot(spotId),
+                    reviews: ReviewStore.findBySpot(),
                     hasReviewed: hasReviewed,
                     formView: formView
                   });
@@ -63,7 +63,7 @@ var SpotDetail = React.createClass({
     this.spotListener = SpotStore.addListener(this.onChange);
     this.reviewListener = ReviewStore.addListener(this.onChange);
     SpotUtil.fetchSingleSpot(parseInt(this.props.params.spotId));
-    ReviewUtil.fetchReviews();
+    ReviewUtil.fetchSpotReviews(parseInt(this.props.params.spotId));
 
     this.scrollEvent.register('begin', function() {
       console.log("begin", arguments);
@@ -187,7 +187,7 @@ var SpotDetail = React.createClass({
     var picturesList;
     if(spotPictures) {
       picturesList = spotPictures.map(function(picture){
-        var imageSource = "http://res.cloudinary.com/stephlee/image/upload/c_fill,h_175,w_175/" + picture.source;
+        var imageSource = picture.source;
         return(<img key={picture.id} src={imageSource}></img>);
       });
     }
