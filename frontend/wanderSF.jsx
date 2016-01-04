@@ -14,10 +14,12 @@ var TagUtil = require('./util/tag_util');
 var ReviewStore = require('./stores/review');
 var SpotDetail = require('./components/spots/spotDetail');
 var App = require('./components/app');
+var SpotRequestForm = require('./components/spots/spotRequest');
 
 var routes = (
   <Route path='/' component={App}>
     <IndexRoute component={Home} />
+    <Route path='spot/request' component={SpotRequestForm} />
     <Route path='spots/search'  component={SpotsSearchIndex} />
     <Route path='spot/:spotId' component={SpotDetail} />
   </Route>

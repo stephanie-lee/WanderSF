@@ -27,6 +27,7 @@ var addReview = function(newReview) {
   findMyReviews();
   _recentReviews.splice(-1, 1);
   _recentReviews.unshift(newReview);
+  _userReviews.push(newReview);
 };
 
 var updateReview = function(edittedReview) {
@@ -64,7 +65,15 @@ var deleteReview = function(deletedReview) {
       var index = idx;
     }
   });
-  _reviews = _reviews.splice(index, 1);
+  _reviews.splice(index, 1);
+
+  var reviewIndex;
+  _userReviews.forEach(function(review, idx){
+    if (review.id === targetId) {
+      reviewIndex = idx;
+    }
+  });
+  _userReviews.splice(reviewIndex, 1);
   findMyReviews();
 };
 

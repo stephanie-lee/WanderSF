@@ -2,6 +2,7 @@ var React = require('react');
 var ReactRouter = require('react-router');
 var UserStore = require('../../../stores/user');
 var ApiUtil = require('../../../util/api_util');
+var ReviewUtil = require('../../../util/review_util')
 var Link = ReactRouter.Link;
 
 var MyUserInfo = React.createClass({
@@ -18,11 +19,14 @@ var MyUserInfo = React.createClass({
 
   componentDidMount: function(){
     this.userListener = UserStore.addListener(this.change);
+    this.reviewListener = ReviewStore.addListener(this.change);
     ApiUtil.fetchUser(CURRENT_USER_ID);
+    ReviewUtil.fetchUserReviews(CURRENT_USER_ID);
   },
 
   componentWillUnmount: function(){
     this.userListener.remove();
+    this.reviewListener.remove();
   },
 
   change: function(){
@@ -31,7 +35,7 @@ var MyUserInfo = React.createClass({
       firstName: UserStore.user()[0].first_name,
       lastName: UserStore.user()[0].last_name,
       title: UserStore.user()[0].wanderer_title,
-      reviewCount: ReviewStore.allMyReviews().length,
+      reviewCount: ReviewStore.singleUserAllReviews().length,
       userlink: "/#/users" + CURRENT_USER_ID
     });
   },

@@ -323,6 +323,11 @@ end
                       street_address: street_address,
                       zip: zip,
                       neighborhood: neighborhood)
+
+  3.times do
+    tag_id = rand(1..31)
+    Tagging.create( spot_id: new_spot.id, tag_id: tag_id )
+  end
 end
 
 25.times do |n|
@@ -372,10 +377,4 @@ end
                     imageable_type: "Spot"
                    )
   end
-end
-
-100.times do
-  spot_id = rand(6..30)
-  tag_id = rand(1..31)
-  Tagging.create( spot_id: spot_id, tag_id: tag_id )
 end

@@ -40,7 +40,6 @@ var SpotDetail = React.createClass({
     var formView = true;
 
     this.yourReview = ReviewStore.findMySpotReview(spotId);
-
     var current_spot;
     if (SpotStore.current()){
       current_spot = SpotStore.current();
@@ -49,6 +48,7 @@ var SpotDetail = React.createClass({
       hasReviewed = true;
       formView = false;
     }
+
     this.setState({ spot: current_spot,
                     reviews: ReviewStore.findBySpot(),
                     hasReviewed: hasReviewed,

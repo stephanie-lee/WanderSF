@@ -11,7 +11,7 @@ var Link = ReactRouter.Link;
 
 var SpotsSearchIndex = React.createClass({
   getInitialState: function() {
-    return { spots: [],
+    return { spots: null,
              query: this.props.location.query.query,
              tagSuggestions: []};
   },
@@ -43,7 +43,7 @@ var SpotsSearchIndex = React.createClass({
 
   render: function() {
     var spotItems;
-    if (!this.state) {
+    if (!this.state || !this.state.spots) {
       spotItems = <div></div>;
     } else if(this.state.spots.length === 0) {
       spotItems = <div className="failed-search-container">

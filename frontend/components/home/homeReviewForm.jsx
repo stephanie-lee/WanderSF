@@ -6,6 +6,7 @@ var SpotUtil = require('../../util/spot_util');
 var SpotStore = require('../../stores/spot');
 var History = require('react-router').History;
 var Message = require('react-message');
+var Link = ReactRouter.Link;
 
 
 var HomeReviewForm = React.createClass({
@@ -158,7 +159,7 @@ var HomeReviewForm = React.createClass({
                      onChange={this.handleChange}
                      placeholder="Where did you wander?" />
               <div className="no-spot-suggest">
-                Can't find your spot? Suggest one <a>here!</a>
+                Can't find your spot? Suggest one <Link to="/spot/request">here!</Link>
               </div>
             </div>
             <input id="home-review-rating"
