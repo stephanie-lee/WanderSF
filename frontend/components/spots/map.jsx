@@ -23,7 +23,9 @@ var Map = React.createClass({
   },
 
   componentWillReceiveProps: function(newProps) {
-    newProps.spots.forEach(this.createMarkerFromSpot);
+    if (this.props.spots) {
+      newProps.spots.forEach(this.createMarkerFromSpot);
+    }
   },
 
   _onChange: function(){

@@ -21,7 +21,7 @@ var SpotRequestForm = React.createClass({
                    hasSubmitted: true
                  });
     that = this;
-    this.success = setTimeout(function(){that.setState({info: null});}, 3000);
+    this.success = setTimeout(function(){that.setState({info: null});}, 5000);
   },
 
   componentWillUnmount: function(event){

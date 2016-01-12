@@ -1,8 +1,8 @@
 # FresherNote
 
-[Heroku link][heroku] **NB:** (Set up on 12/14)
+[WanderSF][wandersf]
 
-[heroku]: http://www.herokuapp.com
+[wandersf]: http://www.wandersf.com
 
 ## Minimum Viable Product
 

@@ -29,6 +29,7 @@ var SearchBar = React.createClass({
   componentDidMount: function() {
     this.tagListener = TagStore.addListener(this.handleQuery);
     this.loadAutocomplete();
+    $(this.refs.searchInput).on("autocompleteselect", this.handleNameClick);
   },
 
   componentWillUnmount: function() {
@@ -46,8 +47,8 @@ var SearchBar = React.createClass({
     }
   },
 
-  handleNameClick: function(e) {
-    this.setState({searchString: e.target.innerHTML});
+  handleNameClick: function(e, ui) {
+    this.setState({searchString: ui.item.value});
   },
 
   handleSearch: function(e) {

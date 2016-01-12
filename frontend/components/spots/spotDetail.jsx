@@ -175,6 +175,7 @@ var SpotDetail = React.createClass({
                   <span id={tagging.id}
                         tagId={tagging.tag_id}
                         className="glyphicon glyphicon-remove-circle"
+                        style={{color: "#4d4d4d"}}
                         onClick={this.removeTagging}></span>
                 </li>);
       }.bind(this));
@@ -191,22 +192,36 @@ var SpotDetail = React.createClass({
     } else {
       taggingForm = <div></div>;
     }
-    spotPictures = this.state.spot.pictures;
-    var picturesList;
+
+    //**changing 3 images to single background
+    // spotPictures = this.state.spot.pictures;
+    // var picturesList;
+    // if(spotPictures) {
+    //   picturesList = spotPictures.map(function(picture){
+    //     var imageSource = picture.source;
+    //     return(<img key={picture.id} src={imageSource}></img>);
+    //   });
+    // }
+
+    var spotPictures = this.state.spot.pictures;
+    var bgImgUrl;
     if(spotPictures) {
-      picturesList = spotPictures.map(function(picture){
-        var imageSource = picture.source;
-        return(<img key={picture.id} src={imageSource}></img>);
-      });
+      var pictureURL = spotPictures[0].source;
+      bgImgUrl = "url(" + pictureURL + ")";
     }
 
     return(
       <div className="spot-detail-page">
-            <div className="blue-background-container">
+            <div className="blue-background-container"
+              style={{backgroundImage: "linear-gradient(rgba(250, 250, 250, 0.9), rgba(0, 0, 0, 0.1))," + bgImgUrl,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      width: "100%",
+                      height: "100%"}}>
               <ul className="detail list-unstyled">
 
             <li key='name' className="spot-name">{spot.name}</li>
-            <li key='rating'><SpotDetailRating rating={spotRating} reviewCount={this.state.reviews.length} /></li>
+            <li key='rating' className="rating"><SpotDetailRating rating={spotRating} reviewCount={this.state.reviews.length} /></li>
             <li>
               <ul className="list-unstyled list-inline">
                 {taggingList}
@@ -221,7 +236,6 @@ var SpotDetail = React.createClass({
             <li>
               <ul className="list-unstyled spot-details-map-pictures">
                 <li><SpotAddressMap spot={this.state.spot} /></li>
-                <li className="pictures-list">{picturesList}</li>
               </ul>
             </li>
             <br />
@@ -232,7 +246,7 @@ var SpotDetail = React.createClass({
             <ul className="detail list-unstyled">
 
           <div className="reviews-container">
-            <br /><br /><br />
+            <br />
           <Element name="reviews" className="element" >
             <div className="box"></div>
 
@@ -246,10 +260,11 @@ var SpotDetail = React.createClass({
               </SLink>
             </h4>
 
-          <div className="current-user-review-container">
-              <ul className="list-unstyled current-user-review-components">
+          <div className="current-user-review-container" id="review-container">
+              <ul className="list-unstyled current-user-review-components" id="card">
                 <li id="current-user-info"><MyUserInfo /></li>
-                <li id="current-user-review">{yourReviewItem} {reviewForm}</li>
+                <li id="current-user-review" className="front">{reviewForm}</li>
+                <li className="back">{yourReviewItem}</li>
               </ul>
             </div>
 
@@ -268,3 +283,5 @@ var SpotDetail = React.createClass({
 });
 
 module.exports = SpotDetail;
+
+//<li className="pictures-list">{picturesList}</li>
