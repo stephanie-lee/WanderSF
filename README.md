@@ -1,6 +1,6 @@
-# FresherNote
+# WanderSF
 
-[WanderSF][wandersf]
+[WanderSF web app][wandersf]
 
 [wandersf]: http://www.wandersf.com
 
