@@ -4,89 +4,55 @@
 
 [wandersf]: http://www.wandersf.com
 
-## Minimum Viable Product
+WanderSF is a web application built using Ruby on Rails
+and React.js. The app is a platform for users to find and share about
+public parks and recreational facilities (also known as **spots**), as well as unique hangout spots.
 
-WanderSF is a web application inspired by Yelp built using Ruby on Rails
-and React.js. The app will be a platform for users to find and share about
-public parks and recreational facilities, as well as unique hangout spots.
-WanderSF allows users to:
+## Features
 
-<!-- This is a Markdown checklist. Use it to keep track of your progress! -->
+###Authentication
 
-- [ ] Create an account
-- [ ] Log in / Log out
-- [ ] Search through spots with text or location
-- [ ] Create, read, edit, and delete (your own) reviews
-- [ ] Tag spots with multiple tags and search spots by tag categories
-- [ ] Google Map API (Maybe with ability to look up directions? Or other nearby suggestions?)
-- [ ] Suggest (submit request) for new spots or editing existing spot details
-- [ ] Star-rating for spots
-- [ ] Add photos for spots
-- [ ] 'Like' reviews and parks
-- [ ] Personal profile to edit (profile picture and basic details)
+New users can create an account or sign in with a demo account. WanderSF implements custom authentication using `BCrypt` to salt and hash passwords, storing the encrypted string in the database. The user's submitted ratings and reviews are stored and will be visible when the user logs in for the next session.
 
-## Design Docs
+###Navigation Bar
+
+The **navigation bar** provides a direct link back to the home page as well as a tag search field. The current user's avatar doubles as a drop-down link that gives the option to sign out of the session.
+
+###Tag Search
+
+The **tag search** input field in the navigation bar implements `JQuery` Autocomplete and allows users to search through the database for tags matching their input string. Search results are updated in real time with the user's input. The user can both search by their own input or select one of the returned suggestions. Submitted searches will return the **search index** with listings that have been tagged by matching or similar tags.
+
+###Search Index
+
+Once a user submits a search, either through the tag search in the navigation bar or in the address bar, a list of spots with matching or similar tags will be returned. `Google Maps` API has been implemented to return a map with markers pinpointing the different spots. Clicking on individual markers or spot links will both lead to specified **spot detail pages**.
+
+###Review
+A user can only add a review once per spot. If the user has already reviewed the spot, they have options depending on where they are reviewing from.
+There are two ways to leave reviews: home page form and spot page form
+
+- **Home:** User must select an existing spot. The input field uses `JQuery` Autocomplete to provide existing suggestions. There is also an option to suggest a spot if it does not exist. Adding a review will   update both the "Recent Reviews" section as well as on the specified spot page. **If a user has already reviewed the specified spot, they will be notified and must confirm to overwrite the previous review.**
+
+- **Spot:** User can leave ratings and reviews on each spot page. If the user has already reviewed the spot, they have the options to `edit` or `delete` their review. If the user chooses to edit the review, the pre-existing review will pre-fill the text box.
+
+###Spot Detail Page
+Each spot's page implements `Google Maps` API using a single marker to place the current spot's location by its coordinates. Functionality includes **adding tags** and **writing reviews**.
+
+
+## Design Choices
+When building this app, I focused on providing a simple, yet elegant, solution to finding out about fun outdoor activities and locations. I wanted the site to not be cluttered with information but rather provide information that people tend to look for: **what other people think about a place**, and **why**. I wanted the design and placement of components to feel intuitive and easy to use.
+
+Some design choices were inspired by Yelp.
+
+### Design Docs from proposal
 * [View Wireframes][view]
 * [DB schema][schema]
 
 [view]: ./docs/views.md
 [schema]: ./docs/schema.md
 
-## Implementation Timeline
-
-### Phase 1: User Authentication, Spots and Review Model and JSON API (2 days)
-
-In Phase 1, I will implement user signup and authentication (using
-BCrypt). There will be a basic landing page after signup that will hold
-the container for the application's root React component. Before
-building out the front end, I will begin by setting up a full JSON API
-for reviews and spots. Create seed data for reviews and spots.
-
-[Details][phase-one]
-
-### Phase 2: Flux Architecture, Temporary Seed Data for Spots, Reviews CRUD (3 days)
-
-Phase 2 is focused on setting up Flux, the React Router, and the React
-view structure for the main application. After the basic Flux
-architecture has been set up, a Reviews store will be implemented and a
-set of actions corresponding to the needed CRUD functionality created. Once this is done, I will create React views for the Spots `Index` and Review `Form`. At the end of Phase 2, Reviews can be created, read, edited, and destroyed in the browser.
-
-[Details][phase-two]
-
-### Phase 3: Tags and Search (2 days)
-
-Phase 3 adds organization to the Reviews. *Reviews should save to the database when the form loses focus or is left idle after editing.* Reviews belong to a Spot, which has its own `Index Item` view, `Form`. Create JSON API for Spots. Spots can also now be tagged with multiple tags. Users can bring up a Spots `Index` with the real-time updated search bar by searching for name of the location.
-
-[Details][phase-three]
-
-### Phase 4: Spots Additions and Google Map (1 day)
-
-Add more functionality for Spots, including creating React views for
-the `Form`, and `Index Item`. Implement Google Maps API into Spots
-`IndexItem` and `Index`. Spots in `Index` will update when map is moved.
-
-[Details][phase-four]
-
-### Phase 5: Extras for Spots Index Item (1 day)
-
-Phase 5 will implement three features: Including a star-rating system when reviewing.
-
-[Details][phase-five]
-
-### Phase 6: Styling and Seeding (3 day)
-
-For Phase 6 I will use Bootstrap to make things look nice. Notably,
-adding in responsive buttons and links.
-
-### Bonus Features (TBD)
+### Bonus Features for future additions
 - [ ] Search spot by tags
 - [ ] Personal Profile with links to own reviews and likes
 - [ ] Infinite Scroll for Spots Index and Index Item
 - [ ] Likes/Reviews for parks + like counter
-- [ ] Uploading photos
-
-[phase-one]: ./docs/phases/phase1.md
-[phase-two]: ./docs/phases/phase2.md
-[phase-three]: ./docs/phases/phase3.md
-[phase-four]: ./docs/phases/phase4.md
-[phase-five]: ./docs/phases/phase5.md
+- [ ] Ability for user to upload photos
