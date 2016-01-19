@@ -204,16 +204,16 @@ var SpotDetail = React.createClass({
     // }
 
     var spotPictures = this.state.spot.pictures;
-    var bgImgUrl;
+    var imgUrl;
     if(spotPictures) {
       var pictureURL = spotPictures[0].source;
-      bgImgUrl = "url(" + pictureURL + ")";
+      imgUrl = "url(" + pictureURL + ")";
     }
 
     return(
       <div className="spot-detail-page">
             <div className="blue-background-container"
-              style={{backgroundImage: "linear-gradient(rgba(250, 250, 250, 0.9), rgba(0, 0, 0, 0.1))," + bgImgUrl,
+              style={{backgroundImage: "linear-gradient(rgba(250, 250, 250, 0.9), rgba(0, 0, 0, 0.1))," + imgUrl,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                       width: "100%",
