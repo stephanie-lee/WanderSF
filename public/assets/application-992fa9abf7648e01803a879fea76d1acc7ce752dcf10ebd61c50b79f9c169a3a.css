@@ -1,3 +1,277 @@
+/* line 1, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/api/detail.scss */
+.list-inline {
+  display: inline-block;
+  padding-left: 200px;
+}
+/* header */
+/* line 4, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/custom.css.scss */
+.navbar {
+  width: 100%;
+  position: fixed;
+  height: 100px;
+  margin: 0px;
+  z-index: 98;
+}
+
+/* line 13, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/custom.css.scss */
+.navbar-nav {
+  display: inline-block;
+  padding-top: 30px;
+  width: auto;
+  float: right;
+}
+
+/* line 20, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/custom.css.scss */
+.navbar-nav > li {
+  float: left;
+  padding-left: 50px;
+  position: inherit;
+  z-index: 99;
+}
+
+/* line 27, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/custom.css.scss */
+.navbar-nav li:first-child {
+  width: 275px;
+}
+
+/* line 31, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/custom.css.scss */
+.navbar-nav .left-nav {
+  right: 0%;
+}
+
+/* line 35, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/custom.css.scss */
+.below-nav {
+  top: 100px;
+  position: relative;
+}
+
+/* line 40, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/custom.css.scss */
+.main-search_suggestions {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+}
+
+/* line 47, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/custom.css.scss */
+.search-bar {
+  padding-top: 10px;
+  left: 40%;
+}
+
+/* line 52, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/custom.css.scss */
+.search-bar input {
+  width: 300px;
+}
+/*!
+ * @copyright &copy; Kartik Visweswaran, Krajee.com, 2013 - 2015
+ * @version 3.5.6
+ *
+ * A simple yet powerful JQuery star rating plugin that allows rendering
+ * fractional star ratings and supports Right to Left (RTL) input.
+ *
+ * For more JQuery/Bootstrap plugins and demos visit http://plugins.krajee.com
+ * For more Yii related demos visit http://demos.krajee.com
+ */
+
+.rating-loading {
+    width: 25px;
+    height: 25px;
+    font-size: 0px;
+    color: #fff;
+    background: transparent url('../img/loading.gif') top left no-repeat;
+    border: none;
+}
+/*
+ * Stars
+ */
+.rating-fa {
+    font-family: 'FontAwesome';
+    padding-left: 1px;
+}
+
+.rating-fa .rating-stars:before {
+    padding-left: 1px;
+}
+
+.rating-gly {
+    font-family: 'Glyphicons Halflings';
+}
+
+.rating-gly-star {
+    font-family: 'Glyphicons Halflings';
+    padding-left: 2px;
+}
+
+.rating-gly-star .rating-stars:before {
+    padding-left: 2px;
+}
+
+.rating-lg .rating-gly-star, .rating-lg .rating-gly-star .rating-stars:before {
+    padding-left: 4px;
+}
+
+.rating-xl .rating-gly-star, .rating-xl .rating-gly-star .rating-stars:before {
+    padding-left: 2px;
+}
+
+.rating-active {
+    cursor: default;
+}
+
+.rating-disabled {
+    cursor: default;
+}
+
+.rating-uni {
+    font-size: 1.2em;
+    margin-top: -5px;
+}
+
+.rating-container {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    color: #e3e3e3;
+    overflow: hidden;
+}
+
+.rating-container:before {
+    content: attr(data-content);
+}
+
+.rating-container .rating-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #fde16d;
+    transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -webkit-transition: all 0.25s ease-out;
+}
+
+.rating-container .rating-stars:before {
+    content: attr(data-content);
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
+}
+
+.rating-container-rtl {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+    color: #fde16d;
+}
+
+.rating-container-rtl:before {
+    content: attr(data-content);
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
+}
+
+.rating-container-rtl .rating-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #e3e3e3;
+    transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -webkit-transition: all 0.25s ease-out;
+}
+
+.rating-container-rtl .rating-stars:before {
+    content: attr(data-content);
+}
+
+/**
+ * Rating sizes
+ */
+.rating-xl {
+    font-size: 4.89em;
+}
+
+.rating-lg {
+    font-size: 3.91em;
+}
+
+.rating-md {
+    font-size: 3.13em;
+}
+
+.rating-sm {
+    font-size: 2.5em;
+}
+
+.rating-xs {
+    font-size: 2em;
+}
+
+.rating-xxs {
+    font-size: 1.5em;
+}
+
+.rating-xxxs {
+    font-size: 1em;
+}
+
+/**
+ * Clear rating button
+ */
+.star-rating .clear-rating, .star-rating-rtl .clear-rating {
+    color: #aaa;
+    cursor: default;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 60%;
+}
+
+.clear-rating-active {
+    cursor: pointer !important;
+}
+
+.clear-rating-active:hover {
+    color: #843534;
+}
+
+.star-rating .clear-rating {
+    padding-right: 5px;
+}
+
+/**
+ * Caption
+ */
+.star-rating .caption, .star-rating-rtl .caption {
+    color: #999;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 55%;
+}
+
+.star-rating .caption {
+    padding-left: 5px;
+}
+
+.star-rating-rtl .caption {
+    padding-right: 5px;
+}
+
+/**
+ * Print
+ */
+@media print {
+    .rating-container, .rating-container:before , .rating-container-rtl .rating-stars, .rating-container-rtl .rating-stars:before {
+        color: #f3f3f3!important;
+    }
+
+    .star-rating .clear-rating, .star-rating-rtl .clear-rating {
+        display: none;
+    }
+}
 @charset "UTF-8";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -11,6 +285,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+
 
 
 
@@ -8808,21 +9083,37 @@ button.close {
   }
 }
 /* universal */
-/* line 24, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 25, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 body {
   font-family: 'Roboto', sans-serif;
   padding-top: 80px;
   margin-top: 0px;
-  background-color: #F7FCF8;
   color: #4d4d4d;
+  background-image: url(http://res.cloudinary.com/stephlee/image/upload/co_rgb:292f2a,e_green:15,o_28/e_brightness:-53/v1451936473/bigstock-Baker-Beach-San-Francisco-Large_u96gu8.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-animation: fade-in 2s;
 }
 
-/* line 32, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* line 45, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 section {
   overflow: auto;
 }
 
-/* line 36, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 49, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -8834,7 +9125,7 @@ textarea {
   margin-top: 10px;
 }
 
-/* line 49, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 62, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .btn-xxs {
   border-radius: 3px;
   padding: 2px 2px;
@@ -8842,52 +9133,42 @@ textarea {
   line-height: normal;
 }
 
-/* line 56, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 69, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .center {
   text-align: center;
 }
 
-/* line 60, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 73, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .center h1 {
   margin-bottom: 10px;
 }
 
-/*log in and sign up*/
-/* line 66, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
-.log-in-background {
-  background-color: #d3ffbd;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-  top: -10px;
-  position: absolute;
-}
-
 /* home page */
-/* line 76, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 78, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #home-page-container {
   height: 100%;
   width: 100%;
   display: inline-flex;
 }
 
-/* line 82, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 84, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #home-page-container .left-column {
   height: 100%;
-  width: calc(65% - 30px);
+  width: calc(70% - 30px);
   margin-left: 20px;
   margin-right: 10px;
 }
 
-/* line 89, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 91, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #home-page-container .right-column {
-  width: calc(35% - 40px);
-  margin-right: 20px;
+  margin-right: 0px;
   margin-left: 10px;
-  background-color: #F7FCF8;
+  background-color: rgba(247, 252, 248, 0.5);
+  height: 100%;
+  position: fixed;
 }
 
-/* line 96, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 99, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #home-page-container .right-column .tight-container {
   border-left: 1px solid #f0f0f0;
   width: 100%;
@@ -8895,64 +9176,64 @@ textarea {
   margin: 30px 0px;
 }
 
-/* line 103, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 106, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .spot-review-title {
   padding-left: 20px;
 }
 
-/* line 107, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 110, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .form-tight-container {
   width: 100%;
 }
 
-/* line 111, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 114, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .home-review-form {
   margin: 20px;
   padding: 15px;
   width: 650px;
-  background-color: #e4f0fd;
+  background-color: rgba(228, 240, 253, 0.75);
 }
 
-/* line 118, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 121, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .message--error {
   color: red;
   text-align: center;
   padding-left: 140px;
 }
 
-/* line 124, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 127, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .message--info {
   color: green;
   padding-left: 30px;
 }
 
-/* line 129, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 132, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .spot-search-box {
   background-color: white;
 }
 
-/* line 133, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 136, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .search-bar-stars > div:first-child {
   display: -webkit-box;
 }
 
-/* line 137, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 140, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .search-bar-stars > div:nth-child(2) {
   display: inherit;
 }
 
-/* line 141, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 144, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .home-review-form {
   height: auto;
 }
 
-/* line 145, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 148, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .home-review-form form {
   display: table-caption;
   height: auto;
 }
 
-/* line 150, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 153, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .no-spot-suggest {
   width: 150px;
   height: 40px;
@@ -8961,46 +9242,46 @@ textarea {
 }
 
 @media (max-width: 787px) {
-  /* line 158, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 161, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .right-column {
     display: none;
   }
 
-  /* line 161, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 164, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   #home-page-container .left-column {
     width: 100%;
   }
 
-  /* line 164, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 167, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .home-review-form {
     width: 540px;
   }
 }
-/* line 169, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 172, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .recent-review-title {
   padding-left: 40px;
   padding-bottom: 10px;
 }
 
-/* line 174, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 177, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .recent-reviews-container {
   padding-bottom: 40px;
   margin-top: 30px;
 }
 
-/* line 179, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 182, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .recent-stars-with-date {
   display: inline-flex;
 }
 
-/* line 183, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 186, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .recent-stars-with-date > div:last-child {
   padding-top: 6px;
   margin-left: 10px;
   margin-bottom: 10px;
 }
 
-/* line 189, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 192, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #recent-review-item {
   margin-left: 5%;
   width: 90%;
@@ -9009,43 +9290,43 @@ textarea {
   padding-bottom: 10px;
 }
 
-/* line 197, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 200, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #recent-review-item .recent-review-info {
   margin-left: 115px;
 }
 
-/* line 201, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 204, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #recent-review-item .recent-review-info > li:first-child {
   margin-left: -10px;
   margin-bottom: 5px;
 }
 
-/* line 206, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 209, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #recent-review-item img {
   float: left;
 }
 
-/* line 210, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 213, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .user-info {
   height: 130px;
   padding: 5px 20px;
 }
 
-/* line 215, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 218, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .user-info .user-info-card {
   height: 115px;
   width: 290px;
   border: 1px solid #f0f0f0;
   padding: 10px;
-  background-color: #e5ffe0;
+  background-color: rgba(229, 255, 224, 0.8);
 }
 
-/* line 223, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 226, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .user-info-card img {
   float: left;
 }
 
-/* line 227, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 230, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .user-info-card ul {
   float: left;
   margin-top: 5px;
@@ -9055,154 +9336,154 @@ textarea {
   margin-left: 100px;
 }
 
-/* line 236, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 239, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .user-info-card ul li:first-child {
   font-size: 18px;
   font-family: 'alegreya', sans-serif;
 }
 
-/* line 241, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 244, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .user-info-card ul > li {
   margin: 2px 0px;
 }
 
-/* line 245, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 248, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .user-info-card ul > li:last-child {
   margin: 2px 0px;
   font-size: 12px;
 }
 
-/* line 250, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 253, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-container {
   height: 100%;
 }
 
-/* line 254, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 257, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-tight-container {
   margin: 20px;
   border-top: 1px solid #f0f0f0;
   padding-top: 10px;
 }
 
-/* line 261, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 264, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .list-unstyled .info-heading {
   font-size: 14px;
   font-family: 'alegreya', sans-serif;
 }
 
-/* line 266, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 269, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-info {
   font-size: 12px;
   margin-top: 15px;
 }
 
-/* line 271, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 274, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-info img {
   float: left;
 }
 
-/* line 275, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 278, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-info ul li {
   margin-left: 100px;
 }
 
-/* line 279, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 282, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #hot-spot-stars {
   margin-left: 0;
 }
 
-/* line 283, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 286, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-info li:last-child {
   padding-top: 5px;
 }
 
-/* line 287, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 290, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-reviews {
   padding-top: 15px;
 }
 
-/* line 291, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 294, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-reviews h5 {
   margin-left: 5px;
 }
 
-/* line 295, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 298, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-review {
   height: 80px;
   margin: 10px 0px 10px 10px;
   font-size: 11px;
 }
 
-/* line 301, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 304, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-review:last-child {
   padding-bottom: 0px;
 }
 
-/* line 305, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 308, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-review img {
   float: left;
   margin-bottom: 20px;
 }
 
-/* line 310, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 313, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-review ul {
   margin-left: 80px;
 }
 
-/* line 314, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 317, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hot-spot-review ul li:first-child {
   margin-bottom: 5px;
 }
 
 /* page details */
-/* line 320, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 323, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .spot-info li:last-child ul {
   padding-left: 0px;
 }
 
-/* line 324, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 327, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .list-group-item .spot-info ul {
   padding-left: 0px;
 }
 
-/* line 328, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 331, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .list-inline {
   display: inline-block;
   margin-left: 0px;
 }
 
-/* line 333, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 336, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .list-group-item .spot-info .tag-list li {
   padding-right: 5px;
 }
 
-/* line 337, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 340, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .list-inline li:first-child {
   padding-left: 5px;
 }
 
-/* line 341, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 344, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .list-inline li {
   padding-right: 5px;
   padding-left: 0px;
 }
 
-/* line 346, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 349, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .list-inline li:last-child {
   margin-right: 5px;
 }
 
-/* line 350, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 353, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .list-inline li:last-child:after {
   content: "";
 }
 
-/* line 354, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 357, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .list-inline li:after {
   content: ",";
 }
 
-/* line 358, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 361, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hover-box {
   background: white;
   width: 100%;
@@ -9211,35 +9492,35 @@ textarea {
   left: 0;
   bottom: 0;
 }
-/* line 364, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 367, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .hover-box:hover {
   background: #ccff99;
 }
 
-/* line 369, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 372, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .btn-secondary {
   background: #dddddd;
   color: #808080;
   margin-right: 10px;
 }
-/* line 374, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 377, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .btn-secondary:hover {
   background: #bbbbbb;
 }
 
 /* typography */
-/* line 381, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 384, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
   font-family: 'Alegreya', serif;
 }
 
-/* line 386, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 389, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .alegreya {
   font-family: 'Alegreya', serif;
 }
 
-/* line 390, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 393, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
@@ -9247,7 +9528,7 @@ h1 {
   text-align: center;
 }
 
-/* line 397, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 400, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
@@ -9257,37 +9538,37 @@ h2 {
   color: #777;
 }
 
-/* line 406, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 409, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
 
-/* line 411, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 414, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 h4 {
   margin-bottom: 0px;
 }
 
 /* header */
-/* line 416, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 419, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .navbar {
   position: fixed;
   width: 100%;
-  background-color: #e5ffe0;
+  background-color: #daffd3;
   border-radius: 0px;
-  border-top: 1px #e5ffe0;
-  border-right: 1px #e5ffe0;
-  border-left: 1px #e5ffe0;
+  border-top: 1px #daffd3;
+  border-right: 1px #daffd3;
+  border-left: 1px #daffd3;
   border-bottom: solid 1px #dddddd;
 }
 
-/* line 427, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 430, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .navbar-brand {
   padding-top: 10px;
   position: absolute;
 }
 
-/* line 432, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 435, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 nav {
   height: 80px;
   z-index: 99;
@@ -9295,76 +9576,71 @@ nav {
   display: inline-block;
 }
 
-/* line 439, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 442, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 nav div ul {
   float: right;
   padding-top: 15px;
 }
 
-/* line 444, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 447, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .search-bar {
   width: 300px;
   padding-top: 8px;
   margin-right: 170px;
 }
 
-/* line 450, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 453, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .search-box {
   background-color: #e4f0fd;
 }
 
-/* line 454, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 457, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .dropdown-menu li {
   text-align: center;
 }
 
-/* line 458, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 461, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .dropdown .user-avatar {
   float: right;
   bottom: 100%;
   padding: 0px;
 }
 
-/* line 464, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
-.dropdown open {
-  background-color: #5cb85c;
-}
-
 @media (max-width: 813px) {
-  /* line 469, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 468, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .navbar-header {
     float: none;
     height: 80px;
   }
 
-  /* line 473, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 472, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .navbar-left, .navbar-right {
     float: none !important;
   }
 
-  /* line 476, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 475, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .navbar-toggle {
     display: block;
   }
 
-  /* line 479, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 478, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .navbar-collapse {
     border-top: 1px solid transparent;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
-  /* line 483, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 482, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .navbar-fixed-top {
     top: 0;
     border-width: 0 0 1px;
   }
 
-  /* line 487, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 486, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .navbar-collapse.collapse {
     display: none !important;
   }
 
-  /* line 490, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 489, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .navbar-nav {
     float: none !important;
     margin-top: 7.5px;
@@ -9375,27 +9651,28 @@ nav div ul {
     top: 73px;
   }
 
-  /* line 499, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 498, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .navbar-nav > li {
     float: right;
     margin: 10px;
   }
 
-  /* line 503, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 502, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .navbar-nav > li > a {
     padding-top: 10px;
     padding-bottom: 10px;
   }
 
-  /* line 507, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 506, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .collapse.in {
     display: block !important;
   }
 }
 /* search index */
-/* line 513, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 512, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #search-index-container {
-  width: 65%;
+  width: calc(65% - 80px);
+  margin-left: 40px;
   top: 150px;
   position: absolute;
 }
@@ -9519,62 +9796,81 @@ tr td:last-child {
 
 /* spot index */
 /* line 622, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+.spot-index-item {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* line 626, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .spot-info {
   padding-top: 15px;
   position: absolute;
   width: 47%;
 }
 
-/* line 628, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 632, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .spot-rating-list {
   display: inline-block;
 }
 
-/* line 632, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 636, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .failed-search-container {
   margin: 20px;
 }
 
-/* line 636, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 640, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .tag-suggestions {
   margin-left: 20px;
 }
 
-/* line 640, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 644, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .tag-suggestions > li {
   padding: 3px;
 }
 
 /* spots details */
-/* line 645, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 649, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .glyphicon-remove-circle {
   margin-left: 2px;
   color: #bbbbbb;
 }
-/* line 649, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 653, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .glyphicon-remove-circle:hover {
   cursor: crosshair;
 }
 
-/* line 654, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 658, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .spot-detail-page {
   margin: 0px 120px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-left: 1px solid #f0f0f0;
+  border-right: 1px solid #f0f0f0;
 }
 
-/* line 659, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 665, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .spot-detail-pane {
   padding-top: 25px;
   padding-left: 30px;
   padding-right: 30px;
 }
 
-/* line 665, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
-.spot-detail-pane .detail .spot-name {
+/* line 671, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+.blue-background-container .detail .spot-name {
   font-size: 30px;
 }
 
-/* line 669, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 675, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+.blue-background-container {
+  text-align: center;
+}
+
+/* line 679, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+.blue-background-container ul {
+  width: auto;
+  display: inline-block;
+  text-align: center;
+}
+
+/* line 689, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #map-address-container {
   margin-top: 20px;
   border: 2px solid #f0f0f0;
@@ -9583,134 +9879,135 @@ tr td:last-child {
   width: 350px;
 }
 
-/* line 677, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 697, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #map-address-container > li:first-child {
   height: 70%;
   width: 100%;
   padding: 3px;
 }
 
-/* line 683, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 703, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #map-address-container li .map {
   height: 100%;
   width: 100%;
 }
 
-/* line 688, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 708, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #map-address-container .details-address-box {
+  padding-top: 8px;
   padding-left: 8px;
   font-size: 15px;
 }
 
-/* line 693, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 714, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .spot-details-map-pictures > li {
   display: inline-block;
 }
 
-/* line 697, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 718, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .spot-details-map-pictures .pictures-list {
   position: absolute;
   top: 275px;
 }
 
-/* line 702, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 723, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .pictures-list img:nth-child(2) {
   position: absolute;
   left: 175px;
 }
 
-/* line 707, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 728, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .pictures-list img:last-child {
   position: absolute;
   left: 350px;
 }
 
-/* line 713, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
-.blue-blackground-container {
+/* line 734, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+.blue-background-container {
+  padding-top: 25px;
+  padding-left: 30px;
+  padding-right: 30px;
   z-index: -1;
   width: 100%;
   height: 370px;
-  background-color: #e4f0fd;
-  position: absolute;
+  background-color: rgba(228, 240, 253, 0.7);
 }
 
 /* review form */
-/* line 722, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 745, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .rating-choice textarea {
   margin-bottom: 10px;
 }
 
-/* line 726, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 749, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .rating-choice h7 {
   margin-left: 8px;
 }
 
 /* reviews */
-/* line 732, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 755, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .box {
-  height: 30px;
+  height: 15px;
   width: 20px;
 }
 
-/* line 737, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 760, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .scroll-to-reviews {
   text-align: center;
   height: 20px;
 }
-/* line 740, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 763, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .scroll-to-reviews:hover {
   cursor: pointer;
   text-decoration: none;
 }
 
-/* line 746, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 769, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .scroll-to-reviews .glyphicon {
   padding-left: 15px;
   top: 4px;
 }
-/* line 749, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 772, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .scroll-to-reviews .glyphicon:hover {
   cursor: pointer;
-  top: 0px;
-  font-size: 25px;
 }
 
 @media (max-width: 1185px) {
-  /* line 757, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 778, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .spot-details-map-pictures .pictures-list img:last-child {
     display: none;
   }
 }
 @media (max-width: 1010px) {
-  /* line 763, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 784, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .spot-details-map-pictures .pictures-list img:nth-child(2) {
     display: none;
   }
 }
 @media (max-width: 833px) {
-  /* line 769, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 790, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .spot-details-map-pictures .pictures-list img:first-child {
     display: none;
   }
 }
 @media (max-width: 762px) {
-  /* line 775, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 796, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .spot-detail-page {
     margin: 0px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.75);
   }
 
-  /* line 780, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+  /* line 801, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
   .spot-details-map-pictures .pictures-list {
     display: none;
   }
 }
-/* line 785, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 806, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .review-index-pane {
   width: 100%;
 }
 
-/* line 789, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 810, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .current-user-review-components {
   display: -webkit-inline-box;
   border-top: 1px solid #f0f0f0;
@@ -9718,7 +10015,7 @@ tr td:last-child {
   margin-top: 15px;
 }
 
-/* line 796, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 817, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .review-index-item-components {
   display: -webkit-inline-box;
   border-top: 1px solid #f0f0f0;
@@ -9726,66 +10023,66 @@ tr td:last-child {
   margin-top: 15px;
 }
 
-/* line 803, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 824, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #current-user-info {
   padding-top: 25px;
   width: 270px;
 }
 
-/* line 808, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 829, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #current-user-info .user-info {
   padding-top: 10px;
 }
 
-/* line 812, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 833, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #current-user-info img {
   float: left;
   margin-right: 10px;
   border: 1px solid #f0f0f0;
 }
 
-/* line 818, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 839, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #current-user-review {
   width: calc(100% - 270px);
   padding: 20px 20px 10px 0px;
 }
 
-/* line 823, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 844, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .delete-review {
   margin-left: 5px;
 }
 
-/* line 827, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 848, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .rating-choice > * {
   display: inline-block;
   right: 100px;
 }
 
-/* line 832, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 853, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .rating-choice > :last-child {
   margin-left: 5px;
 }
 
-/* line 836, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 857, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .stars-with-date {
   display: inline-flex;
   margin-bottom: 15px;
 }
 
-/* line 841, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 862, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .stars-with-date > div:last-child {
   padding-top: 6px;
   margin-left: 10px;
 }
 
 /* request form */
-/* line 847, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 868, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .request-form-container {
   margin-top: 100px;
 }
 
 /* footer */
-/* line 853, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 874, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #footer {
   background: rgba(255, 255, 255, 0.9);
   position: fixed;
@@ -9797,23 +10094,23 @@ tr td:last-child {
   z-index: 99;
 }
 
-/* line 864, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 885, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #footer a {
   color: #555;
 }
 
-/* line 868, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 889, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #footer a:hover {
   color: #222;
 }
 
-/* line 872, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 893, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #footer ul {
   float: right;
   list-style: none;
 }
 
-/* line 877, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 898, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 #footer ul li {
   float: left;
   margin-right: 15px;
@@ -9821,7 +10118,7 @@ tr td:last-child {
 }
 
 /* errors */
-/* line 884, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
+/* line 905, /Users/Steph/Desktop/WanderSF/app/assets/stylesheets/application.scss */
 .flash {
   color: red;
   text-align: center;
@@ -11376,212 +11673,3 @@ body .ui-tooltip {
 
  */
 
-/*!
- * @copyright &copy; Kartik Visweswaran, Krajee.com, 2013 - 2015
- * @version 3.5.6
- *
- * A simple yet powerful JQuery star rating plugin that allows rendering
- * fractional star ratings and supports Right to Left (RTL) input.
- *
- * For more JQuery/Bootstrap plugins and demos visit http://plugins.krajee.com
- * For more Yii related demos visit http://demos.krajee.com
- */
-
-.rating-loading {
-    width: 25px;
-    height: 25px;
-    font-size: 0px;
-    color: #fff;
-    background: transparent url('../img/loading.gif') top left no-repeat;
-    border: none;
-}
-/*
- * Stars
- */
-.rating-fa {
-    font-family: 'FontAwesome';
-    padding-left: 1px;
-}
-
-.rating-fa .rating-stars:before {
-    padding-left: 1px;
-}
-
-.rating-gly {
-    font-family: 'Glyphicons Halflings';
-}
-
-.rating-gly-star {
-    font-family: 'Glyphicons Halflings';
-    padding-left: 2px;
-}
-
-.rating-gly-star .rating-stars:before {
-    padding-left: 2px;
-}
-
-.rating-lg .rating-gly-star, .rating-lg .rating-gly-star .rating-stars:before {
-    padding-left: 4px;
-}
-
-.rating-xl .rating-gly-star, .rating-xl .rating-gly-star .rating-stars:before {
-    padding-left: 2px;
-}
-
-.rating-active {
-    cursor: default;
-}
-
-.rating-disabled {
-    cursor: default;
-}
-
-.rating-uni {
-    font-size: 1.2em;
-    margin-top: -5px;
-}
-
-.rating-container {
-    position: relative;
-    vertical-align: middle;
-    display: inline-block;
-    color: #e3e3e3;
-    overflow: hidden;
-}
-
-.rating-container:before {
-    content: attr(data-content);
-}
-
-.rating-container .rating-stars {
-    position: absolute;
-    left: 0;
-    top: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    color: #fde16d;
-    transition: all 0.25s ease-out;
-    -o-transition: all 0.25s ease-out;
-    -moz-transition: all 0.25s ease-out;
-    -webkit-transition: all 0.25s ease-out;
-}
-
-.rating-container .rating-stars:before {
-    content: attr(data-content);
-    text-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
-}
-
-.rating-container-rtl {
-    position: relative;
-    vertical-align: middle;
-    display: inline-block;
-    overflow: hidden;
-    color: #fde16d;
-}
-
-.rating-container-rtl:before {
-    content: attr(data-content);
-    text-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
-}
-
-.rating-container-rtl .rating-stars {
-    position: absolute;
-    left: 0;
-    top: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    color: #e3e3e3;
-    transition: all 0.25s ease-out;
-    -o-transition: all 0.25s ease-out;
-    -moz-transition: all 0.25s ease-out;
-    -webkit-transition: all 0.25s ease-out;
-}
-
-.rating-container-rtl .rating-stars:before {
-    content: attr(data-content);
-}
-
-/**
- * Rating sizes
- */
-.rating-xl {
-    font-size: 4.89em;
-}
-
-.rating-lg {
-    font-size: 3.91em;
-}
-
-.rating-md {
-    font-size: 3.13em;
-}
-
-.rating-sm {
-    font-size: 2.5em;
-}
-
-.rating-xs {
-    font-size: 2em;
-}
-
-.rating-xxs {
-    font-size: 1.5em;
-}
-
-.rating-xxxs {
-    font-size: 1em;
-}
-
-/**
- * Clear rating button
- */
-.star-rating .clear-rating, .star-rating-rtl .clear-rating {
-    color: #aaa;
-    cursor: default;
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 60%;
-}
-
-.clear-rating-active {
-    cursor: pointer !important;
-}
-
-.clear-rating-active:hover {
-    color: #843534;
-}
-
-.star-rating .clear-rating {
-    padding-right: 5px;
-}
-
-/**
- * Caption
- */
-.star-rating .caption, .star-rating-rtl .caption {
-    color: #999;
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 55%;
-}
-
-.star-rating .caption {
-    padding-left: 5px;
-}
-
-.star-rating-rtl .caption {
-    padding-right: 5px;
-}
-
-/**
- * Print
- */
-@media print {
-    .rating-container, .rating-container:before , .rating-container-rtl .rating-stars, .rating-container-rtl .rating-stars:before {
-        color: #f3f3f3!important;
-    }
-
-    .star-rating .clear-rating, .star-rating-rtl .clear-rating {
-        display: none;
-    }
-}
