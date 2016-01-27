@@ -238,15 +238,12 @@ var SpotDetail = React.createClass({
                 <li><SpotAddressMap spot={this.state.spot} /></li>
               </ul>
             </li>
-            <br />
-            <br/>
             </ul>
             </div>
           <div className="spot-detail-pane">
             <ul className="detail list-unstyled">
 
           <div className="reviews-container">
-            <br />
           <Element name="reviews" className="element" >
             <div className="box"></div>
 
@@ -261,10 +258,9 @@ var SpotDetail = React.createClass({
             </h4>
 
           <div className="current-user-review-container" id="review-container">
-              <ul className="list-unstyled current-user-review-components" id="card">
+              <ul className="list-unstyled current-user-review-components">
                 <li id="current-user-info"><MyUserInfo /></li>
-                <li id="current-user-review" className="front">{reviewForm}</li>
-                <li className="back">{yourReviewItem}</li>
+                <li id="current-user-review">{yourReviewItem} {reviewForm}</li>
               </ul>
             </div>
 
